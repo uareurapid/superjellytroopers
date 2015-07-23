@@ -1,0 +1,27 @@
+how_to_play=Como Jugar:
+tap_trooper=Toque en el soldado/paracaídas para liberarlo
+tap_left_right=Toque à la derecha o hacia la izquierda para balancearlo
+land_all_safely=Tierra todos los soldados de forma segura
+rescued=Rescatados:
+lifes=Vidas:
+time=Tiempo:
+world=Mundo:
+level=Nivel:
+hurry_up=Date prisa!
+congratulations=Felicitaciones!!!
+game_over=Game Over!!!
+next=Siguiente:
+msg_action=Super Jelly Troopers! Vamos a por la acción!
+msg_doit=Vamos a hacerlo!
+infinite_lifes=Infinitas
+failsafe=Suplente
+helps=Ayudas:
+game_center_error=No se puede conectar a Game Center!
+buy_extra_time=Comprar 30 segundos adicionales
+buy_extra_lifes=Comprar 2 vidas adicionales
+buy_infinite_lifes=Comprar vidas infinitas
+buy_extra_speed=Comprar velocidad extra
+how_to_play_last_level=Trata de averiguarlo!...
+intrusion_alert=Alerta de intrusión!
+tap_mission_unlock=Pulsa en una misión desbloqueada para seleccionar los niveles
+
