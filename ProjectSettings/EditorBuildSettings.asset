@@ -1,0 +1,73 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1045 &1
+EditorBuildSettings:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Scenes:
+  - enabled: 1
+    path: Assets/scenes/IntroScene.unity
+  - enabled: 1
+    path: Assets/scenes/StoryScene.unity
+  - enabled: 1
+    path: Assets/scenes/NextLevelScene.unity
+  - enabled: 1
+    path: Assets/scenes/World1Scene1.unity
+  - enabled: 1
+    path: Assets/scenes/World1Scene2.unity
+  - enabled: 1
+    path: Assets/scenes/World1Scene3.unity
+  - enabled: 1
+    path: Assets/scenes/World1Scene4.unity
+  - enabled: 1
+    path: Assets/scenes/World1Scene5.unity
+  - enabled: 1
+    path: Assets/scenes/World1Scene6.unity
+  - enabled: 1
+    path: Assets/scenes/World2Scene1.unity
+  - enabled: 1
+    path: Assets/scenes/World2Scene2.unity
+  - enabled: 1
+    path: Assets/scenes/World2Scene3.unity
+  - enabled: 1
+    path: Assets/scenes/World2Scene4.unity
+  - enabled: 1
+    path: Assets/scenes/World2Scene5.unity
+  - enabled: 1
+    path: Assets/scenes/World2Scene6.unity
+  - enabled: 1
+    path: Assets/scenes/World3Scene1.unity
+  - enabled: 1
+    path: Assets/scenes/World3Scene2.unity
+  - enabled: 1
+    path: Assets/scenes/World3Scene3.unity
+  - enabled: 1
+    path: Assets/scenes/World3Scene4.unity
+  - enabled: 1
+    path: Assets/scenes/World3Scene5.unity
+  - enabled: 1
+    path: Assets/scenes/World3Scene6.unity
+  - enabled: 1
+    path: Assets/scenes/World4Scene1.unity
+  - enabled: 1
+    path: Assets/scenes/World4Scene2.unity
+  - enabled: 1
+    path: Assets/scenes/World4Scene3.unity
+  - enabled: 1
+    path: Assets/scenes/World4Scene4.unity
+  - enabled: 1
+    path: Assets/scenes/World4Scene5.unity
+  - enabled: 1
+    path: Assets/scenes/World4Scene6.unity
+  - enabled: 1
+    path: Assets/scenes/AchievementsScene.unity
+  - enabled: 1
+    path: Assets/scenes/CreditsScene.unity
+  - enabled: 1
+    path: Assets/scenes/MissionsScene.unity
+  - enabled: 1
+    path: Assets/scenes/SettingsScene.unity
+  - enabled: 1
+    path: Assets/scenes/StoreScene.unity
+  - enabled: 1
+    path: Assets/scenes/MissionSelection.unity

@@ -1,0 +1,85 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!78 &1
+TagManager:
+  serializedVersion: 2
+  tags:
+  - GameMusic
+  - Foreground
+  - Scripts
+  - FxTemporaire
+  - Parachute
+  - Jelly
+  - WindTurbine
+  - Spawner
+  - Damager
+  - JumpPlatform
+  - IceCube
+  - ClosingWall
+  - LaserPointer
+  - Bomb
+  - Scenery
+  - Plane
+  - RedTexture
+  - Shooter
+  - BackgroundLayer
+  - SuperTxt
+  - JellyTxt
+  - TroopersTxt
+  - Bloody
+  - Guru
+  - Legend
+  - Hero
+  - Brave
+  - Mission1
+  - Mission2
+  - Mission3
+  - Mission4
+  - clock
+  - HealthPickup
+  - BombPickup
+  - SpeedableRotator
+  - FinalBoss
+  - Lava
+  - SpookyAudio
+  - SpikesLine
+  - lockworld4
+  - lockworld3
+  - lockworld2
+  layers:
+  - Default
+  - TransparentFX
+  - Ignore Raycast
+  - 
+  - Water
+  - UI
+  - 
+  - 
+  - Dynamic Objects
+  - Floor
+  - Gantry
+  - BakgroundLayer
+  - PlayerLayer
+  - EnemyLayer
+  - PlatformLayer
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  m_SortingLayers:
+  - name: Default
+    uniqueID: 0
+    locked: 0

@@ -1,0 +1,76 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &100000
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  serializedVersion: 4
+  m_Component:
+  - 4: {fileID: 400000}
+  - 114: {fileID: 11400000}
+  m_Layer: 8
+  m_Name: Spawner
+  m_TagString: Spawner
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &400000
+Transform:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 100000}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 4.53714085, y: 6.35200024, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 0
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 100000}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c5da8ad468e9844cc9d947d3d81c0ca6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  spawnTime: 5
+  spawnDelay: 2
+  enemies:
+  - {fileID: 100000, guid: 5bed6c25b3ac6449eabb2f5b500a5dbc, type: 2}
+  - {fileID: 100000, guid: 749aafb9cf93b4031ab1c333327be52b, type: 2}
+  - {fileID: 100000, guid: e850bb17530144c8a9b450b453b26779, type: 2}
+  - {fileID: 100000, guid: 4955ce7e4bfa94389b1c95263ce722aa, type: 2}
+  - {fileID: 100000, guid: 0bd9583465c924afbb2e91289562afc9, type: 2}
+  - {fileID: 100000, guid: 1835b8362c2e54c5a9567068d2e0b270, type: 2}
+  - {fileID: 100000, guid: e4af9f9df980b4608af80bf1bbc9356c, type: 2}
+  thumbnails:
+  - {fileID: 2800000, guid: c1e42e38ae3b34ea790dbb4388e30449, type: 3}
+  - {fileID: 2800000, guid: 90ecc4f3719e6491aaae91f52fb914fb, type: 3}
+  - {fileID: 2800000, guid: 26c49aea21a584aa9a98c0e2e4cd1a89, type: 3}
+  - {fileID: 2800000, guid: 3759f48499b374c11ac5bd42bf6d62d7, type: 3}
+  - {fileID: 2800000, guid: d6753e5f726584c228f86d0296aa38b8, type: 3}
+  - {fileID: 2800000, guid: 5f07005b32a53465eb51985f12f90956, type: 3}
+  - {fileID: 2800000, guid: c5636ec5bf1564ac89d6d8e36323a007, type: 3}
+  canSpawn: 1
+  marginUp: 0
+  marginDown: 0
+  marginLeft: 0
+  marginRight: 0
+--- !u!1001 &100100000
+Prefab:
+  m_ObjectHideFlags: 1
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications: []
+    m_RemovedComponents: []
+  m_ParentPrefab: {fileID: 0}
+  m_RootGameObject: {fileID: 100000}
+  m_IsPrefabParent: 1
+  m_IsExploded: 1

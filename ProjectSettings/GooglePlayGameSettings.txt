@@ -1,0 +1,6 @@
+lastUpgrade=00920
+proj.AppId=927810362220
+android.SetupDone=true
+ios.ClientId=342471112773-p1f684v7e8557k0vlg93vnql12ajmc79.apps.googleusercontent.com
+ios.BundleId=com.pcdreams.superjellytroopers
+ios.SetupDone=true
