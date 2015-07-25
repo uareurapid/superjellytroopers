@@ -54,7 +54,89 @@ public class MissionSelectionScript : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
+		
+	}
+
+	void CheckPreferences() {
+	  //this gives the world to check
+	   world = PlayerPrefs.GetInt(GameConstants.MISSION_SELECT_WORLD_SELECTED_KEY,1);
+	   string worldKey = GameConstants.MISSION_1_KEY;
+
+	   switch(world) {
+		 case 1: worldKey = GameConstants.MISSION_1_KEY;
+		 oneUnlocked = true;
+		 break;
+		 case 2: worldKey = GameConstants.MISSION_2_KEY;
+			oneUnlocked = PlayerPrefs.GetInt(GameConstants.MISSION_2_KEY,0)>0 || PlayerPrefs.GetInt(GameConstants.MISSION_1_KEY,0)>0;
+		 break;
+		 case 3: worldKey = GameConstants.MISSION_3_KEY;
+			oneUnlocked = PlayerPrefs.GetInt(GameConstants.MISSION_3_KEY,0)>0 || PlayerPrefs.GetInt(GameConstants.MISSION_2_KEY,0)>0;
+		 break;
+		 case 4: worldKey = GameConstants.MISSION_4_KEY;
+			oneUnlocked = PlayerPrefs.GetInt(GameConstants.MISSION_4_KEY,0)>0 || PlayerPrefs.GetInt(GameConstants.MISSION_3_KEY,0)>0;
+		 break;
+	   }
+
+
+	   twoUnlocked = PlayerPrefs.HasKey(worldKey + GameConstants.MISSION_SELECT_LEVEL_TWO_KEY);
+	   threeUnlocked =  PlayerPrefs.HasKey(worldKey + GameConstants.MISSION_SELECT_LEVEL_THREE_KEY);
+	   fourUnlocked =  PlayerPrefs.HasKey(worldKey + GameConstants.MISSION_SELECT_LEVEL_FOUR_KEY);
+	   fiveUnlocked =  PlayerPrefs.HasKey(worldKey + GameConstants.MISSION_SELECT_LEVEL_FIVE_KEY);
+	   sixUnlocked =  PlayerPrefs.HasKey(worldKey + GameConstants.MISSION_SELECT_LEVEL_SIX_KEY);
+
+	}
+
+	void Awake() {
+		
+	  GUIResolutionHelper.Instance.CheckScreenResolution();
+	  CheckPreferences();
+
+	}
+
+	void OnGUI() {
+		GUI.skin = skin;
+		
+		Matrix4x4 svMat = GUI.matrix;//save current matrix
+		
+	    int width = GUIResolutionHelper.Instance.screenWidth;
+		int height = GUIResolutionHelper.Instance.screenHeight;
+		Vector3 scaleVector = GUIResolutionHelper.Instance.scaleVector;
+		
+		bool isWideScreen = GUIResolutionHelper.Instance.isWidescreen;
+		
+		if(isWideScreen) {
+			GUI.matrix = Matrix4x4.TRS(new Vector3( (GUIResolutionHelper.Instance.scaleX - scaleVector.y) / 2 * width, 0, 0), Quaternion.identity, scaleVector);
+		}
+		else {
+			GUI.matrix = Matrix4x4.TRS(Vector3.zero,Quaternion.identity,scaleVector);			
+		}
+
+
+		if(Event.current.type==EventType.Repaint) {
+
+					oneLockRect = new Rect(width / 2-300,height -500,128,128);
+				    twoLockRect = new Rect(width / 2-80,height-500,128,128);
+					threeLockRect = new Rect(width / 2+150,height -500,128,128);
+					fourLockRect = new Rect(width / 2-300,height -300,128,128);
+					fiveLockRect = new Rect(width / 2-80,height-300,128,128);
+					sixLockRect = new Rect(width / 2+150,height-300,128,128);
+					
+					GUI.DrawTexture(oneLockRect,oneUnlocked ? oneUnlock : oneLock);
+					GUI.DrawTexture(twoLockRect,twoUnlocked ? twoUnlock : twoLock);
+					GUI.DrawTexture(threeLockRect,threeUnlocked ? threeUnlock : threeLock);
+					GUI.DrawTexture(fourLockRect,fourUnlocked ? fourUnlock : fourLock);
+					GUI.DrawTexture(fiveLockRect,fiveUnlocked ? fiveUnlock : fiveLock);
+					GUI.DrawTexture(sixLockRect,sixUnlocked ? sixUnlock : sixLock);
+
+				    exitTextureRect = new Rect(width-110,30,96,96);
+				    GUI.DrawTexture(exitTextureRect,exitTexture);
+
+			
+
+		}
+
 		//********************* CLICK / TOUCH CHECKS *******************
+		GUI.matrix = Matrix4x4.TRS(Vector3.zero,Quaternion.identity,scaleVector);	
 		//desktop checks
 		if(Event.current.type == EventType.MouseUp && !isMobilePlatform) {
 
@@ -140,85 +222,6 @@ public class MissionSelectionScript : MonoBehaviour {
 				}
 
 			}
-		}
-	}
-
-	void CheckPreferences() {
-	  //this gives the world to check
-	   world = PlayerPrefs.GetInt(GameConstants.MISSION_SELECT_WORLD_SELECTED_KEY,1);
-	   string worldKey = GameConstants.MISSION_1_KEY;
-
-	   switch(world) {
-		 case 1: worldKey = GameConstants.MISSION_1_KEY;
-		 oneUnlocked = true;
-		 break;
-		 case 2: worldKey = GameConstants.MISSION_2_KEY;
-			oneUnlocked = PlayerPrefs.GetInt(GameConstants.MISSION_2_KEY,0)>0 || PlayerPrefs.GetInt(GameConstants.MISSION_1_KEY,0)>0;
-		 break;
-		 case 3: worldKey = GameConstants.MISSION_3_KEY;
-			oneUnlocked = PlayerPrefs.GetInt(GameConstants.MISSION_3_KEY,0)>0 || PlayerPrefs.GetInt(GameConstants.MISSION_2_KEY,0)>0;
-		 break;
-		 case 4: worldKey = GameConstants.MISSION_4_KEY;
-			oneUnlocked = PlayerPrefs.GetInt(GameConstants.MISSION_4_KEY,0)>0 || PlayerPrefs.GetInt(GameConstants.MISSION_3_KEY,0)>0;
-		 break;
-	   }
-
-
-	   twoUnlocked = PlayerPrefs.HasKey(worldKey + GameConstants.MISSION_SELECT_LEVEL_TWO_KEY);
-	   threeUnlocked =  PlayerPrefs.HasKey(worldKey + GameConstants.MISSION_SELECT_LEVEL_THREE_KEY);
-	   fourUnlocked =  PlayerPrefs.HasKey(worldKey + GameConstants.MISSION_SELECT_LEVEL_FOUR_KEY);
-	   fiveUnlocked =  PlayerPrefs.HasKey(worldKey + GameConstants.MISSION_SELECT_LEVEL_FIVE_KEY);
-	   sixUnlocked =  PlayerPrefs.HasKey(worldKey + GameConstants.MISSION_SELECT_LEVEL_SIX_KEY);
-
-	}
-
-	void Awake() {
-		
-	  GUIResolutionHelper.Instance.CheckScreenResolution();
-	  CheckPreferences();
-
-	}
-
-	void OnGUI() {
-		GUI.skin = skin;
-		
-		Matrix4x4 svMat = GUI.matrix;//save current matrix
-		
-	    int width = GUIResolutionHelper.Instance.screenWidth;
-		int height = GUIResolutionHelper.Instance.screenHeight;
-		Vector3 scaleVector = GUIResolutionHelper.Instance.scaleVector;
-		
-		bool isWideScreen = GUIResolutionHelper.Instance.isWidescreen;
-		
-		if(isWideScreen) {
-			GUI.matrix = Matrix4x4.TRS(new Vector3( (GUIResolutionHelper.Instance.scaleX - scaleVector.y) / 2 * width, 0, 0), Quaternion.identity, scaleVector);
-		}
-		else {
-			GUI.matrix = Matrix4x4.TRS(Vector3.zero,Quaternion.identity,scaleVector);			
-		}
-
-
-		if(Event.current.type==EventType.Repaint) {
-
-					oneLockRect = new Rect(width / 2-300,height -500,128,128);
-				    twoLockRect = new Rect(width / 2-80,height-500,128,128);
-					threeLockRect = new Rect(width / 2+150,height -500,128,128);
-					fourLockRect = new Rect(width / 2-300,height -300,128,128);
-					fiveLockRect = new Rect(width / 2-80,height-300,128,128);
-					sixLockRect = new Rect(width / 2+150,height-300,128,128);
-					
-					GUI.DrawTexture(oneLockRect,oneUnlocked ? oneUnlock : oneLock);
-					GUI.DrawTexture(twoLockRect,twoUnlocked ? twoUnlock : twoLock);
-					GUI.DrawTexture(threeLockRect,threeUnlocked ? threeUnlock : threeLock);
-					GUI.DrawTexture(fourLockRect,fourUnlocked ? fourUnlock : fourLock);
-					GUI.DrawTexture(fiveLockRect,fiveUnlocked ? fiveUnlock : fiveLock);
-					GUI.DrawTexture(sixLockRect,sixUnlocked ? sixUnlock : sixLock);
-
-				    exitTextureRect = new Rect(width-110,30,96,96);
-				    GUI.DrawTexture(exitTextureRect,exitTexture);
-
-			
-
 		}
 
 
