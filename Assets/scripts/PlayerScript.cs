@@ -170,14 +170,18 @@ public class PlayerScript : MonoBehaviour
 
 	 if(IsPlayerAlive()) {
 
-		JellyScript jelly = GameObject.FindGameObjectWithTag("Jelly").GetComponent<JellyScript>();
-		if(jelly!=null) {
-	
-		  failSafeUsed = !jelly.CanLaunchFailSafe();
+		GameObject jellyObj = GameObject.FindGameObjectWithTag("Jelly");
+		if (jellyObj != null) {
+			JellyScript jelly = jellyObj.GetComponent<JellyScript> ();
+			if(jelly!=null) {
+				failSafeUsed = !jelly.CanLaunchFailSafe();
+			}
+			else {
+				failSafeUsed = true;
+			}
 		}
-		else {
-		  failSafeUsed = true;
-		}
+
+		
 
 
 		if (!failSafeUsed && Input.touches.Length ==1) {

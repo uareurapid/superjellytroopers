@@ -63,9 +63,10 @@ public class ScrollingScript : MonoBehaviour
 				}
 			}
 
-			if (backgroundPart.Count == 0)
-			{
-				Debug.LogError("Nothing to scroll!");
+			if (backgroundPart.Count == 0) {
+				Debug.LogError ("Nothing to scroll!");
+			} else {
+				Debug.Log ("Background parts are: " + backgroundPart.Count);
 			}
 
 			// Sort by position 
@@ -167,7 +168,7 @@ public class ScrollingScript : MonoBehaviour
 						checkVisible = true;
 					}
 				}
-
+					
 				// Check if the sprite is really visible on the camera or not
 				if (checkVisible)
 				{
@@ -178,7 +179,7 @@ public class ScrollingScript : MonoBehaviour
 					// -- And we physically moves him to the further position possible
 					//---------------------------------------------------------------------------------
 
-					if (firstChild.IsVisibleFrom(Camera.main) == false)
+					if (firstChild.isVisible == false)
 					{
 						// Set position in the end
 						firstChild.transform.position = new Vector3(

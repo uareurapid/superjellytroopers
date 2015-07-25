@@ -737,17 +737,18 @@ public class GameControllerScript : MonoBehaviour {
 		  if(currentLevel < numberOfLevels) {
 		  	//just increase the level on the same world
 		    currentLevel+=1;
+
 		  }
 		  else {
 		  		//save the mission, completed the world
 			    switch(currentWorld) {
-				 case 1: PlayerPrefs.SetInt(GameConstants.MISSION_1_KEY,1);
+				 case 1: PlayerPrefs.SetInt(GameConstants.MISSION_1_KEY,1);//COMPLETED MISSION 1
 			     	break;
-			     case 2: PlayerPrefs.SetInt(GameConstants.MISSION_2_KEY,1);
+			     case 2: PlayerPrefs.SetInt(GameConstants.MISSION_2_KEY,1);//COMPLETED MISSION 2
 			     	break;
-			     case 3: PlayerPrefs.SetInt(GameConstants.MISSION_3_KEY,1);
+			     case 3: PlayerPrefs.SetInt(GameConstants.MISSION_3_KEY,1);//COMPLETED MISSION 3
 					break;
-				 case 4: PlayerPrefs.SetInt(GameConstants.MISSION_4_KEY,1);
+				 case 4: PlayerPrefs.SetInt(GameConstants.MISSION_4_KEY,1);//COMPLETED MISSION4
 				 	break;
 			    }
 
@@ -755,44 +756,16 @@ public class GameControllerScript : MonoBehaviour {
 		      currentWorld+=1;
 		      currentLevel=1;
 		    }
+				
+		  //------------- for the missions selection -----------------
+		  string worldKey = GetWorldKey ();	
+		  string levelKey = GetLevelKey ();
+		  //this will be retrieved in the missions selection
+		  PlayerPrefs.SetString(worldKey+levelKey,"worldKey+levelKey");
 
 		  //these values keep the next in line
 		  PlayerPrefs.SetInt(GameConstants.PLAYING_WORLD,currentWorld);
 		  PlayerPrefs.SetInt(GameConstants.PLAYING_LEVEL,currentLevel);
-
-		  //for the missions selection
-		  //----------------
-		  string worldKey = GameConstants.MISSION_1_KEY;
-			switch(currentWorld) {
-			 case 1: worldKey = GameConstants.MISSION_1_KEY;
-			 break;
-			 case 2: worldKey = GameConstants.MISSION_2_KEY;
-			 break;
-			 case 3: worldKey = GameConstants.MISSION_3_KEY;
-			 break;
-			 case 4: worldKey = GameConstants.MISSION_4_KEY;
-			 break;
-	   		}
-
-		  string levelKey = GameConstants.MISSION_SELECT_LEVEL_TWO_KEY;
-		  switch(currentLevel) {
-		  //should never happen
-			 case 3: levelKey = GameConstants.MISSION_SELECT_LEVEL_THREE_KEY;
-			 break;
-			 case 4: levelKey = GameConstants.MISSION_SELECT_LEVEL_FOUR_KEY;
-			 break;
-			 case 5: levelKey = GameConstants.MISSION_SELECT_LEVEL_FIVE_KEY;
-			 break;
-			 case 6: levelKey = GameConstants.MISSION_SELECT_LEVEL_SIX_KEY;
-			 break;
-	
-		  }
-
-		  //this will be retrieved in the missions selection
-		  PlayerPrefs.SetString(worldKey+levelKey,"worldKey+levelKey");
-		  //----------------
-
-
 		    
 		  PerformFinalComputation(false);
 		  //show board and do the math :-)
@@ -802,6 +775,42 @@ public class GameControllerScript : MonoBehaviour {
 		  }
 		  	
 		
+	}
+	//get the world key
+	string GetWorldKey() {
+		//default is 1
+		string worldKey = GameConstants.MISSION_1_KEY;
+		switch(currentWorld) {
+		case 1: worldKey = GameConstants.MISSION_1_KEY;
+			break;
+		case 2: worldKey = GameConstants.MISSION_2_KEY;
+			break;
+		case 3: worldKey = GameConstants.MISSION_3_KEY;
+			break;
+		case 4: worldKey = GameConstants.MISSION_4_KEY;
+			break;
+		}
+		return worldKey;
+	}
+
+	string GetLevelKey() {
+		//default is 1
+		string levelKey = GameConstants.MISSION_SELECT_LEVEL_ONE_KEY;
+
+		switch(currentLevel) {
+		case 2: levelKey = GameConstants.MISSION_SELECT_LEVEL_TWO_KEY;
+			break;
+		case 3: levelKey = GameConstants.MISSION_SELECT_LEVEL_THREE_KEY;
+			break;
+		case 4: levelKey = GameConstants.MISSION_SELECT_LEVEL_FOUR_KEY;
+			break;
+		case 5: levelKey = GameConstants.MISSION_SELECT_LEVEL_FIVE_KEY;
+			break;
+		case 6: levelKey = GameConstants.MISSION_SELECT_LEVEL_SIX_KEY;
+			break;
+
+		}
+		return levelKey;
 	}
 	/**
 	*performs some level calculations and report any achiviement reached
@@ -1359,8 +1368,7 @@ public class GameControllerScript : MonoBehaviour {
 					//start playing //screenWidth
 
 					//---------------------------------------------------------------------------------					
-					#if UNITY_ANDROID || UNITY_IOS && !UNITY_EDITOR
-					//GUI.Label(new Rect(width/2-69,(int)screenHeight / 3 * 2 - 15,200,40),"Leaderboards");
+					#if !UNITY_EDITOR
 					leaderboardsRect = new Rect(width/2-50,screenHeight / 3 * 2 + 10 ,96,96);
 					GUI.DrawTexture(leaderboardsRect, leaderBoardTexture,ScaleMode.ScaleToFit);
 					#endif

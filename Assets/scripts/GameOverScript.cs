@@ -101,8 +101,20 @@ public class GameOverScript : MonoBehaviour
 
 		//get the previous saved values (this is what i was playing before showing game over)
 		//are set on Awake() method of GameControllerScript
-		currentWorld = PlayerPrefs.GetInt(GameConstants.CURRENT_WORLD_KEY,1);
-		currentLevel = PlayerPrefs.GetInt(GameConstants.CURRENT_LEVEL_KEY,1);
+
+			if (PlayerPrefs.HasKey (GameConstants.PLAYING_LEVEL)) {
+				//this is what i was playing before seeing this screen
+				//if i came here after a game over secreen, these are goe already
+				//but if i came here after going to the store and then back to settings scene, they will still be present
+
+				currentWorld = PlayerPrefs.GetInt (GameConstants.PLAYING_WORLD, 1);
+				currentLevel = PlayerPrefs.GetInt (GameConstants.PLAYING_LEVEL, 1);
+			} 
+			else {
+				currentWorld = PlayerPrefs.GetInt(GameConstants.CURRENT_WORLD_KEY,1);
+				currentLevel = PlayerPrefs.GetInt(GameConstants.CURRENT_LEVEL_KEY,1);
+			}
+		
 
 		//check if we show the store button or not
 		CheckInAppPurchases();

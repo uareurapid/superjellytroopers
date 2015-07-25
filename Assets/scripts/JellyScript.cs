@@ -119,14 +119,16 @@ public class JellyScript : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
 
-	  if(!isFalling) {
-	      parachute.parachuteEnabled = false;
-	  }
-	  else {
-		  //is falling
-	      parachute.parachuteEnabled = !isReleased;
-
-	  }
+	if (parachute != null) {
+		if(!isFalling) {
+			parachute.parachuteEnabled = false;
+		}
+		else {
+			//is falling
+			parachute.parachuteEnabled = !isReleased;
+		}
+	}
+	  
 
 	//Limit the movement inside camera bounds
 	if(moveScript!=null && moveScript.enabled && isFalling) {

@@ -75,6 +75,7 @@ namespace RescueJelly
 				//missions / levels already achieved (for each world), this is never deleted
 				//level 1 is always unlocked in all achieved worlds
 				//these are concatened with the missions keys above
+				public const string MISSION_SELECT_LEVEL_ONE_KEY = "_level_1";
 				public const string MISSION_SELECT_LEVEL_TWO_KEY = "_level_2";
 				public const string MISSION_SELECT_LEVEL_THREE_KEY = "_level_3";
 				public const string MISSION_SELECT_LEVEL_FOUR_KEY = "_level_4";
