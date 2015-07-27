@@ -295,10 +295,19 @@ MonoBehaviour:
   stretchThreshold: .5
   createTangents: 0
   randomByWorldCoordinates: 0
+  uvOffset: {x: 0, y: 0}
+  slantAmount: 0
+  fillSplit: 0
+  fillSplitDistance: 4
   createCollider: 0
   create3DCollider: 0
+  usedByEffector: 0
+  useEdgeCollider: 0
+  isTrigger: 0
   depth: 4
   smoothSphereCollisions: 0
+  sharpCorners: 0
+  sharpCornerDistance: 2
   surfaceOffset:
   - 0
   - 0
@@ -312,6 +321,21 @@ MonoBehaviour:
   collidersBottom: 1
   colliderThickness: .100000001
   directionOverrides: 6400000064000000640000006400000064000000640000006400000064000000640000006400000064000000640000006400000064000000
+  vertScales:
+  - 1
+  - 1
+  - 1
+  - 1
+  - 1
+  - 1
+  - 1
+  - 1
+  - 1
+  - 1
+  - 1
+  - 1
+  - 1
+  - 1
   terrainMaterial: {fileID: 11400000, guid: 829bdaa247a12344da883ff9bcee6834, type: 2}
 --- !u!33 &347015977
 MeshFilter:
