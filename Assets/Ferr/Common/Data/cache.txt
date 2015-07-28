@@ -1,11 +1,25 @@
 
 [Ferr2DT_TerrainMaterial]
-Assets/Ferr/2DTerrain/TerrainMaterials/SandTerrainMaterial.prefab
+Assets/Ferr/2DTerrain/TerrainMaterials/NewTerrainMaterial.prefab
 Assets/Ferr/2DTerrain/TerrainMaterials/RockTerrainMaterial.prefab
-Assets/Ferr/2DTerrain/TerrainMaterials/PipeMaterial.prefab
-Assets/Ferr/2DTerrain/TerrainMaterials/MossyTerrainMaterial.prefab
-Assets/Ferr/2DTerrain/TerrainMaterials/ForestTerrainMaterial.prefab
-Assets/Ferr/2DTerrain/TerrainMaterials/ForegroundTerrainMaterial.prefab
 Assets/Ferr/2DTerrain/TerrainMaterials/CaveTerrainMaterial.prefab
+Assets/Ferr/2DTerrain/TerrainMaterials/ForegroundTerrainMaterial.prefab
+Assets/Ferr/2DTerrain/TerrainMaterials/BriksTerrainMaterial.prefab
+Assets/Ferr/2DTerrain/TerrainMaterials/ArticTerrainMaterial.prefab
+Assets/Ferr/2DTerrain/TerrainMaterials/VolcanoTerrainMaterial.prefab
+Assets/Ferr/2DTerrain/TerrainMaterials/ForestTerrainMaterial.prefab
+Assets/Ferr/2DTerrain/TerrainMaterials/MossyTerrainMaterial.prefab
+Assets/Ferr/2DTerrain/TerrainMaterials/IceTerrainMaterial.prefab
+Assets/Ferr/2DTerrain/TerrainMaterials/PipeMaterial.prefab
+Assets/Ferr/2DTerrain/TerrainMaterials/LavaTerrainMaterial.prefab
+Assets/Ferr/2DTerrain/TerrainMaterials/NewTerrainMaterialBrownRocks.prefab
+Assets/Ferr/2DTerrain/TerrainMaterials/BlocksGreyTerrainMaterial.prefab
+Assets/Ferr/2DTerrain/TerrainMaterials/IcebergTerrainMaterial 1.prefab
+Assets/Ferr/2DTerrain/TerrainMaterials/RockyTerrainMaterial2.prefab
+Assets/Ferr/2DTerrain/TerrainMaterials/BlocksTerrainMaterial.prefab
+Assets/Ferr/2DTerrain/TerrainMaterials/SandTerrainMaterial.prefab
+Assets/Ferr/2DTerrain/TerrainMaterials/RockyNewTerrainMaterial.prefab
+Assets/Ferr/2DTerrain/TerrainMaterials/RockyTerrainMaterial 1.prefab
+Assets/Ferr/2DTerrain/TerrainMaterials/IceTerrainMaterialOther.prefab
 
 [Ferr2DT_PathTerrain]

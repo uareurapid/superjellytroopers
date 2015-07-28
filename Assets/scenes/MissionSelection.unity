@@ -210,9 +210,11 @@ GameObject:
   m_Component:
   - 4: {fileID: 2055978406}
   - 114: {fileID: 2055978405}
+  - 114: {fileID: 2055978407}
+  - 114: {fileID: 2055978408}
   m_Layer: 0
   m_Name: Scripts
-  m_TagString: Untagged
+  m_TagString: Scripts
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -252,6 +254,44 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
+--- !u!114 &2055978407
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 2055978404}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 51007403ed5d34dd89499e05f217b449, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  comment: '#'
+  separator: =
+  languageFilePrefix: Language_
+  supportedLanguages:
+  - en
+  - pt
+  - es
+  - fr
+  - ru
+  - zh
+--- !u!114 &2055978408
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 2055978404}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a8b391c3b62e046a1b917ecc2ef03c37, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  screenWidth: 1024
+  screenHeight: 768
+  scaleVector: {x: 1, y: 1, z: 1}
+  isWidescreen: 0
+  aspectRatio: 0
+  scaleX: 0
 --- !u!1 &2103920521
 GameObject:
   m_ObjectHideFlags: 0

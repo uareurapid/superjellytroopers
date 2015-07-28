@@ -264,8 +264,7 @@ public class MissionsScript : MonoBehaviour {
 			GUI.matrix = Matrix4x4.TRS(Vector3.zero,Quaternion.identity,scaleVector);
 			
 		}
-		
-		//GUI.matrix = Matrix4x4.TRS(Vector3.zero,Quaternion.identity,GUIResolutionHelper.Instance.scaleVector);
+
 	   		
 		int width = resolutionHelper.screenWidth; 
 		int height = resolutionHelper.screenHeight;

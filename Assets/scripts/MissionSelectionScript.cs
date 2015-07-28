@@ -40,6 +40,8 @@ public class MissionSelectionScript : MonoBehaviour {
 
   private bool isMobilePlatform = true;
   private GUISkin skin;
+  private GUIResolutionHelper resolutionHelper;
+	private TextLocalizationManager translationManager;
 
   private static RuntimePlatform platform;
 
@@ -54,92 +56,7 @@ public class MissionSelectionScript : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-		//desktop checks
-		if(Input.GetButtonDown("Fire1") && !isMobilePlatform) {
 
-			Vector3 mousePosition = Input.mousePosition;
-
-			if(oneUnlocked && oneLockRect.Contains(mousePosition) )
-			{
-				LoadNextLevel(1);
-			}
-			else if(twoUnlocked && twoLockRect.Contains(mousePosition) )
-			{
-
-				LoadNextLevel(2);
-
-			}
-			else if(threeUnlocked && threeLockRect.Contains(mousePosition) )
-			{
-				LoadNextLevel(3);
-			}
-			else if(fourUnlocked && fourLockRect.Contains(mousePosition) )
-			{
-				LoadNextLevel(4);
-
-
-			}
-			else if(fiveUnlocked && fiveLockRect.Contains(mousePosition) )
-			{
-				LoadNextLevel(5);
-			}
-			else if(sixUnlocked && sixLockRect.Contains(mousePosition) )
-			{
-				LoadNextLevel(6);
-			}
-			else if(exitTextureRect.Contains(mousePosition)) {
-				Application.LoadLevel("SettingsScene");
-			}
-
-		}
-		//mobile checks
-		else if(isMobilePlatform && Input.touchCount == 1 )
-		{
-
-			Touch touch = Input.touches[0];
-			if(touch.phase == TouchPhase.Began) {
-
-				Vector2 fingerPos = new Vector2(0,0);
-				fingerPos = touch.position;
-
-				fingerPos.y =  GUIResolutionHelper.Instance.screenHeight - (touch.position.y / Screen.height) * GUIResolutionHelper.Instance.screenHeight;
-				fingerPos.x = (touch.position.x / Screen.width) * GUIResolutionHelper.Instance.screenWidth;
-
-
-				if(oneUnlocked && oneLockRect.Contains(fingerPos) )
-				{
-					LoadNextLevel(1);
-				}
-				else if(twoUnlocked && twoLockRect.Contains(fingerPos) )
-				{
-
-					LoadNextLevel(2);
-
-				}
-				else if(threeUnlocked && threeLockRect.Contains(fingerPos) )
-				{
-					LoadNextLevel(3);
-				}
-				else if(fourUnlocked && fourLockRect.Contains(fingerPos) )
-				{
-					LoadNextLevel(4);
-
-
-				}
-				else if(fiveUnlocked && fiveLockRect.Contains(fingerPos) )
-				{
-					LoadNextLevel(5);
-				}
-				else if(sixUnlocked && sixLockRect.Contains(fingerPos) )
-				{
-					LoadNextLevel(6);
-				}
-				else if(exitTextureRect.Contains(fingerPos)) {
-					Application.LoadLevel("SettingsScene");
-				}
-
-			}
-		}
 	}
 
 	void CheckPreferences() {
@@ -173,7 +90,21 @@ public class MissionSelectionScript : MonoBehaviour {
 
 	void Awake() {
 		
-	  GUIResolutionHelper.Instance.CheckScreenResolution();
+		GameObject scripts = GameObject.FindGameObjectWithTag("Scripts");
+		if(scripts!=null) {
+			resolutionHelper = scripts.GetComponent<GUIResolutionHelper>();
+			translationManager = scripts.GetComponent<TextLocalizationManager>();
+		}
+		else {
+			resolutionHelper = GUIResolutionHelper.Instance;
+			//handle translation language
+			translationManager = TextLocalizationManager.Instance;
+			
+		}
+		
+		resolutionHelper.CheckScreenResolution();
+		//translations
+		translationManager.LoadSystemLanguage(Application.systemLanguage);
 	  CheckPreferences();
 
 	}
@@ -183,49 +114,138 @@ public class MissionSelectionScript : MonoBehaviour {
 		
 		Matrix4x4 svMat = GUI.matrix;//save current matrix
 		
-	    int width = GUIResolutionHelper.Instance.screenWidth;
-		int height = GUIResolutionHelper.Instance.screenHeight;
-		Vector3 scaleVector = GUIResolutionHelper.Instance.scaleVector;
+		bool isWideScreen = resolutionHelper.isWidescreen;
+		Vector3 scaleVector = resolutionHelper.scaleVector;
 		
-		bool isWideScreen = GUIResolutionHelper.Instance.isWidescreen;
-		
-		//if(isWideScreen) {
-		//	GUI.matrix = Matrix4x4.TRS(new Vector3( (GUIResolutionHelper.Instance.scaleX - scaleVector.y) / 2 * width, 0, 0), Quaternion.identity, scaleVector);
-		//}
-		//else {
-			GUI.matrix = Matrix4x4.TRS(Vector3.zero,Quaternion.identity,scaleVector);			
-		//}
-
+		if(isWideScreen) {
+			GUI.matrix = Matrix4x4.TRS(new Vector3( (resolutionHelper.scaleX - scaleVector.y) / 2 * resolutionHelper.screenWidth, 0, 0), Quaternion.identity, scaleVector);
+			
+		}
+		else {
+			GUI.matrix = Matrix4x4.TRS(Vector3.zero,Quaternion.identity,scaleVector);
+			
+		}
+		int width = resolutionHelper.screenWidth; 
+		int height = resolutionHelper.screenHeight;
 
 		if(Event.current.type==EventType.Repaint) {
-
-					oneLockRect = new Rect(width / 2-300,height -500,128,128);
-				    twoLockRect = new Rect(width / 2-80,height-500,128,128);
-					threeLockRect = new Rect(width / 2+150,height -500,128,128);
-					fourLockRect = new Rect(width / 2-300,height -300,128,128);
-					fiveLockRect = new Rect(width / 2-80,height-300,128,128);
-					sixLockRect = new Rect(width / 2+150,height-300,128,128);
-					
-					GUI.DrawTexture(oneLockRect,oneUnlocked ? oneUnlock : oneLock);
-					GUI.DrawTexture(twoLockRect,twoUnlocked ? twoUnlock : twoLock);
-					GUI.DrawTexture(threeLockRect,threeUnlocked ? threeUnlock : threeLock);
-					GUI.DrawTexture(fourLockRect,fourUnlocked ? fourUnlock : fourLock);
-					GUI.DrawTexture(fiveLockRect,fiveUnlocked ? fiveUnlock : fiveLock);
-					GUI.DrawTexture(sixLockRect,sixUnlocked ? sixUnlock : sixLock);
-
-				    exitTextureRect = new Rect(width-110,30,96,96);
-				    GUI.DrawTexture(exitTextureRect,exitTexture);
-
 			
-
+			oneLockRect = new Rect(width / 2-300,height -500,128,128);
+			twoLockRect = new Rect(width / 2-80,height-500,128,128);
+			threeLockRect = new Rect(width / 2+150,height -500,128,128);
+			fourLockRect = new Rect(width / 2-300,height -300,128,128);
+			fiveLockRect = new Rect(width / 2-80,height-300,128,128);
+			sixLockRect = new Rect(width / 2+150,height-300,128,128);
+			
+			GUI.DrawTexture(oneLockRect,oneUnlocked ? oneUnlock : oneLock);
+			GUI.DrawTexture(twoLockRect,twoUnlocked ? twoUnlock : twoLock);
+			GUI.DrawTexture(threeLockRect,threeUnlocked ? threeUnlock : threeLock);
+			GUI.DrawTexture(fourLockRect,fourUnlocked ? fourUnlock : fourLock);
+			GUI.DrawTexture(fiveLockRect,fiveUnlocked ? fiveUnlock : fiveLock);
+			GUI.DrawTexture(sixLockRect,sixUnlocked ? sixUnlock : sixLock);
+			
+			exitTextureRect = new Rect(width-110,30,96,96);
+			GUI.DrawTexture(exitTextureRect,exitTexture);
+			
+			
+			
 		}
-
+		
 		//********************* CLICK / TOUCH CHECKS *******************
 		//GUI.matrix = Matrix4x4.TRS(Vector3.zero,Quaternion.identity,scaleVector);	
-
-
-
+		//desktop checks
+		if(Event.current.type == EventType.MouseUp && !isMobilePlatform) {
 			
+			Vector2 mousePosition = Event.current.mousePosition;
+			
+			if(oneUnlocked && oneLockRect.Contains(mousePosition) )
+			{
+				LoadNextLevel(1);
+			}
+			else if(twoUnlocked && twoLockRect.Contains(mousePosition) )
+			{
+				
+				LoadNextLevel(2);
+				
+			}
+			else if(threeUnlocked && threeLockRect.Contains(mousePosition) )
+			{
+				LoadNextLevel(3);
+			}
+			else if(fourUnlocked && fourLockRect.Contains(mousePosition) )
+			{
+				LoadNextLevel(4);
+				
+				
+			}
+			else if(fiveUnlocked && fiveLockRect.Contains(mousePosition) )
+			{
+				LoadNextLevel(5);
+			}
+			else if(sixUnlocked && sixLockRect.Contains(mousePosition) )
+			{
+				LoadNextLevel(6);
+			}
+			else if(exitTextureRect.Contains(mousePosition)) {
+				Application.LoadLevel("SettingsScene");
+			}
+			
+		}
+		//mobile checks
+		else if(isMobilePlatform && Input.touchCount == 1 )
+		{
+			
+			Touch touch = Input.touches[0];
+			if(touch.phase == TouchPhase.Began) {
+
+				Vector2 fingerPos = new Vector2(0,0);
+				fingerPos = touch.position;
+				
+				fingerPos.y =  height - (touch.position.y / Screen.height) * height;
+				fingerPos.x = (touch.position.x / Screen.width) * width;
+				
+				if(isWideScreen) {
+					//do extra computation
+					fingerPos.x = fingerPos.x + (resolutionHelper.scaleX - resolutionHelper.scaleVector.y) / 2 * width;
+				}
+				
+				if(oneUnlocked && oneLockRect.Contains(fingerPos) )
+				{
+					LoadNextLevel(1);
+				}
+				else if(twoUnlocked && twoLockRect.Contains(fingerPos) )
+				{
+					
+					LoadNextLevel(2);
+					
+				}
+				else if(threeUnlocked && threeLockRect.Contains(fingerPos) )
+				{
+					LoadNextLevel(3);
+				}
+				else if(fourUnlocked && fourLockRect.Contains(fingerPos) )
+				{
+					LoadNextLevel(4);
+					
+					
+				}
+				else if(fiveUnlocked && fiveLockRect.Contains(fingerPos) )
+				{
+					LoadNextLevel(5);
+				}
+				else if(sixUnlocked && sixLockRect.Contains(fingerPos) )
+				{
+					LoadNextLevel(6);
+				}
+				else if(exitTextureRect.Contains(fingerPos)) {
+					Application.LoadLevel("SettingsScene");
+				}
+				
+			}
+		}
+		
+		
+		
 		//restore the matrix	
 		GUI.matrix = svMat;	
 	}
