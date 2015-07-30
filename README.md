@@ -6,7 +6,7 @@ This README would normally document whatever steps are necessary to get your app
 
 * Quick summary
 
-Super Jelly Trooper repo
+Super Jelly Trooper repository (IOS UNITY 5 ONLY)
 
 * Version
 
