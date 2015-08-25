@@ -66,9 +66,22 @@ public class MissionsScript : MonoBehaviour {
 		missionThreeLock = GameObject.FindGameObjectWithTag("lockworld3").GetComponent<SpriteRenderer>();
 		missionFourLock = GameObject.FindGameObjectWithTag("lockworld4").GetComponent<SpriteRenderer>();
 
-		//isMobilePlatform = (platform == RuntimePlatform.IPhonePlayer || platform == RuntimePlatform.Android || platform == RuntimePlatform.BlackBerryPlayer);
-		//check the conquered missions
-		
+		GameObject scripts = GameObject.FindGameObjectWithTag("Scripts");
+		if(scripts!=null) {
+			resolutionHelper = scripts.GetComponent<GUIResolutionHelper>();
+			translationManager = scripts.GetComponent<TextLocalizationManager>();
+		}
+		else {
+			resolutionHelper = GUIResolutionHelper.Instance;
+			//handle translation language
+			translationManager = TextLocalizationManager.Instance;
+			
+		}
+
+		resolutionHelper.CheckScreenResolution();
+		//translations
+		translationManager.LoadSystemLanguage(Application.systemLanguage);
+		isMobilePlatform = (platform == RuntimePlatform.IPhonePlayer || platform == RuntimePlatform.Android);
 
 		CheckMissions();
 
@@ -80,22 +93,7 @@ public class MissionsScript : MonoBehaviour {
 	//called before start
 	void Awake() {
 
-		GameObject scripts = GameObject.FindGameObjectWithTag("Scripts");
-		if(scripts!=null) {
-			resolutionHelper = scripts.GetComponent<GUIResolutionHelper>();
-			translationManager = scripts.GetComponent<TextLocalizationManager>();
-		}
-		else {
-			resolutionHelper = GUIResolutionHelper.Instance;
-			//handle translation language
-		    translationManager = TextLocalizationManager.Instance;
-		
-		}
-		
-		resolutionHelper.CheckScreenResolution();
-		//translations
-		translationManager.LoadSystemLanguage(Application.systemLanguage);
-		isMobilePlatform = (platform == RuntimePlatform.IPhonePlayer || platform == RuntimePlatform.Android);
+
 	}
 
 	void CheckMissions() {

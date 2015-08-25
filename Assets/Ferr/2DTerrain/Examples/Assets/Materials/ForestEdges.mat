@@ -7,7 +7,7 @@ Material:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_Name: ForestEdges
-  m_Shader: {fileID: 4800000, guid: 546ed2eb115a07c45ae40bc130626f58, type: 3}
+  m_Shader: {fileID: 4800000, guid: f96550915e1658a4195dff70b551b70b, type: 3}
   m_ShaderKeywords: 
   m_LightmapFlags: 5
   m_CustomRenderQueue: -1

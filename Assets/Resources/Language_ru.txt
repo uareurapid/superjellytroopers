@@ -24,3 +24,4 @@ buy_extra_speed=Купить дополнительную скорость
 how_to_play_last_level=Попробуйте выяснить это!...
 intrusion_alert=Вторжение Внимание!
 tap_mission_unlock=Нажмите разблокированный миссию, чтобы выбрать уровни
+press_failsafe_key=Нажмите "R" Ключ к использованию

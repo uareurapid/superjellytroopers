@@ -24,4 +24,5 @@ buy_extra_speed=Comprar velocidad extra
 how_to_play_last_level=Trata de averiguarlo!...
 intrusion_alert=Alerta de intrusión!
 tap_mission_unlock=Pulsa en una misión desbloqueada para seleccionar los niveles
+press_failsafe_key=Pulse el botón "R" para usar
 

@@ -39,6 +39,8 @@ public class PlayerScript : MonoBehaviour
 	private TextLocalizationManager translationManager;
 
 	private bool buyedInfiniteLifes = false;
+	private bool isMobilePlatform = false;
+	private static RuntimePlatform platform;
 
 	void Start() {
 
@@ -50,7 +52,7 @@ public class PlayerScript : MonoBehaviour
 		//Save starting position
 		startingPos = cachedTransform.position;
 
-
+		isMobilePlatform = (platform == RuntimePlatform.IPhonePlayer || platform == RuntimePlatform.Android || platform == RuntimePlatform.BlackBerryPlayer);
 		
 	}
 	
@@ -126,6 +128,9 @@ public class PlayerScript : MonoBehaviour
 			  failSafeRect = new Rect(40, resolutionHelper.screenHeight-100,48,48);
 			  GUI.DrawTexture(failSafeRect,failSafeIcon);
 			  DrawText(GetTranslationKey(GameConstants.MSG_FAILSAFE),20,35,resolutionHelper.screenHeight-130,120,40);
+			  if(!isMobilePlatform) {
+				 DrawText(GetTranslationKey(GameConstants.MSG_PRESS_FAILSAFE_KEY),20,35,resolutionHelper.screenHeight-70,240,40);
+			  }
 			}
 
 
@@ -184,7 +189,7 @@ public class PlayerScript : MonoBehaviour
 		
 
 
-		if (!failSafeUsed && Input.touches.Length ==1) {
+		if (!failSafeUsed && Input.touches.Length ==1 && isMobilePlatform) {
 			    
 			Touch touch = Input.touches[0];
 			    
@@ -195,18 +200,17 @@ public class PlayerScript : MonoBehaviour
 				fingerPos.x = (touch.position.x / Screen.width) * resolutionHelper.screenWidth;
 
 				if(failSafeRect!=null && failSafeRect.Contains(fingerPos) && playerHealth.hitPoints!=null) {
-
-					
-					//need to check if can be used, first
-					//if(!failSafeUsed) { //jelly.CanLaunchFailSafe()
-						//failSafeUsed = true;
-				  		LaunchFailsafe();
-					//}
-				  
+				  	LaunchFailsafe();
 				}
 
 			}
 
+		}
+		else if(!isMobilePlatform && !failSafeUsed) {
+
+		  if(Input.GetKeyDown(KeyCode.R)) {
+		     LaunchFailsafe();
+		   }
 		}
 	 }
 		

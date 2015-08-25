@@ -28,6 +28,7 @@ public class GameOverScript : MonoBehaviour
 	Texture2D achievementsTexture;
 	Texture2D creditsTexture ;
 	Texture2D missionsTexture ;
+	Texture2D moreLifesTexture ;
 
 	Texture2D storeTexture;
 	Rect storeTextureRect;
@@ -38,6 +39,7 @@ public class GameOverScript : MonoBehaviour
 	Rect creditsTextureRect ;
 	Rect missionsTextureRect ;
 	Rect resumeTextureRect ;
+	Rect moreLifesTextureRect ;
 
 	//GameControllerScript controller;
 	int currentLevel = 1;
@@ -53,6 +55,8 @@ public class GameOverScript : MonoBehaviour
 	private bool showStore = false;
 	private bool showAds = true;
 
+	private bool drawMoreLifesButton = true;
+
 	void Start() {
 	
 		// Load a skin for the buttons
@@ -65,6 +69,7 @@ public class GameOverScript : MonoBehaviour
 		creditsTexture = Resources.Load("button_credits") as Texture2D;
 		missionsTexture = Resources.Load("button_missions") as Texture2D;
 		storeTexture = Resources.Load("store") as Texture2D;
+		moreLifesTexture = Resources.Load("need_more_lifes") as Texture2D;
 		
 		initialTime = 0f;
 		isShowingMessage = true;
@@ -79,8 +84,8 @@ public class GameOverScript : MonoBehaviour
 		if(!settingsScene) {
 			Invoke("PauseGame", 4f);
 
-			if(showAds) {
-			   Invoke("ShowInterstitial",1.3f);
+			if(showAds && isMobilePlatform) {
+			   Invoke("ShowInterstitial",0.6f);
 			}
 
 		}
@@ -183,6 +188,13 @@ public class GameOverScript : MonoBehaviour
 	  else {
 	    showStore = false;
 	  }
+
+	  if (buyedExtraLifes || buyedInfiniteLifes || settingsScene) {
+			drawMoreLifesButton = false;
+	  } 
+	  else {
+			InvokeRepeating("AlternateRenderLifesButton",0.5f,1.0f);
+	  }
 	 		
 	  
 	}
@@ -208,6 +220,10 @@ public class GameOverScript : MonoBehaviour
 			isShowingMessage = !isShowingMessage;
 			
 		}
+
+		if(!isMobilePlatform && Input.GetKeyDown(KeyCode.Escape)) {
+		  Application.Quit();
+		}
     
     }
     //Load next scene, showing an activity indicator
@@ -221,6 +237,10 @@ public class GameOverScript : MonoBehaviour
 
         Handheld.StartActivityIndicator();
     }*/
+
+	void AlternateRenderLifesButton() {
+		drawMoreLifesButton = !drawMoreLifesButton;
+	}
 
 	void OnGUI()
 	{
@@ -322,8 +342,12 @@ public class GameOverScript : MonoBehaviour
 					GUI.DrawTexture(missionsTextureRect,missionsTexture);
 					GUI.DrawTexture(achievementsRect,achievementsTexture);
 					GUI.DrawTexture(creditsTextureRect,creditsTexture);
-
 					GUI.DrawTexture(resumeTextureRect,resumeTexture);
+
+					if(!settingsScene && drawMoreLifesButton) {
+						moreLifesTextureRect = new Rect(width / 2-100,height-100,200,80);
+						GUI.DrawTexture(moreLifesTextureRect,moreLifesTexture);
+					}
 
 					if(!settingsScene && showStore) {
 						storeTextureRect = new Rect(width -110,30,96,96);
@@ -361,10 +385,13 @@ public class GameOverScript : MonoBehaviour
 				{
 					Application.LoadLevel("StoreScene");
 				}
+				else if(drawMoreLifesButton && moreLifesTextureRect!=null && moreLifesTextureRect.Contains(mousePosition) )
+				{
+					Application.LoadLevel("StoreScene");
+				}
 				else if(missionsTextureRect.Contains(mousePosition) )
 				{
 					Application.LoadLevel("MissionsScene");
-
 
 				}
 				else if(achievementsRect.Contains(mousePosition) )
@@ -429,6 +456,10 @@ public class GameOverScript : MonoBehaviour
 				else if(storeTextureRect.Contains(fingerPos) )
 				{
 					//StartActivityMonitor();
+					Application.LoadLevel("StoreScene");
+				}
+				else if(drawMoreLifesButton && moreLifesTextureRect!=null && moreLifesTextureRect.Contains(fingerPos) )
+				{
 					Application.LoadLevel("StoreScene");
 				}
 			}

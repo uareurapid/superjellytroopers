@@ -24,3 +24,4 @@ buy_extra_speed=Buy extra swing speed
 how_to_play_last_level=Try to figure it out!...
 intrusion_alert=Intrusion Alert!
 tap_mission_unlock=Tap an unlocked mission to select levels
+press_failsafe_key=Press "R" key to use

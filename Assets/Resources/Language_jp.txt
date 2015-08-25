@@ -24,3 +24,4 @@ buy_extra_speed=余分な速度を購入
 how_to_play_last_level=それを把握してみてください!...
 intrusion_alert=侵入アラート！!
 tap_mission_unlock=レベルを選択するためのロック解除のミッションをタップ
+press_failsafe_key=押し、「R」キーを使用します

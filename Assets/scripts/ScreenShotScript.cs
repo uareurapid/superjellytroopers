@@ -81,6 +81,7 @@ public class ScreenShotScript : MonoBehaviour
 		#endif
 			
 	}
+
 	
 	void OnGUI() {
 	  #if !UNITY_BLACKBERRY

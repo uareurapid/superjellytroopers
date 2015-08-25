@@ -636,20 +636,25 @@ public class GameControllerScript : MonoBehaviour {
 		   
 			// 5 - Shooting
 			bool jump = false;
-			
+
 			bool isMobileEnv = IsMobilePlatform();
 			//if not mobile get keyboard strokes
 			if(!isMobileEnv) {
+
 	
 				jump = Input.GetButtonDown("Fire1");//press and release, GetButton is no release needed
 				jump |= Input.GetButtonDown("Fire2");
+
+				bool moveRight = Input.GetAxis("Horizontal") > 0; // gets right
+				bool moveLeft = Input.GetAxis("Horizontal") < 0; // gets left
+
 				// Careful: For Mac users, ctrl + arrow is a bad idea
 				
 				if(jump && !isJellyFalling ) { //&& !openedPlatform
 				   StartJellyFall();
 				}
 				else if(isJellyFalling) {
-					if(DetectDesktopJellyTouches()) {
+					if(DetectDesktopJellyTouches(moveLeft,moveRight)) {
 						ReleaseParachute();
 					}
 				   
@@ -930,10 +935,11 @@ public class GameControllerScript : MonoBehaviour {
 
 			//report main score to game center! (more is better)
 			socialAPIInstance.ReportScore(highScore,GameConstants.LEADERBOARD_MAIN_SCORE);
-			//check if any achievement checkpoint was reached
-	        CheckIfReachedAnyAchievementCheckpoint(totalSaved);
+
 			  
 	     }
+		 //check if any achievement checkpoint was reached
+	     CheckIfReachedAnyAchievementCheckpoint(totalSaved);
 	        
 
 	}
@@ -1027,7 +1033,7 @@ public class GameControllerScript : MonoBehaviour {
 	}
 	
 	//desktop click on Jelly
-	private bool DetectDesktopJellyTouches() {
+	private bool DetectDesktopJellyTouches(bool moveLeft, bool moveRight) {
 
 	  if(isGamePaused) {
 	    return false;
@@ -1043,7 +1049,8 @@ public class GameControllerScript : MonoBehaviour {
 			    }
 			
 			}
-			else {
+	   }
+	   else {
 			   //OPtION move to the clik position
 				//Vector3.MoveTowards(transform.position, target, speed * Time.deltaTime);
 			   GameObject jelly = GetJellyObject();
@@ -1051,7 +1058,16 @@ public class GameControllerScript : MonoBehaviour {
 										
 			     MoveScript movement = jelly.GetComponent<MoveScript>();
 			     if(movement!=null && movement.enabled) {
-					 Vector3 jellyPos = jelly.transform.position;
+
+		
+					if(moveRight) {
+						movement.direction.x=1;
+					}
+					else if(moveLeft) {
+						movement.direction.x=-1;
+					}
+					 /*Vector3 jellyPos = jelly.transform.position;
+
 					 if(mousePosition.x > jellyPos.x) {
 					 //move right
 					    movement.direction.x=1;
@@ -1059,14 +1075,11 @@ public class GameControllerScript : MonoBehaviour {
 					 else if(mousePosition.x < jellyPos.x) {
 					 //move left
 						movement.direction.x=-1;
-					 }
+					 }*/
 			     }
 				 
 			   }
-			}
-			
-			
-			
+
 		}
 		return false;
 	}

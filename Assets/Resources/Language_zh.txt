@@ -24,3 +24,4 @@ buy_extra_speed=购买额外的速度
 how_to_play_last_level=揣摩出来!...
 intrusion_alert=入侵警报！
 tap_mission_unlock=点击一个解锁的任务来选择水平
+press_failsafe_key=按“R”键使用

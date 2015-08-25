@@ -105,6 +105,7 @@ namespace RescueJelly
 				public const string MSG_GAME_CENTER_ERROR="game_center_error";
 				public const string MSG_INTRUSION_ALERT="intrusion_alert";
 				public const string MSG_TAP_UNLOCKED_MISSION = "tap_mission_unlock";
+				public const string MSG_PRESS_FAILSAFE_KEY="press_failsafe_key";
 
 
 				//IN-App
