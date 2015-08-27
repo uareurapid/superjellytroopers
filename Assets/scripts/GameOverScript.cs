@@ -54,7 +54,7 @@ public class GameOverScript : MonoBehaviour
 
 	private bool showStore = false;
 	private bool showAds = true;
-
+	private GUIResolutionHelper resolutionHelper;
 	private bool drawMoreLifesButton = true;
 
 	void Start() {
@@ -75,11 +75,27 @@ public class GameOverScript : MonoBehaviour
 		isShowingMessage = true;
 
 				//handle translation language
-		translationManager = TextLocalizationManager.Instance;
-		translationManager.LoadSystemLanguage(Application.systemLanguage);
+		
+
 
 		isMobilePlatform = (platform == RuntimePlatform.IPhonePlayer || platform == RuntimePlatform.Android || platform == RuntimePlatform.BlackBerryPlayer);
 
+
+		GameObject scripts = GameObject.FindGameObjectWithTag("Scripts");
+		if(scripts!=null) {
+			resolutionHelper = scripts.GetComponent<GUIResolutionHelper>();
+			translationManager = scripts.GetComponent<TextLocalizationManager>();
+		}
+		else {
+			resolutionHelper = GUIResolutionHelper.Instance;
+			translationManager = TextLocalizationManager.Instance;
+			
+		}
+
+		translationManager.LoadSystemLanguage(Application.systemLanguage);
+		resolutionHelper.CheckScreenResolution();
+
+		SetupAllStuff();
 		//means is really game over
 		if(!settingsScene) {
 			Invoke("PauseGame", 4f);
@@ -92,14 +108,9 @@ public class GameOverScript : MonoBehaviour
 
 		
 	}
-	void ShowInterstitial() {
-		Chartboost.showInterstitial(CBLocation.HomeScreen);
-	}
 
-	void Awake() {
+	void SetupAllStuff() {
 
-	  
-	  GUIResolutionHelper.Instance.CheckScreenResolution();
 
 	  if(!settingsScene) {
 	    //means is really game over
@@ -122,7 +133,15 @@ public class GameOverScript : MonoBehaviour
 		
 
 		//check if we show the store button or not
-		CheckInAppPurchases();
+		if(isMobilePlatform) {
+			CheckInAppPurchases();
+		}
+		else {
+		  showStore = false;
+		  showAds = false;
+		  drawMoreLifesButton = false;
+		}
+
 		//if i just died for real, then i clear all the other keys, about time, lifes, etc...
 		ClearPlayerPrefs();
 
@@ -148,6 +167,14 @@ public class GameOverScript : MonoBehaviour
 		currentWorld = PlayerPrefs.GetInt(GameConstants.CURRENT_WORLD_KEY,1);
 		currentLevel = PlayerPrefs.GetInt(GameConstants.CURRENT_LEVEL_KEY,1);
 	  }
+	}
+
+	void ShowInterstitial() {
+		Chartboost.showInterstitial(CBLocation.HomeScreen);
+	}
+
+	void Awake() {
+
 
 	}
 
@@ -160,13 +187,6 @@ public class GameOverScript : MonoBehaviour
 		//this is the total key for this game run
 		PlayerPrefs.SetInt(GameConstants.TOTAL_SCORE_KEY,0);
 		//this is the permanent key, only updated when total score is greater
-
-		/*PlayerPrefs.SetInt(GameConstants.MISSION_4_KEY,0);
-		PlayerPrefs.SetInt(GameConstants.MISSION_3_KEY,0);
-		PlayerPrefs.SetInt(GameConstants.MISSION_2_KEY,0);
-		PlayerPrefs.SetInt(GameConstants.MISSION_1_KEY,0);*/
-
-	   
 
 	}
 	
@@ -255,16 +275,14 @@ public class GameOverScript : MonoBehaviour
 		
 		Matrix4x4 svMat = GUI.matrix;//save current matrix
 		
-	    int width = GUIResolutionHelper.Instance.screenWidth;
-		int height = GUIResolutionHelper.Instance.screenHeight;
-		Vector3 scaleVector = GUIResolutionHelper.Instance.scaleVector;
+	    int width = resolutionHelper.screenWidth;
+		int height = resolutionHelper.screenHeight;
+		Vector3 scaleVector = resolutionHelper.scaleVector;
 		
-		bool isWideScreen = GUIResolutionHelper.Instance.isWidescreen;
+		bool isWideScreen = resolutionHelper.isWidescreen;
 		
 		if(isWideScreen) {
-			GUI.matrix = Matrix4x4.TRS(new Vector3( (GUIResolutionHelper.Instance.scaleX - scaleVector.y) / 2 * width, 0, 0), Quaternion.identity, scaleVector);
-			
-			
+			GUI.matrix = Matrix4x4.TRS(new Vector3( (resolutionHelper.scaleX - scaleVector.y) / 2 * width, 0, 0), Quaternion.identity, scaleVector);
 		}
 		else {
 			GUI.matrix = Matrix4x4.TRS(Vector3.zero,Quaternion.identity,scaleVector);
@@ -291,10 +309,7 @@ public class GameOverScript : MonoBehaviour
 			
 			if(Event.current.type==EventType.Repaint) {
 
-			//only used on the settings scene
-			  //if(settingsScene) {
-			  //		GUI.Label (new Rect(width/2-140, height/2-300, 450, 50), "Super Jelly Troopers",style);
-			  //}
+
 			 if(!settingsScene) { 
 
 					if(isShowingMessage /*&& !showNextLevel*/) {
@@ -420,9 +435,9 @@ public class GameOverScript : MonoBehaviour
 				fingerPos.x = (touch.position.x / Screen.width) * width;
 
 
-				if(GUIResolutionHelper.Instance.isWidescreen) {
+				if(resolutionHelper.isWidescreen) {
 				//do extra computation
-					fingerPos.x = fingerPos.x + (GUIResolutionHelper.Instance.scaleX - GUIResolutionHelper.Instance.scaleVector.y) / 2 * width;
+					fingerPos.x = fingerPos.x + (resolutionHelper.scaleX - resolutionHelper.scaleVector.y) / 2 * width;
 				}
 
 				if(startTextureRect.Contains(fingerPos) )
@@ -535,6 +550,8 @@ public class GameOverScript : MonoBehaviour
 	}
 
 	void OnEnable() {
+
+	 if(!settingsScene) {
 		// Listen to all impression-related events
 		Chartboost.didFailToLoadInterstitial += didFailToLoadInterstitial;
 		Chartboost.didDismissInterstitial += didDismissInterstitial;
@@ -566,9 +583,13 @@ public class GameOverScript : MonoBehaviour
 		#if UNITY_IPHONE
 		Chartboost.didCompleteAppStoreSheetFlow += didCompleteAppStoreSheetFlow;
 		#endif
+
+		}
 	}
 
 	void OnDisable() {
+
+	  if(!settingsScene) {
 		// Remove event handlers
 		Chartboost.didFailToLoadInterstitial -= didFailToLoadInterstitial;
 		Chartboost.didDismissInterstitial -= didDismissInterstitial;
@@ -600,6 +621,8 @@ public class GameOverScript : MonoBehaviour
 		#if UNITY_IPHONE
 		Chartboost.didCompleteAppStoreSheetFlow -= didCompleteAppStoreSheetFlow;
 		#endif
+
+		}
 	}
 
 	void didFailToLoadInterstitial(CBLocation location, CBImpressionError error) {

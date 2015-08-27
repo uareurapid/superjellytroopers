@@ -668,7 +668,9 @@ public class GameControllerScript : MonoBehaviour {
 		}//end is game started
 
 
-
+		if(!isMobilePlatform && Input.GetKeyDown(KeyCode.Escape)) {
+		  Application.Quit();
+		}
 		
 
 	}

@@ -84,7 +84,7 @@ public class ScreenShotScript : MonoBehaviour
 
 	
 	void OnGUI() {
-	  #if !UNITY_BLACKBERRY
+	  #if UNITY_ANDROID || UNITY_IOS
 	  GUI.skin = skin;
 	  
 		Matrix4x4 svMat = GUI.matrix;//save current matrix
@@ -135,8 +135,12 @@ Flash: The absolute url to the player data file folder (without the actual data 
 	
 	IEnumerator ScreenshotEncode()
 	{
+
+		
 		// wait for graphics to render
 		yield return new WaitForEndOfFrame();
+
+		#if UNITY_ANDROID || UNITY_IOS
 		
 		// create a texture to pass to encoding
 		Texture2D texture = new Texture2D(Screen.width, Screen.height, TextureFormat.RGB24, false);
@@ -184,7 +188,8 @@ Flash: The absolute url to the player data file folder (without the actual data 
 		} 
 
 		#endif
-		//Debug.Log( Application.dataPath + "/../testscreen-" + count + ".png" );
+
+	  #endif
 	}
 	
 	public void HelloFromAndroid(string dataReceived) 

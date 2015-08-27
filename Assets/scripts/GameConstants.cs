@@ -38,10 +38,10 @@ namespace RescueJelly
 
 
 				//achievements same ids of GAME CENTER
-				public const string ACHIEVEMENT_GURU_KEY = "rescued_all_jelly_troopers";
-				public const string ACHIEVEMENT_HERO_KEY = "rescued_150_jelly_troopers";
-				public const string ACHIEVEMENT_LEGEND_KEY = "rescued_200_jelly_troopers";
-				public const string ACHIEVEMENT_BRAVE_KEY = "rescued_110_jelly_troopers"; //typo on game center, should be 100 but is 110
+				public const string ACHIEVEMENT_GURU_KEY = "grp.rescued_all_jelly_troopers";
+				public const string ACHIEVEMENT_HERO_KEY = "grp.rescued_150_jelly_troopers";
+				public const string ACHIEVEMENT_LEGEND_KEY = "grp.rescued_200_jelly_troopers";
+				public const string ACHIEVEMENT_BRAVE_KEY = "grp.rescued_110_jelly_troopers"; //typo on game center, should be 100 but is 110
 
 				//achievements points
 				public const int ACHIEVEMENT_LEGEND_CHECKPOINT = 200; //saved 200 troopers
@@ -50,9 +50,9 @@ namespace RescueJelly
 				//public const int ACHIEVEMENT_GURU_CHECKPOINT = END GAME :-)
 
 				//leaderboards
-				public const string LEADERBOARD_MAIN_SCORE = "jelly_troopers_main_leaderboard";
-				public const string LEADERBOARD_BEST_TIME = "jelly_troopers_best_time_leaderboard";
-				public const string LEADERBOARD_LESS_DEATHS = "jelly_troopers_less_deaths_leaderboard";
+				public const string LEADERBOARD_MAIN_SCORE = "grp.jelly_troopers_main_leaderboard";
+				public const string LEADERBOARD_BEST_TIME = "grp.jelly_troopers_best_time_leaderboard";
+				public const string LEADERBOARD_LESS_DEATHS = "grp.jelly_troopers_less_deaths_leaderboard";
 
 				//local keys, for the leaderboards 
 				//( THESE ARE GLOBALS/ENTIRE GAMEPLAY KEYS )

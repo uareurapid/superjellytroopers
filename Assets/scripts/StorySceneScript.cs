@@ -11,16 +11,18 @@ public class StorySceneScript : MonoBehaviour {
    bool alreadyIncreasedPlaneSpeed = false;
 
    GUIResolutionHelper resolutionHelper;
+   private bool isMobilePlatform = false;
+   private static RuntimePlatform platform;
 
 	// Use this for initialization
 	void Start () {
 		skin = Resources.Load("GUISkin") as GUISkin;
 		Debug.Log("StorySceneScript start()");
+		isMobilePlatform = (platform == RuntimePlatform.IPhonePlayer || platform == RuntimePlatform.Android || platform == RuntimePlatform.BlackBerryPlayer);
 
 	}
 	
 	// Update is called once per frame
-
 
 	void StartGame() {
 		Application.LoadLevel("World1Scene1");
@@ -56,6 +58,7 @@ public class StorySceneScript : MonoBehaviour {
 	    }
 	  }
 
+	  if(isMobilePlatform) {
 		if (Input.touches.Length ==1) {
 	
 
@@ -82,6 +85,8 @@ public class StorySceneScript : MonoBehaviour {
 					}
 				}
 			}
+		}
+
 	}
 	
 	void OnGUI() {
@@ -159,8 +164,23 @@ public class StorySceneScript : MonoBehaviour {
 
 		}
 		
+		if(!isMobilePlatform ) {
 
-		
+		  if(Event.current.type == EventType.MouseUp) {
+			  if(exitTextureRect.Contains(Event.current.mousePosition)) {
+					//load next scene			
+					StartGame();
+			  }
+		  }
+
+		  if(Input.GetKeyDown(KeyCode.Escape)) {
+		  	Application.Quit();
+		  }
+
+
+		}
+
+
 		GUI.matrix = svMat;
 	}
 

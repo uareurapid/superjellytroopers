@@ -42,6 +42,8 @@ public class LogoSceneScript : MonoBehaviour {
     private bool disabledStory = false;
 
 	AudioSource audioType;
+	private bool isMobilePlatform = false;
+    private static RuntimePlatform platform;
 	
 	void Start () {
 	
@@ -69,6 +71,8 @@ public class LogoSceneScript : MonoBehaviour {
 	    }
 
 	    passToNextScene = false;
+
+		isMobilePlatform = (platform == RuntimePlatform.IPhonePlayer || platform == RuntimePlatform.Android || platform == RuntimePlatform.BlackBerryPlayer);
 
 
 		#if UNITY_ANDROID && !UNITY_EDITOR
@@ -164,17 +168,14 @@ public class LogoSceneScript : MonoBehaviour {
 		PlayerPrefs.SetInt(GameConstants.TOTAL_SAVED_JELLIES_KEY,0);
 		//this is the total key for this game run
 		PlayerPrefs.SetInt(GameConstants.TOTAL_SCORE_KEY,0);
-		//this is the permanent key, only updated when total score is greater
-		//GameConstants.HIGH_SCORE_KEY
-		/*PlayerPrefs.SetInt(GameConstants.MISSION_4_KEY,0);
-		PlayerPrefs.SetInt(GameConstants.MISSION_3_KEY,0);
-		PlayerPrefs.SetInt(GameConstants.MISSION_2_KEY,0);
-		PlayerPrefs.SetInt(GameConstants.MISSION_1_KEY,0);*/
+
 
 	}
 	// Update is called once per frame
 	void Update() {
 	//is the story still scrolling?
+
+		if(isMobilePlatform) {
 				if (!disabledStory || !passToNextScene && Input.touches.Length ==1) {
 	
 				Touch touch = Input.touches[0];
@@ -202,6 +203,8 @@ public class LogoSceneScript : MonoBehaviour {
 					}
 				}
 			}
+		 }
+
 	}
 
 	//invoked every 0.5 seconds
@@ -355,7 +358,24 @@ public class LogoSceneScript : MonoBehaviour {
 
       }
 
+      //check desktop touches
+      if(!isMobilePlatform) {
+			if(Event.current.type == EventType.MouseUp){ //!disabledStory || !passToNextScene && (
+	  //not mobile
+				
+				 if(exitTextureRect.Contains(Event.current.mousePosition)) {
+						DisableStoryRendering();
+						CancelInvoke("CheckTyping");
+						passToNextScene = true;
+						ShowParachutesScene();
+				 }		
+	 		}
 
+			if(Input.GetKeyDown(KeyCode.Escape)) {
+		  		Application.Quit();
+			}
+      }
+		
 		
 		
 	GUI.matrix = svMat;

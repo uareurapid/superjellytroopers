@@ -97,6 +97,7 @@ GameObject:
   - 4: {fileID: 109443622}
   - 114: {fileID: 109443621}
   - 114: {fileID: 109443623}
+  - 114: {fileID: 109443624}
   m_Layer: 0
   m_Name: scripts
   m_TagString: Scripts
@@ -147,6 +148,27 @@ MonoBehaviour:
   isWidescreen: 0
   aspectRatio: 0
   scaleX: 0
+--- !u!114 &109443624
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 109443620}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 51007403ed5d34dd89499e05f217b449, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  comment: '#'
+  separator: =
+  languageFilePrefix: Language_
+  supportedLanguages:
+  - en
+  - pt
+  - es
+  - fr
+  - ru
+  - zh
 --- !u!1 &153125828
 GameObject:
   m_ObjectHideFlags: 0
