@@ -27,7 +27,7 @@
         }
         
         
-        [mySLComposerSheet addURL:[NSURL URLWithString:@"https://itunes.apple.com/us/app/alfie-the-angry-alien-saga/id827406444?ls=1&mt=8"]];
+        [mySLComposerSheet addURL:[NSURL URLWithString:@"https://itunes.apple.com/pt/app/super-jelly-troopers/id925880432?mt=8"]];
         
         [mySLComposerSheet setCompletionHandler:^(SLComposeViewControllerResult result) {
             
@@ -73,7 +73,7 @@
             [mySLComposerSheet addImage:image];
         }
         
-        [mySLComposerSheet addURL:[NSURL URLWithString:@"https://itunes.apple.com/us/app/alfie-the-angry-alien-saga/id827406444?ls=1&mt=8"]];
+        [mySLComposerSheet addURL:[NSURL URLWithString:@"https://itunes.apple.com/pt/app/super-jelly-troopers/id925880432?mt=8"]];
         
         [mySLComposerSheet setCompletionHandler:^(SLComposeViewControllerResult result) {
             
@@ -153,17 +153,16 @@
     UIViewController *rootViewController = [self getTopApplicationWindow].rootViewController;
     
     NSString* theFileName = [[NSString stringWithUTF8String:path] lastPathComponent];
-    NSLog(@"Image name is: %@",theFileName);
     if(image!=nil) {
         if(isTwitterAvailable) {
-            [self sendToTwitter:@"Check this awesome game" andImage:image rootView:rootViewController];
+            [self sendToTwitter:@"Checkout Super Jelly Troopers" andImage:image rootView:rootViewController];
         }
         else if(isFacebookAvailable) {
-            [self sendToFacebook:@"Check this awesome game" andImage:image rootView:rootViewController];
+            [self sendToFacebook:@"Checkout Super Jelly Troopers" andImage:image rootView:rootViewController];
         }
         else {
         //send to email
-        [self sendToEmail:@"check this" andImage:image named:theFileName rootView:rootViewController];
+        [self sendToEmail:@"Checkout Super Jelly Troopers" andImage:image named:theFileName rootView:rootViewController];
         }
     }
 }

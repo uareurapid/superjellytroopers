@@ -44,7 +44,7 @@ public class SocialAPI : MonoBehaviour {
 	     if(scripts!=null) {
 	      GameControllerScript controller = scripts.GetComponent<GameControllerScript>();
 	      if(controller!=null) {
-			gameCenterAvailable = controller.IsIOSPlatform() || controller.IsAndroidPlatform();
+			gameCenterAvailable = controller.IsIOSPlatform() || controller.IsAndroidPlatform() || controller.IsMacOSXPlatform();
 	      }
 	     }
 		

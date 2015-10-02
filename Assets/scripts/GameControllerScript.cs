@@ -4,7 +4,6 @@ using RescueJelly;
 
 public class GameControllerScript : MonoBehaviour {
 
-	//flaby_alien_level_two
 	private static RuntimePlatform platform = Application.platform;
 	public bool isMobilePlatform = false;
 	private static GameControllerScript instance;
@@ -258,6 +257,9 @@ public class GameControllerScript : MonoBehaviour {
 	   //infinite lifes
 	   buyedInfiniteLifes = PlayerPrefs.HasKey(Soomla.MyStore.JellyTrooperAssets.JELLY_TROOPERS_INFINITE_LIFES_PRODUCT_ID);
 
+	   //On desktop i can have a single life added, when i colide with it, and it stays like an in app purchase
+	   bool addSingleLife = isMobilePlatform && PlayerPrefs.HasKey(GameConstants.JELLY_TROOPERS_EXTRA_LIFE_SINGLE_PRODUCT_ID);
+
 	   if(buyedExtraTime) {
 	     missionTimeInSeconds+=GameConstants.IN_APP_PURCHASE_EXTRA_TIME_IN_SECONDS;
 	   }
@@ -283,6 +285,9 @@ public class GameControllerScript : MonoBehaviour {
 					}
 					else if(buyedExtraLifes) {
 						health.AddHitPoints(GameConstants.IN_APP_PURCHASE_EXTRA_LIFES_COUNT);
+					}
+					else if(addSingleLife) {
+					    health.AddHitPoints(1);
 					}
 			}
 		}
@@ -1498,23 +1503,20 @@ public class GameControllerScript : MonoBehaviour {
 						}
 						else {
 							DrawText(GetTranslationKey(GameConstants.MSG_HOW_TO_PLAY) , messagesFontSizeSmaller+2, 80, screenHeight/2-260,600,40);
-							DrawText(GetTranslationKey(GameConstants.MSG_TAP_TROOPER) , messagesFontSizeSmaller+2, 80, screenHeight/2-225,600,40);
-							DrawText(GetTranslationKey(GameConstants.MSG_TAP_LEFT_RIGHT) , messagesFontSizeSmaller+2, 80, screenHeight/2-190,600,40);
+
+							if( !(Application.platform == RuntimePlatform.OSXPlayer) ) {
+								DrawText(GetTranslationKey(GameConstants.MSG_TAP_TROOPER) , messagesFontSizeSmaller+2, 80, screenHeight/2-225,600,40);
+								DrawText(GetTranslationKey(GameConstants.MSG_TAP_LEFT_RIGHT) , messagesFontSizeSmaller+2, 80, screenHeight/2-190,600,40);
+							}
+							else {
+								DrawText(GetTranslationKey(GameConstants.MSG_CLICK_TROOPER) , messagesFontSizeSmaller+2, 80, screenHeight/2-225,600,40);
+								DrawText(GetTranslationKey(GameConstants.MSG_CLICK_LEFT_RIGHT) , messagesFontSizeSmaller+2, 80, screenHeight/2-190,600,40);
+							}
+
 							DrawText(GetTranslationKey(GameConstants.MSG_LAND_ALL) , messagesFontSizeSmaller+2, 80, screenHeight/2-155,600,40);
 							DrawText(GetTranslationKey(GameConstants.MSG_USE_FAILSAFE) , messagesFontSizeSmaller+2, 80, screenHeight/2-120,600,40);
 
-							if( !(Application.platform == RuntimePlatform.OSXPlayer) ) {
-								DrawText(GetTranslationKey(GameConstants.MSG_TAP_TROOPER) , messagesFontSizeSmaller, screenWidth / 3 -180, screenHeight/2-180,450,40);
-							    DrawText(GetTranslationKey(GameConstants.MSG_TAP_LEFT_RIGHT) , messagesFontSizeSmaller, screenWidth / 3 -180, screenHeight/2-140,450,40);
-							}
-							else {
-								DrawText(GetTranslationKey(GameConstants.MSG_CLICK_TROOPER) , messagesFontSizeSmaller, screenWidth / 3 -180, screenHeight/2-180,450,40);
-								DrawText(GetTranslationKey(GameConstants.MSG_CLICK_LEFT_RIGHT) , messagesFontSizeSmaller, screenWidth / 3 -180, screenHeight/2-140,450,40);
-							}
-
-
-
-							DrawText(GetTranslationKey(GameConstants.MSG_LAND_ALL) , messagesFontSizeSmaller, screenWidth / 3 -180, screenHeight/2-100,450,40);
+							//DrawText(GetTranslationKey(GameConstants.MSG_LAND_ALL) , messagesFontSizeSmaller, screenWidth / 3 -180, screenHeight/2-100,450,40);
 						}
 					
 						
@@ -1749,6 +1751,11 @@ public class GameControllerScript : MonoBehaviour {
 	
 	public bool IsAndroidPlatform() {
 		return platform == RuntimePlatform.Android;
+	}
+
+
+	public bool IsMacOSXPlatform() {
+	    return platform == RuntimePlatform.OSXPlayer;
 	}
 	
 	public int GetNumberEnergyPickups() {

@@ -119,6 +119,7 @@ namespace RescueJelly
 				public const string MSG_PRESS_FAILSAFE_KEY="press_failsafe_key";
 				public const string MSG_TAP_FAILSAFE_KEY="tap_failsafe_key";
 
+				public const string JELLY_TROOPERS_EXTRA_LIFE_SINGLE_PRODUCT_ID = "buy_single_life";
 
 				//IN-App
 				public const string MSG_BUY_EXTRA_LIFES="buy_extra_lifes";
@@ -130,7 +131,7 @@ namespace RescueJelly
 				public const int 	IN_APP_PURCHASE_EXTRA_TIME_IN_SECONDS = 30; //extra 30 seconds
 				public const int 	IN_APP_PURCHASE_EXTRA_LIFES_COUNT = 2; //2 extra lifes
 				public const int 	IN_APP_PURCHASE_INFINITE_LIFES_COUNT = 1000; //1000 extra lifes, still dies because of time
-				public const float 	IN_APP_PURCHASE_EXTRA_SPEED_INCREASE_FACTOR = 2.5f;//double the speed in x axis
+				public const float 	IN_APP_PURCHASE_EXTRA_SPEED_INCREASE_FACTOR = 2.0f;//double the speed in x axis
 
 				//#if UNITY_ANDROID && !UNITY_EDITOR
 
