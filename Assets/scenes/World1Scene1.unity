@@ -634,6 +634,60 @@ Prefab:
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 297724716fdcb40078176bcf26953853, type: 2}
   m_IsPrefabParent: 0
+--- !u!1 &521597257
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 4
+  m_Component:
+  - 4: {fileID: 521597259}
+  - 212: {fileID: 521597258}
+  m_Layer: 0
+  m_Name: brand_logo
+  m_TagString: brand_logo
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!212 &521597258
+SpriteRenderer:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 521597257}
+  m_Enabled: 1
+  m_CastShadows: 0
+  m_ReceiveShadows: 0
+  m_Materials:
+  - {fileID: 10754, guid: 0000000000000000e000000000000000, type: 0}
+  m_SubsetIndices: 
+  m_StaticBatchRoot: {fileID: 0}
+  m_UseLightProbes: 0
+  m_ReflectionProbeUsage: 0
+  m_ProbeAnchor: {fileID: 0}
+  m_ScaleInLightmap: 1
+  m_PreserveUVs: 0
+  m_ImportantGI: 0
+  m_AutoUVMaxDistance: .5
+  m_AutoUVMaxAngle: 89
+  m_LightmapParameters: {fileID: 0}
+  m_SortingLayerID: 0
+  m_SortingOrder: 0
+  m_Sprite: {fileID: 21300000, guid: 2c021fe19b6c14afbbdfe66e4487a04f, type: 3}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+--- !u!4 &521597259
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 521597257}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 1.49000001, y: 6.36999989, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 11
 --- !u!1 &584770230
 GameObject:
   m_ObjectHideFlags: 0
@@ -817,6 +871,10 @@ Prefab:
       propertyPath: failSafeIcon
       value: 
       objectReference: {fileID: 2800000, guid: 1e3b3b59207fa47eeacc3244c0ab2e7f, type: 3}
+    - target: {fileID: 100000, guid: f5c805af86cc643edbc5682bd6c6f08c, type: 2}
+      propertyPath: m_Layer
+      value: 12
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: f5c805af86cc643edbc5682bd6c6f08c, type: 2}
   m_IsPrefabParent: 0
@@ -1232,7 +1290,7 @@ MonoBehaviour:
   screenHeight: 0
   isGamePaused: 1
   messagesFont: {fileID: 12800000, guid: 59a5800f69f764272a193320f2b229b2, type: 3}
-  messagesFontSizeSmaller: 20
+  messagesFontSizeSmaller: 23
   messagesFontSizeLarger: 30
   numWorlds: 4
   numberOfLevels: 6

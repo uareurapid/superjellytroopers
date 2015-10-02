@@ -1,7 +1,8 @@
 how_to_play=怎么玩:
 tap_trooper=点击小兵/降落伞释放
-tap_left_right=点击向左或向右摆动
+tap_left_right=パラシュートを移動するには、左または右本当に速いタップ
 land_all_safely=土地上的所有士兵安全
+use_failsafe=間違いを修正するために予備のパラシュートを使用してください
 rescued=获救:
 lifes=生活:
 time=时刻:
@@ -25,3 +26,7 @@ how_to_play_last_level=それを把握してみてください!...
 intrusion_alert=侵入アラート！!
 tap_mission_unlock=レベルを選択するためのロック解除のミッションをタップ
 press_failsafe_key=押し、「R」キーを使用します
+tap_failsafe_key=それを使用するタッチ
+click_trooper=解放するトルーパー/パラシュートをクリックします
+click_left_right=スイングするカーソルキーを使用してパラシュートを左右
+click_mission_unlock=レベルを選択するために、ロック解除使命をクリックしてください

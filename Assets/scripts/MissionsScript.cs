@@ -32,7 +32,7 @@ public class MissionsScript : MonoBehaviour {
 	private SpriteRenderer missionFour;
 
 
-	private static RuntimePlatform platform;
+	private static RuntimePlatform platform = Application.platform;
 	bool isMobilePlatform = false;
 	private bool loading = false;
 	private bool isShowingText = false;
@@ -278,8 +278,9 @@ public class MissionsScript : MonoBehaviour {
 			if(isShowingText) {
 				//reset color back to white
 				centeredStyleLarger.normal.textColor =  Color.white;
-				GUI.Label(new Rect(width/2-165, 100, 600, 50), 
-		          GetTranslationKey(GameConstants.MSG_TAP_UNLOCKED_MISSION),centeredStyleLarger);
+				GUI.Label(new Rect(width/2-205, 100, 600, 50),
+				GetTranslationKey(GameConstants.MSG_CLICK_UNLOCKED_MISSION),centeredStyleLarger);
+				  
 			}	
 			
 

@@ -490,7 +490,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 9
+  m_RootOrder: 10
 --- !u!114 &531299369
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -782,6 +782,7 @@ MonoBehaviour:
   bubbleHeight: 140
   offsetX: 0
   offsetY: 150
+  messageKey: msg_action
   message: Super Jelly Troopers! Lets get some action!
   isMessageKey: 1
   mat: {fileID: 2100000, guid: f11e89b65a6c28843a668720c82a035a, type: 2}
@@ -1136,6 +1137,7 @@ MonoBehaviour:
   bubbleHeight: 140
   offsetX: 0
   offsetY: 150
+  messageKey: msg_doit
   message: Lets do it!
   isMessageKey: 1
   mat: {fileID: 2100000, guid: f11e89b65a6c28843a668720c82a035a, type: 2}

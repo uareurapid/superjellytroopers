@@ -7,7 +7,8 @@ public class ScreenShotScript : MonoBehaviour
 {
 	private int count = 0;
 	string fileName;
-	
+
+	private Texture2D resultScreenshot;
 	public Texture2D takeScreenshot;
 	private Rect screenshotRect;
 	GUISkin skin;
@@ -16,6 +17,8 @@ public class ScreenShotScript : MonoBehaviour
 	[DllImport ("__Internal")]
 	private static extern void _TakeScreenshot(string path);
 	GUIResolutionHelper resolutionHelper;
+
+	GameControllerScript controller;
 
 	void Start() {
 
@@ -50,7 +53,8 @@ public class ScreenShotScript : MonoBehaviour
 	
 	void Update()
 	{
-		#if !UNITY_BLACKBERRY
+
+		#if UNITY_ANDROID || UNITY_IOS
 		if (Input.touchCount == 1 && takeScreenshot!=null && textureEnabled)
 		{
 			Touch touch = Input.touches[0]; 
@@ -73,7 +77,7 @@ public class ScreenShotScript : MonoBehaviour
 				   //hide the texture
 				    textureEnabled = false;
 					StartCoroutine(ScreenshotEncode());
-					
+
 				}
 				
 			}
@@ -140,6 +144,7 @@ Flash: The absolute url to the player data file folder (without the actual data 
 		// wait for graphics to render
 		yield return new WaitForEndOfFrame();
 
+
 		#if UNITY_ANDROID || UNITY_IOS
 		
 		// create a texture to pass to encoding
@@ -162,6 +167,10 @@ Flash: The absolute url to the player data file folder (without the actual data 
 		count++;
 		
 		Debug.Log("SavedScreenshot to " + fileName);
+
+
+
+
 		// Tell unity to delete the texture, by default it seems to keep hold of it and memory crashes will occur after too many screenshots.
 		DestroyObject( texture );
 		
@@ -191,6 +200,29 @@ Flash: The absolute url to the player data file folder (without the actual data 
 
 	  #endif
 	}
+
+
+	IEnumerator ScreenshotEncodeMacOSX()
+	{
+		// wait for graphics to render
+		yield return new WaitForEndOfFrame();
+		
+		// create a texture to pass to encoding
+		Texture2D texture = new Texture2D(Screen.width, Screen.height, TextureFormat.RGB24, false);
+		
+		// put buffer into texture
+		texture.ReadPixels(new Rect(0, 0, Screen.width, Screen.height), 0, 0);
+		texture.Apply();
+		
+		// split the process up--ReadPixels() and the GetPixels() call inside of the encoder are both pretty heavy
+		yield return 0;
+
+		resultScreenshot = texture;
+
+		//Callback player
+		//controller.SetScreenshotTexture(resultScreenshot);
+		
+	}
 	
 	public void HelloFromAndroid(string dataReceived) 
 	{
@@ -203,5 +235,10 @@ Flash: The absolute url to the player data file folder (without the actual data 
 	}
 	public void DisableScreenshots() {
 	 textureEnabled = false;
+	}
+
+	public void TakeScreenshotBeforeGameOver(GameControllerScript obj) {
+	  controller = obj;
+	  StartCoroutine(ScreenshotEncodeMacOSX());
 	}
 }

@@ -54,19 +54,22 @@ public class BombScript : MonoBehaviour
 			
 			if(rb != null )
 			{
-				GameObject theObject = rb.gameObject;
+				//GameObject theObject = rb.gameObject;
 				// Find the Enemy script and set the enemy's health to zero.
-				HealthScript script =  theObject.GetComponent<HealthScript>();
+				//HealthScript script =  theObject.GetComponent<HealthScript>();
 				
-				if(script!=null) {
+				//if(script!=null) {
 				
-					script.Damage(1);
+				//	script.Damage(1);
 					
 
-				}
+				//}
+				Vector3 bombPosition = transform.position;
+				bombPosition.z = rb.transform.position.z;
+
 
 				// Find a vector from the bomb to the player.
-				Vector3 deltaPos = rb.transform.position - transform.position;
+				Vector3 deltaPos = rb.transform.position - bombPosition;
 					
 				// Apply a force in this direction with a magnitude of bombForce.
 				Vector3 force = deltaPos.normalized * bombForce;

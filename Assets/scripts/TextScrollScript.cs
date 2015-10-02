@@ -17,7 +17,7 @@ public class TextScrollScript : MonoBehaviour {
 	private Texture2D exitTexture;
 	private Rect exitTextureRect;
 
-	private static RuntimePlatform platform;
+	private static RuntimePlatform platform = Application.platform;
 	private bool isMobilePlatform = false;
 
 	//show copyright notice
@@ -115,7 +115,7 @@ public class TextScrollScript : MonoBehaviour {
 			centeredStyleLarger.normal.textColor =  Color.white;
 
 			centeredStyleLarger.fontSize = 25;
-			GUI.Label(new Rect(width/3,height-100,500,40),"Copyright ©2014",centeredStyleLarger);		
+			GUI.Label(new Rect(width/3,height-100,500,40),"Copyright ©2015",centeredStyleLarger);		
 			GUI.Label(new Rect(width/3,height-70,500,40),"http://www.pcdreams-software.com",centeredStyleLarger);
 		}
 
@@ -148,7 +148,7 @@ public class TextScrollScript : MonoBehaviour {
 				float alph = Mathf.Sin((roff/height)*180*Mathf.Deg2Rad);
 				GUI.color = new Color(1,1,1, alph);
 
-				GUI.Label(new Rect(width/3,roff,width-120, 70),scrollIntro[i],centeredStyleLarger);// was new Rect(width/2-250
+				GUI.Label(new Rect(width/3-40,roff,width-120, 70),scrollIntro[i],centeredStyleLarger);
 				GUI.color = new Color(1,1,1,1);
 			}
 			

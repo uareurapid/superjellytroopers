@@ -29,6 +29,7 @@ public class GameOverScript : MonoBehaviour
 	Texture2D creditsTexture ;
 	Texture2D missionsTexture ;
 	Texture2D moreLifesTexture ;
+	Texture2D closeButtonTexture ;
 
 	Texture2D storeTexture;
 	Rect storeTextureRect;
@@ -40,6 +41,7 @@ public class GameOverScript : MonoBehaviour
 	Rect missionsTextureRect ;
 	Rect resumeTextureRect ;
 	Rect moreLifesTextureRect ;
+	Rect closeButtonTextureRect ;
 
 	//GameControllerScript controller;
 	int currentLevel = 1;
@@ -48,7 +50,7 @@ public class GameOverScript : MonoBehaviour
 	//showGameName used on own SettingsScene
 	public bool settingsScene = false;
 	private bool isMobilePlatform = false;
-	private static RuntimePlatform platform;
+	private static RuntimePlatform platform = Application.platform;
 
 	private TextLocalizationManager translationManager;
 
@@ -70,14 +72,13 @@ public class GameOverScript : MonoBehaviour
 		missionsTexture = Resources.Load("button_missions") as Texture2D;
 		storeTexture = Resources.Load("store") as Texture2D;
 		moreLifesTexture = Resources.Load("need_more_lifes") as Texture2D;
+		closeButtonTexture = Resources.Load("close_button") as Texture2D;
 		
 		initialTime = 0f;
 		isShowingMessage = true;
 
 				//handle translation language
-		
-
-
+	
 		isMobilePlatform = (platform == RuntimePlatform.IPhonePlayer || platform == RuntimePlatform.Android || platform == RuntimePlatform.BlackBerryPlayer);
 
 
@@ -94,6 +95,7 @@ public class GameOverScript : MonoBehaviour
 
 		translationManager.LoadSystemLanguage(Application.systemLanguage);
 		resolutionHelper.CheckScreenResolution();
+
 
 		SetupAllStuff();
 		//means is really game over
@@ -241,9 +243,7 @@ public class GameOverScript : MonoBehaviour
 			
 		}
 
-		if(!isMobilePlatform && Input.GetKeyDown(KeyCode.Escape)) {
-		  Application.Quit();
-		}
+
     
     }
     //Load next scene, showing an activity indicator
@@ -359,15 +359,28 @@ public class GameOverScript : MonoBehaviour
 					GUI.DrawTexture(creditsTextureRect,creditsTexture);
 					GUI.DrawTexture(resumeTextureRect,resumeTexture);
 
-					if(!settingsScene && drawMoreLifesButton) {
-						moreLifesTextureRect = new Rect(width / 2-100,height-100,200,80);
-						GUI.DrawTexture(moreLifesTextureRect,moreLifesTexture);
+					if(!settingsScene) {
+
+					    if(!isMobilePlatform) {
+							closeButtonTextureRect = new Rect(width-60 ,15,56,56);
+							GUI.DrawTexture(closeButtonTextureRect,closeButtonTexture);
+					    }
+						
+
+						if(drawMoreLifesButton) {
+							moreLifesTextureRect = new Rect(width / 2-100,height-100,200,80);
+							GUI.DrawTexture(moreLifesTextureRect,moreLifesTexture);
+						}
+
+						if(showStore) {
+							storeTextureRect = new Rect(width -110,30,96,96);
+					    	GUI.DrawTexture(storeTextureRect,storeTexture);
+						}
 					}
 
-					if(!settingsScene && showStore) {
-						storeTextureRect = new Rect(width -110,30,96,96);
-					    GUI.DrawTexture(storeTextureRect,storeTexture);
-					}
+
+
+
 					    
 
 			}//end repaint
@@ -420,6 +433,15 @@ public class GameOverScript : MonoBehaviour
 
 
 				}
+				else if(closeButtonTextureRect.Contains(mousePosition) )
+				{
+					Application.Quit();
+
+				}
+
+				//if(!isMobilePlatform && Input.GetKeyDown(KeyCode.Escape)) {
+		  		//	Application.Quit();
+				//}
 		}
 		//mobile checks
 		else if(isMobilePlatform && Input.touchCount == 1 )
@@ -477,6 +499,7 @@ public class GameOverScript : MonoBehaviour
 				{
 					Application.LoadLevel("StoreScene");
 				}
+
 			}
 		}
 			
@@ -541,12 +564,10 @@ public class GameOverScript : MonoBehaviour
 		
 		GUI.Label (new Rect(x, y, width, height), text);
 	}
-	
-
 
 	
 	void OnDestroy() {
-		//Handheld.StopActivityIndicator();
+
 	}
 
 	void OnEnable() {

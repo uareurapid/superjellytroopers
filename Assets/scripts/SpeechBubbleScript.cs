@@ -24,7 +24,8 @@ public class SpeechBubbleScript : MonoBehaviour
 	//an offset to center the bubble
 	private int centerOffsetX;
 	private int centerOffsetY;
-	
+
+	public string messageKey = "";
 	//the message
 	public string message = "";
 	public bool isMessageKey = false; //if true the above message is the key for the translation file
@@ -37,25 +38,8 @@ public class SpeechBubbleScript : MonoBehaviour
 	//use this for early initialization
 	void Awake ()
 	{
-		//get this game object's transform
-		goTransform = this.GetComponent<Transform>();
-
-		TextLocalizationManager translationManager;
-		GameObject scripts = GameObject.FindGameObjectWithTag("Scripts");
-		if(scripts!=null) {
-		 translationManager = scripts.GetComponent<TextLocalizationManager>();
-		}
-		else {
-		 translationManager = TextLocalizationManager.Instance;
-		}
-			  
-		if(translationManager!=null && isMessageKey) {
-		  translationManager.LoadSystemLanguage(Application.systemLanguage);
-		  message = translationManager.GetText(message);
-		}
-		//else {
-		//  message = "Super Jelly Troopers! Get ready for some action!";
-		//}	 
+		
+			 
 
 	}
 	
@@ -80,11 +64,21 @@ public class SpeechBubbleScript : MonoBehaviour
 		centerOffsetX = bubbleWidth/2;
 		centerOffsetY = bubbleHeight/2;
 
-				//if we have a key instead, get the translated message from localization files!
-		//if(isMessageKey) {
-			 
-		//}
-		
+		//get this game object's transform
+		goTransform = this.GetComponent<Transform>();
+
+		TextLocalizationManager translationManager;
+		GameObject scripts = GameObject.FindGameObjectWithTag("Scripts");
+		if(scripts!=null) {
+		 translationManager = scripts.GetComponent<TextLocalizationManager>();
+		}
+		else {
+		 translationManager = TextLocalizationManager.Instance;
+		}
+
+		translationManager.LoadSystemLanguage(Application.systemLanguage);
+		message = translationManager.GetText(messageKey);
+
 	}
 	
 	//Called once per frame, after the update

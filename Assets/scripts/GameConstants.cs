@@ -16,7 +16,7 @@ namespace RescueJelly
 				public const string SPIKES_LINE_BARRIER = "SpikesLine";
 
 				//the normal hitpoints for a player
-				public const int NUM_LIFES_PER_LEVEL = 4;
+				public const int NUM_LIFES_PER_LEVEL = 5;
 
 				public const int NUM_LEVELS_PER_WORLD = 6;
 				public const int NUM_WORLDS = 4;
@@ -38,6 +38,8 @@ namespace RescueJelly
 
 
 				//achievements same ids of GAME CENTER
+				public const string ACHIEVEMENT_NEWBIE_KEY = "grp.rescued_25_jelly_troopers";
+				public const string ACHIEVEMENT_ROOKIE_KEY = "grp.rescued_50_jelly_troopers";
 				public const string ACHIEVEMENT_GURU_KEY = "grp.rescued_all_jelly_troopers";
 				public const string ACHIEVEMENT_HERO_KEY = "grp.rescued_150_jelly_troopers";
 				public const string ACHIEVEMENT_LEGEND_KEY = "grp.rescued_200_jelly_troopers";
@@ -47,12 +49,15 @@ namespace RescueJelly
 				public const int ACHIEVEMENT_LEGEND_CHECKPOINT = 200; //saved 200 troopers
 				public const int ACHIEVEMENT_HERO_CHECKPOINT = 150; //saved 150 troopers
 				public const int ACHIEVEMENT_BRAVE_CHECKPOINT = 100; //saved 100 troopers
+				public const int ACHIEVEMENT_NEWBIE_CHECKPOINT = 25; //saved 25 troopers
+				public const int ACHIEVEMENT_ROOKIE_CHECKPOINT = 50; //saved 50 troopers
 				//public const int ACHIEVEMENT_GURU_CHECKPOINT = END GAME :-)
 
 				//leaderboards
 				public const string LEADERBOARD_MAIN_SCORE = "grp.jelly_troopers_main_leaderboard";
 				public const string LEADERBOARD_BEST_TIME = "grp.jelly_troopers_best_time_leaderboard";
 				public const string LEADERBOARD_LESS_DEATHS = "grp.jelly_troopers_less_deaths_leaderboard";
+				public const string LEADERBOARD_MORE_SAVED_TROOPERS = "grp.jelly_troopers_more_saved_troopers_leaderboard";
 
 				//local keys, for the leaderboards 
 				//( THESE ARE GLOBALS/ENTIRE GAMEPLAY KEYS )
@@ -62,6 +67,8 @@ namespace RescueJelly
 				public const string TOTAL_SCORE_KEY = "total_score";
 				public const string HIGH_SCORE_KEY = "high_score";
 
+				//this is the real deal
+				public const string TOTAL_SAVED_TROOPERS_KEY = "total_saved_troopers";
 
 				//missions
 				public const string MISSION_1_KEY = "mission_1";
@@ -86,8 +93,11 @@ namespace RescueJelly
 				public const string MSG_HOW_TO_PLAY="how_to_play";
 				public const string MSG_HOW_TO_PLAY_LAST_LEVEL="how_to_play_last_level";
 				public const string MSG_TAP_TROOPER="tap_trooper";
+				public const string MSG_CLICK_TROOPER="click_trooper";
 				public const string MSG_TAP_LEFT_RIGHT="tap_left_right";
+				public const string MSG_CLICK_LEFT_RIGHT="click_left_right";
 				public const string MSG_LAND_ALL="land_all_safely";
+				public const string MSG_USE_FAILSAFE="use_failsafe";
 				public const string MSG_RESCUED="rescued";
 				public const string MSG_LIFES="lifes";
 				public const string MSG_INFINITE_LIFES="infinite_lifes";
@@ -105,7 +115,9 @@ namespace RescueJelly
 				public const string MSG_GAME_CENTER_ERROR="game_center_error";
 				public const string MSG_INTRUSION_ALERT="intrusion_alert";
 				public const string MSG_TAP_UNLOCKED_MISSION = "tap_mission_unlock";
+				public const string MSG_CLICK_UNLOCKED_MISSION = "click_mission_unlock";
 				public const string MSG_PRESS_FAILSAFE_KEY="press_failsafe_key";
+				public const string MSG_TAP_FAILSAFE_KEY="tap_failsafe_key";
 
 
 				//IN-App
@@ -128,10 +140,13 @@ namespace RescueJelly
 						{"jelly_troopers_main_leaderboard", "CgkI7La6roAbEAIQBg"},
 						{"jelly_troopers_best_time_leaderboard", "CgkI7La6roAbEAIQBw"},
 						{"jelly_troopers_less_deaths_leaderboard", "CgkI7La6roAbEAIQCA"},
+						{"jelly_troopers_more_saved_troopers_leaderboard", "CgkI7La6roAbEAIQCg"},
 						{"rescued_all_jelly_troopers", "CgkI7La6roAbEAIQAQ"},
 						{"rescued_150_jelly_troopers", "CgkI7La6roAbEAIQAg"},
 						{"rescued_200_jelly_troopers", "CgkI7La6roAbEAIQAw"},
-						{"rescued_110_jelly_troopers", "CgkI7La6roAbEAIQBA"}
+						{"rescued_110_jelly_troopers", "CgkI7La6roAbEAIQBA"},
+						{"rescued_25_jelly_troopers", "CgkI7La6roAbEAIQCQ"},
+						{"rescued_50_jelly_troopers", "CgkI7La6roAbEAIQBQ"}
 		    	};
 				//#endif
 		}

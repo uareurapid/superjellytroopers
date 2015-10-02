@@ -39,8 +39,8 @@ public class CameraZoomInOutScript : MonoBehaviour {
 	  cameraOriginalPosition = Camera.main.transform.position; //or local position??
 	  skin = Resources.Load("GUISkin") as GUISkin;
 	  helpMeTexture = Resources.Load("tapme") as Texture2D;
-	  Invoke("ZoomIN",4f);
-	  Invoke("ZoomOUT",15f);
+	  Invoke("ZoomIN",1f);
+	  Invoke("ZoomOUT",12f);
 				//Invoke("ZoomIN2",4f);		
 	}
 

@@ -76,11 +76,11 @@ public class RenderTextureScript : MonoBehaviour {
 
 		if(Event.current.type==EventType.Repaint && !controller.IsGameOver()) {
 
-		    GUI.Label(new Rect(700,height-40,100,40),msg);
+			GUI.Label(new Rect(730,height-60,100,40),msg);
 
-			Rect booster = new Rect(810,height-40,32,32);
-			Rect time = new Rect(858,height-40,32,32);
-			Rect life = new Rect(906,height-40,32,32);
+			Rect booster = new Rect(790,height-60,48,48);
+			Rect time = new Rect(842,height-60,48,48);
+			Rect life = new Rect(896,height-60,48,48);
 
 			if(PlayerPrefs.HasKey(Soomla.MyStore.JellyTrooperAssets.JELLY_TROOPERS_EXTRA_SPEED_PRODUCT_ID)) {
 				GUI.DrawTexture(booster,boosterNormal,ScaleMode.ScaleToFit);

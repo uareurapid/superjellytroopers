@@ -46,6 +46,9 @@ TagManager:
   - lockworld4
   - lockworld3
   - lockworld2
+  - brand_logo
+  - Rookie
+  - Newbie
   layers:
   - Default
   - TransparentFX

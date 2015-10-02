@@ -1,7 +1,10 @@
 fileFormatVersion: 2
-guid: 2d2733879e95d4e38b898f282845114d
+guid: d748d4b2e37b240e6b9b6cea0e4912ab
+timeCreated: 1443485669
+licenseType: Free
 TextureImporter:
-  fileIDToRecycleName: {}
+  fileIDToRecycleName:
+    21300000: blue_candy_anim_01
   serializedVersion: 2
   mipmaps:
     mipMapMode: 0
@@ -25,10 +28,10 @@ TextureImporter:
   cubemapConvolutionExponent: 1.5
   seamlessCubemap: 0
   textureFormat: -3
-  maxTextureSize: 128
+  maxTextureSize: 512
   textureSettings:
     filterMode: -1
-    aniso: -1
+    aniso: 1
     mipBias: -1
     wrapMode: 1
   nPOTScale: 0

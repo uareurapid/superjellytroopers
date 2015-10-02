@@ -5,7 +5,7 @@ using RescueJelly;
 public class GameControllerScript : MonoBehaviour {
 
 	//flaby_alien_level_two
-	private static RuntimePlatform platform;
+	private static RuntimePlatform platform = Application.platform;
 	public bool isMobilePlatform = false;
 	private static GameControllerScript instance;
 	
@@ -19,6 +19,9 @@ public class GameControllerScript : MonoBehaviour {
 	private Texture2D exitTexture;
 	private Texture2D helpMeTexture;
 	public Texture2D clock;
+
+	private Texture2D smallTrooper;
+	Rect smallTrooperRect;
 	
 	public int screenWidth;
 	public int screenHeight;
@@ -84,14 +87,8 @@ public class GameControllerScript : MonoBehaviour {
 	
 	public bool isJellyFalling = false;
 	
-	//Iads only
-//	private ADBannerView banner = null;
-	
-	//#if UNITY_IPHONE
-	//private ADBannerView banner; 
-	//#endif
-	
-
+	//private Rect screenshotTextureRect;
+	//private Texture2D screenshotTexture;
 	
 	private int currentTime = 0;
 
@@ -99,8 +96,8 @@ public class GameControllerScript : MonoBehaviour {
 	//ads stuff
 	
 	//private BannerView bannerView;
-	
-	
+
+
 	public bool isRollingFinalCredits = false;
 
 	PlayerScript player;
@@ -216,6 +213,7 @@ public class GameControllerScript : MonoBehaviour {
 		helpMeTexture = Resources.Load("tapme") as Texture2D;
 		clock = Resources.Load("relogio") as Texture2D;
 		rateTexture = Resources.Load("button_rate") as Texture2D;
+		smallTrooper = Resources.Load("small_trooper") as Texture2D;
 
 		GameObject temp = GameObject.FindGameObjectWithTag("RedTexture");
 		if(temp!=null) {
@@ -245,6 +243,7 @@ public class GameControllerScript : MonoBehaviour {
 			lastHowToTime = initialHowToTime;
 		}
 
+		//isMobilePlatform = (platform == RuntimePlatform.IPhonePlayer || platform == RuntimePlatform.Android || platform == RuntimePlatform.BlackBerryPlayer);
 
 		
 	}
@@ -659,10 +658,18 @@ public class GameControllerScript : MonoBehaviour {
 					}
 				   
 				}
+
+
+				if(Application.platform == RuntimePlatform.IPhonePlayer) {
+				  DetectJellyTouches();
+				}
 				
 				
 				
 			}
+			//else {
+			//  DetectJellyTouches();
+			//}
 			//touches on textures are handled on OnGUI()
 			
 		}//end is game started
@@ -736,11 +743,15 @@ public class GameControllerScript : MonoBehaviour {
 				}
 					
 			}
-
+			SaveTotalNumberOfTroopers(numberOfSavedJellies);
 			PerformFinalComputation(true);
 
 		}
 		else {
+
+		  //this is for the high score
+		  SaveTotalNumberOfTroopers(numberOfSavedJellies);
+
 		  if(currentLevel < numberOfLevels) {
 		  	//just increase the level on the same world
 		    currentLevel+=1;
@@ -783,6 +794,29 @@ public class GameControllerScript : MonoBehaviour {
 		  	
 		
 	}
+
+	void SaveTotalNumberOfTroopers(int toAdd) {
+		int currentSavedSoldiers= PlayerPrefs.GetInt(GameConstants.TOTAL_SAVED_TROOPERS_KEY,0);
+		//TOTAL_SAVED_TROOPERS_KEY
+
+		string wk = GetWorldKey ();	
+		string lk = GetLevelKey ();
+		//this will be retrieved in the missions selection
+		bool containsThisLevelAndWorld = PlayerPrefs.HasKey(wk+lk+"completed");
+		if(!containsThisLevelAndWorld){
+
+			currentSavedSoldiers += toAdd;
+			//OK to add, we do not have this key yet
+			PlayerPrefs.SetInt(wk+lk+"completed",currentSavedSoldiers);
+			//and we increase the number of saved soldiers
+			PlayerPrefs.SetInt(GameConstants.TOTAL_SAVED_TROOPERS_KEY,currentSavedSoldiers);
+
+			if(socialAPIInstance.isAuthenticated && toAdd>0) {
+				socialAPIInstance.ReportScore(currentSavedSoldiers,GameConstants.LEADERBOARD_MORE_SAVED_TROOPERS);
+			}
+		}
+	}
+
 	//get the world key
 	string GetWorldKey() {
 		//default is 1
@@ -924,7 +958,8 @@ public class GameControllerScript : MonoBehaviour {
 	     /**
 	     * Report progress and scores to GAME CENTER!!!
 	     */
-	     if(socialAPIInstance.isAuthenticated) {
+		 bool auth = socialAPIInstance.isAuthenticated;
+	     if(auth) {
 			
 			//only now report these 2
 			if(finishedGame){
@@ -941,7 +976,7 @@ public class GameControllerScript : MonoBehaviour {
 			  
 	     }
 		 //check if any achievement checkpoint was reached
-	     CheckIfReachedAnyAchievementCheckpoint(totalSaved);
+	     CheckIfReachedAnyAchievementCheckpoint(totalSaved,auth);
 	        
 
 	}
@@ -949,26 +984,66 @@ public class GameControllerScript : MonoBehaviour {
 	/**
 	* Check the achievements checkpoints
 	*/
-	void CheckIfReachedAnyAchievementCheckpoint(int totalSaved) {
+	void CheckIfReachedAnyAchievementCheckpoint(int totalSaved,bool authenticated) {
+
+	 if(totalSaved >= GameConstants.ACHIEVEMENT_NEWBIE_CHECKPOINT) {
+	    //write the achievement
+		PlayerPrefs.SetInt(GameConstants.ACHIEVEMENT_NEWBIE_KEY,1);
+		Application.Quit();
+		if(authenticated)
+			socialAPIInstance.AddAchievement(GameConstants.ACHIEVEMENT_NEWBIE_KEY,100f);
+		
+	  }
+	  if(totalSaved >= GameConstants.ACHIEVEMENT_ROOKIE_CHECKPOINT) {
+	    //write the achievement
+		PlayerPrefs.SetInt(GameConstants.ACHIEVEMENT_ROOKIE_KEY,1);
+		if(authenticated)
+			socialAPIInstance.AddAchievement(GameConstants.ACHIEVEMENT_ROOKIE_KEY,100f);
+		
+	  }
+
 	//saved more than 100 already?
 	  if(totalSaved >= GameConstants.ACHIEVEMENT_BRAVE_CHECKPOINT) {
 	    //write the achievement
 		PlayerPrefs.SetInt(GameConstants.ACHIEVEMENT_BRAVE_KEY,1);
-		socialAPIInstance.AddAchievement(GameConstants.ACHIEVEMENT_BRAVE_KEY,100f);
+		if(authenticated)
+			socialAPIInstance.AddAchievement(GameConstants.ACHIEVEMENT_BRAVE_KEY,100f);
 		
 	  }
 	  //saved more than 150 already?
-	  else if(totalSaved >= GameConstants.ACHIEVEMENT_HERO_CHECKPOINT) {
+	  if(totalSaved >= GameConstants.ACHIEVEMENT_HERO_CHECKPOINT) {
 	    //write the achievement
 		PlayerPrefs.SetInt(GameConstants.ACHIEVEMENT_HERO_KEY,1);
-		socialAPIInstance.AddAchievement(GameConstants.ACHIEVEMENT_HERO_KEY,100f);
+		if(authenticated)
+			socialAPIInstance.AddAchievement(GameConstants.ACHIEVEMENT_HERO_KEY,100f);
 	  }
 				//saved more than 100 already?
-	  else if(totalSaved >= GameConstants.ACHIEVEMENT_LEGEND_CHECKPOINT) {
+	  if(totalSaved >= GameConstants.ACHIEVEMENT_LEGEND_CHECKPOINT) {
 	    //write the achievement
 		PlayerPrefs.SetInt(GameConstants.ACHIEVEMENT_LEGEND_KEY,1);
-		socialAPIInstance.AddAchievement(GameConstants.ACHIEVEMENT_LEGEND_KEY,100f);
+		if(authenticated)
+			socialAPIInstance.AddAchievement(GameConstants.ACHIEVEMENT_LEGEND_KEY,100f);
 	  }
+
+
+	  //saved more than 100 already?
+		if(totalSaved >= GameConstants.ACHIEVEMENT_NEWBIE_CHECKPOINT) {
+			//write the achievement
+			PlayerPrefs.SetInt(GameConstants.ACHIEVEMENT_NEWBIE_KEY,1);
+			if(authenticated){
+				socialAPIInstance.AddAchievement(GameConstants.ACHIEVEMENT_NEWBIE_KEY,100f);
+			}		
+		}
+
+		//saved more than 100 already?
+		if(totalSaved >= GameConstants.ACHIEVEMENT_ROOKIE_CHECKPOINT) {
+			//write the achievement
+			PlayerPrefs.SetInt(GameConstants.ACHIEVEMENT_ROOKIE_KEY,1);
+			if(authenticated){
+				socialAPIInstance.AddAchievement(GameConstants.ACHIEVEMENT_ROOKIE_KEY,100f);
+			}
+		}
+
 	}
 
 	/**
@@ -1177,7 +1252,14 @@ public class GameControllerScript : MonoBehaviour {
 		CheckPause();
 		StartMusic();
 
-		if(currentLevel==1) {
+		if(currentLevel==1 && currentWorld==1) {
+
+		   //This only shows up on level 1
+		   GameObject brandLogo = GameObject.FindGameObjectWithTag("brand_logo");
+		   if(brandLogo!=null) {
+		    brandLogo.GetComponent<SpriteRenderer>().enabled = false;
+		   }
+
 		  //if we are on level 1, clear the history
 			//ClearPlayerPrefs();
 			//stop invoking the increase function
@@ -1206,9 +1288,7 @@ public class GameControllerScript : MonoBehaviour {
 				
 		
 	}
-	
 
-	
 	
 	void OnGUI() {
 
@@ -1244,27 +1324,27 @@ public class GameControllerScript : MonoBehaviour {
 
 			 DrawText(GetTranslationKey(GameConstants.MSG_WORLD) + " " + currentWorld 
 						+  " / " + GetTranslationKey(GameConstants.MSG_LEVEL) 
-						+ " " + currentLevel, messagesFontSizeSmaller +10, 20, 10,200,50);
+						+ " " + currentLevel, messagesFontSizeSmaller +12, 15, 5,220,60);
 	
 			
 			if (elapsedMissionMinutes>=1) {
 			    if(elapsedMissionSeconds>=10) {
-				  DrawText(GetTranslationKey(GameConstants.MSG_TIME)+ " 0" + elapsedMissionMinutes +":" + elapsedMissionSeconds , messagesFontSizeSmaller +10, 280, 10,200,50);
+					DrawText(GetTranslationKey(GameConstants.MSG_TIME)+ " 0" + elapsedMissionMinutes +":" + elapsedMissionSeconds , messagesFontSizeSmaller +12, 300, 10,200,50);
 				}
 			    else {
-				  DrawText(GetTranslationKey(GameConstants.MSG_TIME)+ " 0" + elapsedMissionMinutes +":0" + elapsedMissionSeconds , messagesFontSizeSmaller +10, 280, 10,200,50);
+					DrawText(GetTranslationKey(GameConstants.MSG_TIME)+ " 0" + elapsedMissionMinutes +":0" + elapsedMissionSeconds , messagesFontSizeSmaller +12, 300, 10,200,50);
 				}
 				
 			}
 			else {
 			   if(elapsedMissionSeconds>=10) {
-					DrawText(GetTranslationKey(GameConstants.MSG_TIME)+ " 0:" + elapsedMissionSeconds , messagesFontSizeSmaller +10,280, 10,200,50);
+					DrawText(GetTranslationKey(GameConstants.MSG_TIME)+ " 0:" + elapsedMissionSeconds , messagesFontSizeSmaller +12,300, 10,200,50);
 				}
 			   else {
 			   
 			        //red color
 					skin.label.normal.textColor = Color.red;
-					DrawText(GetTranslationKey(GameConstants.MSG_TIME)+ " 0:0" + elapsedMissionSeconds , messagesFontSizeSmaller +10, 280, 10,200,50);
+					DrawText(GetTranslationKey(GameConstants.MSG_TIME)+ " 0:0" + elapsedMissionSeconds , messagesFontSizeSmaller +12, 300, 10,200,50);
 					//reset to white again
 					skin.label.normal.textColor = Color.white;
 				}
@@ -1326,7 +1406,7 @@ public class GameControllerScript : MonoBehaviour {
 								//instantiate the first time we reference it
 		
 					if(clock!=null) {
-						Rect clockRect = new Rect(238,8,48,48);
+						Rect clockRect = new Rect(248,8,48,48);
 						GUI.DrawTexture(clockRect, clock);
 					}
 			  
@@ -1339,8 +1419,8 @@ public class GameControllerScript : MonoBehaviour {
 						GUI.matrix = normalMatrix;
 					}
 
-
-					pausePlayRect = new Rect(width-60 ,15,48,48);
+					//pausePlayRect = new Rect(width-60 ,15,64,64);
+					pausePlayRect = new Rect(width-70 ,15,64,64);
 
 
 					if(isGamePaused) {
@@ -1358,6 +1438,7 @@ public class GameControllerScript : MonoBehaviour {
 
 				}
 				else {
+
 				
 				  //Debug.Log("Not started yet");
 				  //if null means it was destroyd, is game over
@@ -1406,19 +1487,33 @@ public class GameControllerScript : MonoBehaviour {
 						skin.label.normal.textColor = Color.grey;
 
 						if(isShowingHowTo) {
-						  Rect helpMeTextureRect = new Rect(screenWidth / 3 - 180,screenHeight/2-260,64,64);
+							Rect helpMeTextureRect = new Rect(90,screenHeight/2-320,70,70);
 						  GUI.DrawTexture(helpMeTextureRect, helpMeTexture);
 						}
 
 						if(IsFinalLevel()) {
 						 //TODO
-							DrawText(GetTranslationKey(GameConstants.MSG_HOW_TO_PLAY) , messagesFontSizeSmaller, screenWidth / 3 -180, screenHeight/2-220,450,40);
-							DrawText(GetTranslationKey(GameConstants.MSG_HOW_TO_PLAY_LAST_LEVEL) , messagesFontSizeSmaller, screenWidth / 3 -180, screenHeight/2-180,450,40);
+							DrawText(GetTranslationKey(GameConstants.MSG_HOW_TO_PLAY) , messagesFontSizeSmaller+2, 80, screenHeight/2-240,500,40);
+							DrawText(GetTranslationKey(GameConstants.MSG_HOW_TO_PLAY_LAST_LEVEL) , messagesFontSizeSmaller, 80, screenHeight/2-200,500,40);
 						}
 						else {
-							DrawText(GetTranslationKey(GameConstants.MSG_HOW_TO_PLAY) , messagesFontSizeSmaller, screenWidth / 3 -180, screenHeight/2-220,450,40);
-							DrawText(GetTranslationKey(GameConstants.MSG_TAP_TROOPER) , messagesFontSizeSmaller, screenWidth / 3 -180, screenHeight/2-180,450,40);
-							DrawText(GetTranslationKey(GameConstants.MSG_TAP_LEFT_RIGHT) , messagesFontSizeSmaller, screenWidth / 3 -180, screenHeight/2-140,450,40);
+							DrawText(GetTranslationKey(GameConstants.MSG_HOW_TO_PLAY) , messagesFontSizeSmaller+2, 80, screenHeight/2-260,600,40);
+							DrawText(GetTranslationKey(GameConstants.MSG_TAP_TROOPER) , messagesFontSizeSmaller+2, 80, screenHeight/2-225,600,40);
+							DrawText(GetTranslationKey(GameConstants.MSG_TAP_LEFT_RIGHT) , messagesFontSizeSmaller+2, 80, screenHeight/2-190,600,40);
+							DrawText(GetTranslationKey(GameConstants.MSG_LAND_ALL) , messagesFontSizeSmaller+2, 80, screenHeight/2-155,600,40);
+							DrawText(GetTranslationKey(GameConstants.MSG_USE_FAILSAFE) , messagesFontSizeSmaller+2, 80, screenHeight/2-120,600,40);
+
+							if( !(Application.platform == RuntimePlatform.OSXPlayer) ) {
+								DrawText(GetTranslationKey(GameConstants.MSG_TAP_TROOPER) , messagesFontSizeSmaller, screenWidth / 3 -180, screenHeight/2-180,450,40);
+							    DrawText(GetTranslationKey(GameConstants.MSG_TAP_LEFT_RIGHT) , messagesFontSizeSmaller, screenWidth / 3 -180, screenHeight/2-140,450,40);
+							}
+							else {
+								DrawText(GetTranslationKey(GameConstants.MSG_CLICK_TROOPER) , messagesFontSizeSmaller, screenWidth / 3 -180, screenHeight/2-180,450,40);
+								DrawText(GetTranslationKey(GameConstants.MSG_CLICK_LEFT_RIGHT) , messagesFontSizeSmaller, screenWidth / 3 -180, screenHeight/2-140,450,40);
+							}
+
+
+
 							DrawText(GetTranslationKey(GameConstants.MSG_LAND_ALL) , messagesFontSizeSmaller, screenWidth / 3 -180, screenHeight/2-100,450,40);
 						}
 					
@@ -1432,6 +1527,13 @@ public class GameControllerScript : MonoBehaviour {
 					if(highScore > 0) {
 						//GetTranslationKey(GameConstants.MSG_HIGH_SCORE)
 						DrawText("High Score: " + highScore, messagesFontSizeSmaller +10,740, 10,220,40);
+
+						smallTrooperRect = new Rect(740,50,48,48);
+						GUI.DrawTexture(smallTrooperRect,smallTrooper);
+						//DRAW SMALL TROOPER and x saved
+						//todo draw the number of saved troopers
+						int numTroopers = PlayerPrefs.GetInt(GameConstants.TOTAL_SAVED_TROOPERS_KEY,0);
+						DrawText("X " + numTroopers, messagesFontSizeSmaller +10,790, 50,220,40);
 					}
 								
 					
@@ -1481,6 +1583,7 @@ public class GameControllerScript : MonoBehaviour {
 						  }
 							
 						}
+
 			    }
 				else {
 
@@ -1538,6 +1641,7 @@ public class GameControllerScript : MonoBehaviour {
 							StartGame();
 							StartJellyFall();
 						}
+
 					    
 					    #if UNITY_ANDROID && !UNITY_EDITOR
 					    if(rateRect.Contains(fingerPos) && player!=null) {
@@ -1697,43 +1801,25 @@ public class GameControllerScript : MonoBehaviour {
 	
 		
 	}
+
+	/*public void TakeScreenShot() {
+		ScreenShotScript screenshot = GameObject.FindGameObjectWithTag("Scripts").GetComponent<ScreenShotScript>();
+		if (screenshot != null) {
+			screenshot.TakeScreenshotBeforeGameOver (this);
+		} 
+
+	}
 	
-	
+	//callback for the screenshot script
+	public void SetScreenshotTexture(Texture2D texture) {
+	  screenshotTexture = texture;
+	}*/
 	
 	//only spwan and shoot if player is in sight
 	public bool IsPlayerVisible() {
 		bool checkPlayerVisible = (player==null) ? false : player.GetComponent<Renderer>().IsVisibleFrom(Camera.main);
 		return checkPlayerVisible;
 	}
-	
-	//Android only, this is to get the device default orientation, which
-	//can also be used to detect if is a tablet or a phone
-	/*#if UNITY_ANDROID && !UNITY_EDITOR
-	public int GetDeviceDefaultOrientation()
-	{
-		AndroidJavaObject mConfig;
-		AndroidJavaObject mWindowManager;
-		
 
-		using (AndroidJavaObject activity = new AndroidJavaClass("com.unity3d.player.UnityPlayer").
-			       GetStatic<AndroidJavaObject>("currentActivity"))
-		{
-			mWindowManager = activity.Call<AndroidJavaObject>("getSystemService","window");
-			mConfig = activity.Call<AndroidJavaObject>("getResources").Call<AndroidJavaObject>("getConfiguration");
-		}
-		
-		
-		int lRotation = mWindowManager.Call<AndroidJavaObject>("getDefaultDisplay").Call<int>("getRotation");
-		int dOrientation = mConfig.Get<int>("orientation");
-		
-		if( (((lRotation == Alfie.Constants.ROTATION_0) || (lRotation == Alfie.Constants.ROTATION_180)) && (dOrientation == Alfie.Constants.ORIENTATION_LANDSCAPE)) ||
-		   (((lRotation == Alfie.Constants.ROTATION_90) || (lRotation == Alfie.Constants.ROTATION_270)) && (dOrientation == Alfie.Constants.ORIENTATION_PORTRAIT)))
-		{
-			return Alfie.Constants.LANDSCAPE; //TABLET
-		}     
-		
-		return Alfie.Constants.PORTRAIT; //PHONE
-	}
-	#endif*/
 	
 }

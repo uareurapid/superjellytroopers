@@ -43,7 +43,7 @@ public class LogoSceneScript : MonoBehaviour {
 
 	AudioSource audioType;
 	private bool isMobilePlatform = false;
-    private static RuntimePlatform platform;
+	private static RuntimePlatform platform = Application.platform;
 	
 	void Start () {
 	

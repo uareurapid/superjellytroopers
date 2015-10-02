@@ -1,7 +1,8 @@
 how_to_play=Como Jugar:
 tap_trooper=Toque en el soldado/paracaídas para liberarlo
-tap_left_right=Toque à la derecha o hacia la izquierda para balancearlo
-land_all_safely=Tierra todos los soldados de forma segura
+tap_left_right=Toque rápido à la derecha o hacia la izquierda para balancearlo
+land_all_safely=Aterriza todos los soldados de forma segura
+use_failsafe=Utilice el paracaídas de reserva para arreglar un error
 rescued=Rescatados:
 lifes=Vidas:
 time=Tiempo:
@@ -25,4 +26,8 @@ how_to_play_last_level=Trata de averiguarlo!...
 intrusion_alert=Alerta de intrusión!
 tap_mission_unlock=Pulsa en una misión desbloqueada para seleccionar los niveles
 press_failsafe_key=Pulse el botón "R" para usar
+tap_failsafe_key=Toque para usarlo
+click_trooper=Clica en el soldado/paracaídas para liberarlo
+click_left_right=Usa las teclas de dirección para balancearlo hacia la derecha o izquierda 
+click_mission_unlock=Clica en una misión desbloqueada para seleccionar los niveles
 

@@ -41,9 +41,9 @@ public class MissionSelectionScript : MonoBehaviour {
   private bool isMobilePlatform = true;
   private GUISkin skin;
   private GUIResolutionHelper resolutionHelper;
-	private TextLocalizationManager translationManager;
+  private TextLocalizationManager translationManager;
 
-  private static RuntimePlatform platform;
+  private static RuntimePlatform platform = Application.platform;
 
   int world = 1;
 	// Use this for initialization

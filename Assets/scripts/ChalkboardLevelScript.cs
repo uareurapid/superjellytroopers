@@ -25,7 +25,7 @@ public class ChalkboardLevelScript : MonoBehaviour {
 	int world = 1;
 	int level = 1;
 	int lastWorld=1;
-	private static RuntimePlatform platform;
+	private static RuntimePlatform platform = Application.platform;
 
 	private TextLocalizationManager	translationManager;
 
@@ -327,6 +327,9 @@ public class ChalkboardLevelScript : MonoBehaviour {
 				  reloadTextureRect = new Rect(width - 342,(height/3)-150,96,96);
 				  GUI.DrawTexture(reloadTextureRect,reloadTexture);
 
+
+
+			
 
 				 }
 

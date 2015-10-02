@@ -1,7 +1,8 @@
 how_to_play=Comment joker:
 tap_trooper=Appuyez sur le soldat/parachute pour libérer
-tap_left_right=Appuyez sur gauche ou la droite pour basculer
+tap_left_right=Appuyez trés rapidement sur gauche ou la droite pour basculer
 land_all_safely=Atterrir en sécurité tous les soldats
+use_failsafe=Utilisez le parachute de réserve pour corriger une erreur
 rescued=Sauvé:
 lifes=Vie:
 time=Temps:
@@ -25,3 +26,7 @@ how_to_play_last_level=Essayez de le comprendre!...
 intrusion_alert=Alerte d'intrusion!
 tap_mission_unlock=Appuyez sur une mission déverrouillé pour sélectionner les niveaux
 press_failsafe_key=Appuyez sur "R" clé pour utiliser
+tap_failsafe_key=Touchez pour utiliser
+click_trooper=Cliquez sur le soldat/parachute pour le libérer
+click_left_right=Cliquez aux touches de direction pour basculer sur la gauche ou la droite 
+click_mission_unlock=Cliquez sur une mission déverrouillé pour sélectionner les niveaux

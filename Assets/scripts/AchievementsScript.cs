@@ -9,7 +9,7 @@ public class AchievementsScript : MonoBehaviour {
 	private Rect exitTextureRect;
 	GUISkin skin;
 
-	private static RuntimePlatform platform;
+	private static RuntimePlatform platform= Application.platform;
 	bool isMobilePlatform = false;
 	// Use this for initialization
 
@@ -17,12 +17,16 @@ public class AchievementsScript : MonoBehaviour {
 	bool legendEnabled = false;
 	bool braveEnabled = false;
 	bool heroEnabled = false;
+	bool newbieEnabled = false;
+	bool rookieEnabled = false;
 
 
 	private SpriteRenderer guru;
 	private SpriteRenderer legend;
 	private SpriteRenderer brave;
 	private SpriteRenderer hero;
+	private SpriteRenderer newbie;
+	private SpriteRenderer rookie;
 
 	//IOS game center
 	private bool gameCenterAvailable = false;
@@ -43,11 +47,17 @@ public class AchievementsScript : MonoBehaviour {
 		heroEnabled = PlayerPrefs.GetInt(GameConstants.ACHIEVEMENT_HERO_KEY,0) > 0;
 		braveEnabled = PlayerPrefs.GetInt(GameConstants.ACHIEVEMENT_BRAVE_KEY,0) > 0;
 
+		newbieEnabled = PlayerPrefs.GetInt(GameConstants.ACHIEVEMENT_NEWBIE_KEY,0) > 0;
+		rookieEnabled = PlayerPrefs.GetInt(GameConstants.ACHIEVEMENT_ROOKIE_KEY,0) > 0;
+
 		//get the references to the sprite renderers
 		hero = GameObject.FindGameObjectWithTag("Hero").GetComponent<SpriteRenderer>();
 		legend = GameObject.FindGameObjectWithTag("Legend").GetComponent<SpriteRenderer>();
 		brave = GameObject.FindGameObjectWithTag("Brave").GetComponent<SpriteRenderer>();
 		guru = GameObject.FindGameObjectWithTag("Guru").GetComponent<SpriteRenderer>();
+
+		newbie = GameObject.FindGameObjectWithTag("Newbie").GetComponent<SpriteRenderer>();
+		rookie = GameObject.FindGameObjectWithTag("Rookie").GetComponent<SpriteRenderer>();
 
 		//TODO for debug purposes only, the editor part
 		gameCenterAvailable = (platform == RuntimePlatform.IPhonePlayer || platform==RuntimePlatform.OSXEditor);
@@ -153,6 +163,14 @@ public class AchievementsScript : MonoBehaviour {
 						}
 						else if(achievement.id.Equals(GameConstants.ACHIEVEMENT_HERO_KEY) &&
 						achievement.percentCompleted < 100f && heroEnabled) {
+						  ReportAchievement(achievement.id,100f);
+						}
+						else if(achievement.id.Equals(GameConstants.ACHIEVEMENT_NEWBIE_KEY) &&
+						achievement.percentCompleted < 100f && newbieEnabled) {
+						  ReportAchievement(achievement.id,100f);
+						}
+						else if(achievement.id.Equals(GameConstants.ACHIEVEMENT_ROOKIE_KEY) &&
+						achievement.percentCompleted < 100f && rookieEnabled) {
 						  ReportAchievement(achievement.id,100f);
 						}
 				}
@@ -269,6 +287,20 @@ public class AchievementsScript : MonoBehaviour {
 		}
 		else {
 		  hero.sprite = hero.gameObject.GetComponent<DoubleSpriteScript>().spriteDisabled;
+		}
+
+		if(newbieEnabled) {
+		  newbie.sprite = newbie.gameObject.GetComponent<DoubleSpriteScript>().spriteEnabled;
+		}
+		else {
+		  newbie.sprite = newbie.gameObject.GetComponent<DoubleSpriteScript>().spriteDisabled;
+		}
+
+		if(rookieEnabled) {
+		  rookie.sprite = rookie.gameObject.GetComponent<DoubleSpriteScript>().spriteEnabled;
+		}
+		else {
+		  rookie.sprite = rookie.gameObject.GetComponent<DoubleSpriteScript>().spriteDisabled;
 		}
 			
 		GUI.matrix = svMat;

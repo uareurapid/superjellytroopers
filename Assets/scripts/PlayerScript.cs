@@ -40,7 +40,7 @@ public class PlayerScript : MonoBehaviour
 
 	private bool buyedInfiniteLifes = false;
 	private bool isMobilePlatform = false;
-	private static RuntimePlatform platform;
+	private static RuntimePlatform platform = Application.platform;
 
 	void Start() {
 
@@ -105,14 +105,14 @@ public class PlayerScript : MonoBehaviour
 			
 			int num = buyedInfiniteLifes ? 1 : playerHealth.hitPoints;
 			
-			DrawText(GetTranslationKey(GameConstants.MSG_LIFES) + " ",20,20,45,120,40);
+			DrawText(GetTranslationKey(GameConstants.MSG_LIFES) + " ",20,20,65,120,40);
 
-		    int x = 70; int y=50;
+		    int x = 80; int y=65;
 			//just draw 1 x N
 			if(buyedInfiniteLifes) {
 				  Rect life = new Rect(x,y,48,48);
 				  GUI.DrawTexture(life, lifeIcon);
-				  DrawText(" X " + GetTranslationKey(GameConstants.MSG_INFINITE_LIFES),20,120,50,140,40);
+				  DrawText(" X " + GetTranslationKey(GameConstants.MSG_INFINITE_LIFES),20,120,60,140,40);
 			}
 			else {
 				for(int i=0; i < num; i++) {
@@ -125,11 +125,14 @@ public class PlayerScript : MonoBehaviour
 
 
 			if(failSafeIcon!=null && !failSafeUsed) {
-			  failSafeRect = new Rect(40, resolutionHelper.screenHeight-100,48,48);
+			  failSafeRect = new Rect(65, 180,56,56);
 			  GUI.DrawTexture(failSafeRect,failSafeIcon);
-			  DrawText(GetTranslationKey(GameConstants.MSG_FAILSAFE),20,35,resolutionHelper.screenHeight-130,120,40);
+			  DrawText(GetTranslationKey(GameConstants.MSG_FAILSAFE),20,60,140,120,40);
 			  if(!isMobilePlatform) {
-				 DrawText(GetTranslationKey(GameConstants.MSG_PRESS_FAILSAFE_KEY),20,35,resolutionHelper.screenHeight-70,240,40);
+				 DrawText(GetTranslationKey(GameConstants.MSG_PRESS_FAILSAFE_KEY),20,35,230,240,40);
+			  }
+			  else {
+				 DrawText(GetTranslationKey(GameConstants.MSG_TAP_FAILSAFE_KEY),20,35,230,240,40);
 			  }
 			}
 

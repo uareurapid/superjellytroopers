@@ -12,7 +12,7 @@ public class StorySceneScript : MonoBehaviour {
 
    GUIResolutionHelper resolutionHelper;
    private bool isMobilePlatform = false;
-   private static RuntimePlatform platform;
+   private static RuntimePlatform platform = Application.platform;
 
 	// Use this for initialization
 	void Start () {

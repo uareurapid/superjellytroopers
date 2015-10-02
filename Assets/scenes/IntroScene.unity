@@ -871,7 +871,7 @@ MonoBehaviour:
   offset: 200
   speed: 6.5
   mode: 2
-  scrollFontSize: 22
+  scrollFontSize: 26
   scrollFont: {fileID: 12800000, guid: 59a5800f69f764272a193320f2b229b2, type: 3}
   labelFont: {fileID: 12800000, guid: 59a5800f69f764272a193320f2b229b2, type: 3}
   lineHeight: 1

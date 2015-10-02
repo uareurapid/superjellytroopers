@@ -8,7 +8,7 @@ using Soomla.MyStore;
 #endif
 public class StoreScript : MonoBehaviour {
 
-	private static RuntimePlatform platform;
+	private static RuntimePlatform platform = Application.platform;
 
 	//for android only
 	private bool inAppBillingStarted = false;
@@ -51,9 +51,10 @@ public class StoreScript : MonoBehaviour {
 	string priceTime = "0.99";
 	string priceLifes = "0.99";
 	string priceSpeed = "0.99";
-	string priceInfiniteLifes = "3.99";
+	string priceInfiniteLifes = "1.99";
 
 	private bool purchaseInProgress = false;
+	private bool allowClicks = false;
 
 	// Use this for initialization
 	void Start () {
@@ -104,11 +105,17 @@ public class StoreScript : MonoBehaviour {
         BlackBerryIAP.CancelSubscriptionFailedEvent += CancelSubscriptionFailed;
 		#endif
 
+		//workaround to avoid exit clicks coming from other scenes
+		allowClicks = false;
+		Invoke("AllowClicks",1.0f);
+
 		CheckInAppPurchases();
 
 	}
 
-
+	void AllowClicks() {
+		allowClicks = true;
+	}
 	void LoadStyle() {
 		style = GUI.skin.GetStyle ("Label");
 		style.alignment = TextAnchor.MiddleLeft;
@@ -206,7 +213,7 @@ public class StoreScript : MonoBehaviour {
 						    SoomlaStore.RestoreTransactions();
 						}
 						#endif
-						else if(exitTextureRect.Contains(fingerPos) )
+						else if(exitTextureRect.Contains(fingerPos) && allowClicks )
 						{	
 						    Application.LoadLevel("SettingsScene");
 						}

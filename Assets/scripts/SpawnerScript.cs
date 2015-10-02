@@ -235,11 +235,11 @@ public class SpawnerScript : MonoBehaviour
 
 		//don´t show nothing if game not running!
 		if(!controller.IsGameOver()) {
-			//was   //740
-			DrawText(translationManager.GetText(GameConstants.MSG_NEXT) + " ", controller.messagesFontSizeSmaller +10,740, 10,220,50);//Screen.width-150
-		
+
+			DrawText(translationManager.GetText(GameConstants.MSG_NEXT) + " ", controller.messagesFontSizeSmaller +12,740, 10,220,50);
+
 			if(nextThumbnail>-1) {//TODO &&player still alive
-				Rect next = new Rect(850,20,32,32);//was ,850Screen.width-50+increaseFactor
+				Rect next = new Rect(850,20,48,48);//was ,850Screen.width-50+increaseFactor
 				GUI.DrawTexture(next, thumbnails[nextThumbnail]);
 			}
 		}
