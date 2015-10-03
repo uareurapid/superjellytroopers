@@ -54,13 +54,11 @@ public class StoreScript : MonoBehaviour {
 	string priceInfiniteLifes = "1.99";
 
 	private bool purchaseInProgress = false;
-	private bool allowClicks = false;
 
 	// Use this for initialization
 	void Start () {
 
 		skin = Resources.Load("GUISkin") as GUISkin;
-		platform = Application.platform;
 
 		//SOOMLA EVENT HANDLING STUFF
 		#if !UNITY_BLACKBERRY && !UNITY_EDITOR
@@ -105,17 +103,11 @@ public class StoreScript : MonoBehaviour {
         BlackBerryIAP.CancelSubscriptionFailedEvent += CancelSubscriptionFailed;
 		#endif
 
-		//workaround to avoid exit clicks coming from other scenes
-		allowClicks = false;
-		Invoke("AllowClicks",1.0f);
-
 		CheckInAppPurchases();
 
 	}
 
-	void AllowClicks() {
-		allowClicks = true;
-	}
+
 	void LoadStyle() {
 		style = GUI.skin.GetStyle ("Label");
 		style.alignment = TextAnchor.MiddleLeft;
@@ -146,7 +138,7 @@ public class StoreScript : MonoBehaviour {
 	void Update () {
 				if ( IsMobilePlatform() && Input.touches.Length ==1) {
 
-					//
+					
 					int screenHeight = resolutionHelper.screenHeight;
 					int screenWidth = resolutionHelper.screenWidth;
 
@@ -160,21 +152,6 @@ public class StoreScript : MonoBehaviour {
 						
 						fingerPos.y =  screenHeight - (touch.position.y / Screen.height) * screenHeight;
 						fingerPos.x = (touch.position.x / Screen.width) * screenWidth;
-
-
-
-						if(resolutionHelper.isWidescreen) {
-						//texture rect is at 712
-						//wich is more or less a finger of 830	
-
-						   //this is my 0 (zero) on a wideScree Matrix
-						   float wideScreenOrigin = (resolutionHelper.scaleX - resolutionHelper.scaleVector.y) / 2 * screenWidth;
-						   fingerPos.x = fingerPos.x + wideScreenOrigin - GameConstants.WIDESCREEN_CORRECTION_VALUE;
-						}
-
-						//Debug.Log("exitTextureRect.x:" + exitTextureRect.x);
-						//Debug.Log("buyLifesStoreTextureRect.x:" + buyLifesStoreTextureRect.x);
-						//Debug.Log("Finger position.x: " + fingerPos.x);
 					
 					
 						//rect 712, dif 240, finger 550
@@ -213,7 +190,7 @@ public class StoreScript : MonoBehaviour {
 						    SoomlaStore.RestoreTransactions();
 						}
 						#endif
-						else if(exitTextureRect.Contains(fingerPos) && allowClicks )
+						else if(exitTextureRect.Contains(fingerPos) )
 						{	
 						    Application.LoadLevel("SettingsScene");
 						}
@@ -402,7 +379,7 @@ public class StoreScript : MonoBehaviour {
 					GUI.DrawTexture(restoreTextureRect,restoreIconTexture);
 					#endif
 
-					exitTextureRect = new Rect(width-110,30,96,96);
+					exitTextureRect = new Rect(width-110,100,96,96);
 					GUI.DrawTexture(exitTextureRect,exitIconTexture);
 
 				}

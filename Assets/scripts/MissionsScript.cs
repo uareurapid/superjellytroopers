@@ -278,7 +278,7 @@ public class MissionsScript : MonoBehaviour {
 			if(isShowingText) {
 				//reset color back to white
 				centeredStyleLarger.normal.textColor =  Color.white;
-				GUI.Label(new Rect(width/2-205, 100, 600, 50),
+				GUI.Label(new Rect(width/2-195, 100, 600, 50),
 				GetTranslationKey(GameConstants.MSG_CLICK_UNLOCKED_MISSION),centeredStyleLarger);
 				  
 			}	

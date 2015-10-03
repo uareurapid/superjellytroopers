@@ -205,6 +205,31 @@ public class GameOverScript : MonoBehaviour
 
 	  //show store whenever something is still available to purchase
 	  if(!buyedExtraTime || !buyedExtraSpeed || !buyedExtraLifes || !buyedInfiniteLifes) {
+
+	    //key doesnt exist yet?, set to 1 the counter
+		if(!PlayerPrefs.HasKey(GameConstants.NUM_DEATHS_ADS_COUNTER_KEY)) {
+			PlayerPrefs.SetInt(GameConstants.NUM_DEATHS_ADS_COUNTER_KEY,1); 
+			PlayerPrefs.Save();
+			showAds = false;
+		}
+		else {
+		  //key exists
+		  int counter = PlayerPrefs.GetInt(GameConstants.NUM_DEATHS_ADS_COUNTER_KEY,1); 
+		  counter = counter + 1;
+		  if(counter >=5) {
+		    //show ads and reset the counter
+		    showAds = true;
+			PlayerPrefs.SetInt(GameConstants.NUM_DEATHS_ADS_COUNTER_KEY,1); 
+			PlayerPrefs.Save();
+		  }
+		  else {
+		    //still less than 5 times, save the updated counter
+			PlayerPrefs.SetInt(GameConstants.NUM_DEATHS_ADS_COUNTER_KEY,counter); 
+			PlayerPrefs.Save();
+		    showAds = false;
+		  }
+		}
+		//ther are products not yet purchased, show store
 	    showStore = true;
 	  }
 	  else {

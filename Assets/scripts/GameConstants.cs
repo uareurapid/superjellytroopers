@@ -89,6 +89,8 @@ namespace RescueJelly
 				public const string MISSION_SELECT_LEVEL_FIVE_KEY = "_level_5";
 				public const string MISSION_SELECT_LEVEL_SIX_KEY = "_level_6";
 
+				public const string NUM_DEATHS_ADS_COUNTER_KEY = "ads_counter";
+
 				//translation keys
 				public const string MSG_HOW_TO_PLAY="how_to_play";
 				public const string MSG_HOW_TO_PLAY_LAST_LEVEL="how_to_play_last_level";

@@ -1492,8 +1492,8 @@ public class GameControllerScript : MonoBehaviour {
 						skin.label.normal.textColor = Color.grey;
 
 						if(isShowingHowTo) {
-							Rect helpMeTextureRect = new Rect(90,screenHeight/2-320,70,70);
-						  GUI.DrawTexture(helpMeTextureRect, helpMeTexture);
+							Rect helpMeTextureRect = new Rect(70,screenHeight/2-320,70,70);
+						    GUI.DrawTexture(helpMeTextureRect, helpMeTexture);
 						}
 
 						if(IsFinalLevel()) {
@@ -1516,9 +1516,7 @@ public class GameControllerScript : MonoBehaviour {
 							DrawText(GetTranslationKey(GameConstants.MSG_LAND_ALL) , messagesFontSizeSmaller+2, 80, screenHeight/2-155,600,40);
 							DrawText(GetTranslationKey(GameConstants.MSG_USE_FAILSAFE) , messagesFontSizeSmaller+2, 80, screenHeight/2-120,600,40);
 
-							//DrawText(GetTranslationKey(GameConstants.MSG_LAND_ALL) , messagesFontSizeSmaller, screenWidth / 3 -180, screenHeight/2-100,450,40);
-						}
-					
+						}		
 						
 						//restore white
 						skin.label.normal.textColor = Color.white;
@@ -1527,7 +1525,7 @@ public class GameControllerScript : MonoBehaviour {
 					}
 
 					if(highScore > 0) {
-						//GetTranslationKey(GameConstants.MSG_HIGH_SCORE)
+						
 						DrawText("High Score: " + highScore, messagesFontSizeSmaller +10,740, 10,220,40);
 
 						smallTrooperRect = new Rect(740,50,48,48);
