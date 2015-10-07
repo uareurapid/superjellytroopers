@@ -219,7 +219,7 @@ public class GameControllerScript : MonoBehaviour {
 			redTexture =  temp.GetComponent<GUITexture>();
 		    redTexture.color = new Color32(255, 255, 255, 0);
 		}
-		#if UNITY_IPHONE && !UNITY_EDITOR
+		#if UNITY_IPHONE || UNITY_STANDALONE_OSX && !UNITY_EDITOR
 		leaderBoardTexture = Resources.Load("gamecenter") as Texture2D;
 		#endif
 
@@ -981,7 +981,9 @@ public class GameControllerScript : MonoBehaviour {
 			  
 	     }
 		 //check if any achievement checkpoint was reached
-	     CheckIfReachedAnyAchievementCheckpoint(totalSaved,auth);
+
+		int currentSavedSoldiers= PlayerPrefs.GetInt(GameConstants.TOTAL_SAVED_TROOPERS_KEY,0);
+		CheckIfReachedAnyAchievementCheckpoint(currentSavedSoldiers,auth);
 	        
 
 	}
@@ -994,7 +996,6 @@ public class GameControllerScript : MonoBehaviour {
 	 if(totalSaved >= GameConstants.ACHIEVEMENT_NEWBIE_CHECKPOINT) {
 	    //write the achievement
 		PlayerPrefs.SetInt(GameConstants.ACHIEVEMENT_NEWBIE_KEY,1);
-		Application.Quit();
 		if(authenticated)
 			socialAPIInstance.AddAchievement(GameConstants.ACHIEVEMENT_NEWBIE_KEY,100f);
 		
@@ -1030,24 +1031,6 @@ public class GameControllerScript : MonoBehaviour {
 			socialAPIInstance.AddAchievement(GameConstants.ACHIEVEMENT_LEGEND_KEY,100f);
 	  }
 
-
-	  //saved more than 100 already?
-		if(totalSaved >= GameConstants.ACHIEVEMENT_NEWBIE_CHECKPOINT) {
-			//write the achievement
-			PlayerPrefs.SetInt(GameConstants.ACHIEVEMENT_NEWBIE_KEY,1);
-			if(authenticated){
-				socialAPIInstance.AddAchievement(GameConstants.ACHIEVEMENT_NEWBIE_KEY,100f);
-			}		
-		}
-
-		//saved more than 100 already?
-		if(totalSaved >= GameConstants.ACHIEVEMENT_ROOKIE_CHECKPOINT) {
-			//write the achievement
-			PlayerPrefs.SetInt(GameConstants.ACHIEVEMENT_ROOKIE_KEY,1);
-			if(authenticated){
-				socialAPIInstance.AddAchievement(GameConstants.ACHIEVEMENT_ROOKIE_KEY,100f);
-			}
-		}
 
 	}
 
@@ -1621,7 +1604,7 @@ public class GameControllerScript : MonoBehaviour {
 					if(isGameOver) {
 
 			
-					#if UNITY_IOS || UNITY_ANDROID && !UNITY_EDITOR
+						#if UNITY_IOS || UNITY_STANDALONE_OSX || UNITY_ANDROID && !UNITY_EDITOR
 			
 					 if(leaderboardsRect.Contains(fingerPos) && player!=null) {
 						  touchedLeaderBoard = true;

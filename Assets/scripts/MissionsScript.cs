@@ -221,13 +221,13 @@ public class MissionsScript : MonoBehaviour {
 	  }
 	}
 	
-	
+
 	void BuildLargerLabelStyle() {
 	
-		centeredStyleLarger = GUI.skin.GetStyle("Label");
-		centeredStyleLarger.alignment = TextAnchor.MiddleLeft;
+		centeredStyleLarger =  new GUIStyle(GUI.skin.label);
+		centeredStyleLarger.alignment = TextAnchor.UpperCenter;
 		centeredStyleLarger.font = scrollFont;
-		centeredStyleLarger.fontSize = scrollFontSize;
+		centeredStyleLarger.fontSize = scrollFontSize + 5;
 	}
 
 	void ChangeTextVisibility() {
@@ -250,9 +250,25 @@ public class MissionsScript : MonoBehaviour {
 	
 		
 		Matrix4x4 svMat = GUI.matrix;//save current matrix
-		
+
+
 		bool isWideScreen = resolutionHelper.isWidescreen;
 		Vector3 scaleVector = resolutionHelper.scaleVector;
+
+
+		if(Event.current.type==EventType.Repaint) {
+		    //the text is drawn with the normal matrix
+			
+			if(isShowingText) {
+				//reset color back to white
+				centeredStyleLarger.normal.textColor =  Color.white;
+				GUI.Label(new Rect(0, 120, Screen.width, 50),
+				GetTranslationKey(GameConstants.MSG_CLICK_UNLOCKED_MISSION),centeredStyleLarger);
+				  
+			}	
+			
+
+		}
 		
 		if(isWideScreen) {
 			GUI.matrix = Matrix4x4.TRS(new Vector3( (resolutionHelper.scaleX - scaleVector.y) / 2 * resolutionHelper.screenWidth, 0, 0), Quaternion.identity, scaleVector);
@@ -273,16 +289,6 @@ public class MissionsScript : MonoBehaviour {
 
 			exitTextureRect = new Rect(width-110,30,96,96);
 			GUI.DrawTexture(exitTextureRect,exitTexture);
-
-			
-			if(isShowingText) {
-				//reset color back to white
-				centeredStyleLarger.normal.textColor =  Color.white;
-				GUI.Label(new Rect(width/2-195, 100, 600, 50),
-				GetTranslationKey(GameConstants.MSG_CLICK_UNLOCKED_MISSION),centeredStyleLarger);
-				  
-			}	
-			
 
 		}
 

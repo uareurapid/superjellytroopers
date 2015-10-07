@@ -1,14 +1,19 @@
-﻿using UnityEngine;
+﻿using System.Runtime.InteropServices;
+using UnityEngine;
 using System.Collections;
 using UnityEngine.SocialPlatforms;
 using RescueJelly;
 #if UNITY_ANDROID && !UNITY_EDITOR
 using GooglePlayGames;
 #endif
+
 /**
  * Implement Game Center
  * */
 public class SocialAPI : MonoBehaviour {
+
+	[DllImport("__Internal")]
+	private static extern void _ReportAchievement( string achievementID, float progress );
 
 	public bool isAuthenticated = false;
 	public bool isAuthenticating = false;
@@ -190,10 +195,7 @@ public class SocialAPI : MonoBehaviour {
 		#if UNITY_ANDROID && !UNITY_EDITOR
 		  id = GameConstants.ANDROID_DICTIONARY[id];
 		#endif
-		IAchievement achievement = Social.CreateAchievement();
-		achievement.id = id;
-		achievement.percentCompleted = percentageCompleted;
-		achievement.ReportProgress(CreateAchievementResult);
+		_ReportAchievement(id,percentageCompleted);
 	}
 	
 	public void CreateAchievementResult(bool success) {
