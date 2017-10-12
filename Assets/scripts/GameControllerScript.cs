@@ -219,7 +219,7 @@ public class GameControllerScript : MonoBehaviour {
 			redTexture =  temp.GetComponent<GUITexture>();
 		    redTexture.color = new Color32(255, 255, 255, 0);
 		}
-		#if UNITY_IPHONE || UNITY_STANDALONE_OSX && !UNITY_EDITOR
+		#if UNITY_IPHONE && !UNITY_EDITOR
 		leaderBoardTexture = Resources.Load("gamecenter") as Texture2D;
 		#endif
 
@@ -1452,7 +1452,7 @@ public class GameControllerScript : MonoBehaviour {
 					//start playing //screenWidth
 
 					//---------------------------------------------------------------------------------					
-					#if !UNITY_EDITOR
+					#if UNITY_IPHONE && !UNITY_EDITOR
 					leaderboardsRect = new Rect(width/2-50,screenHeight / 3 * 2 + 10 ,96,96);
 					GUI.DrawTexture(leaderboardsRect, leaderBoardTexture,ScaleMode.ScaleToFit);
 					#endif

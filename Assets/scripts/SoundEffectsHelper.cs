@@ -19,6 +19,7 @@ public class SoundEffectsHelper : MonoBehaviour
 	public AudioClip redAlertSound;
 	public AudioClip electricitySound;
 	public AudioClip reserveParachuteSound;
+	public AudioClip powerupSound;
 		//todo credit Freesound.org - "Energy Weapon 001.wav" by DJ Chronos
 		//Freesound.org - "Medium Explosion.wav" by ryansnook
 		//Freesound.org - "Distant explosion.wav" by juskiddink
@@ -59,6 +60,11 @@ public class SoundEffectsHelper : MonoBehaviour
 	public void PlayWaterSplashSound()
 	{
 		MakeSound(waterSplashSound);
+	}
+
+	public void PlayPowerupSound()
+	{
+		MakeSound(powerupSound);
 	}
 
 	public void PlayRedAlertSound()

@@ -1,6 +1,13 @@
-lastUpgrade=00920
+lastUpgrade=00932
 proj.AppId=927810362220
 android.SetupDone=true
 ios.ClientId=342471112773-p1f684v7e8557k0vlg93vnql12ajmc79.apps.googleusercontent.com
 ios.BundleId=com.pcdreams.superjellytroopers
 ios.SetupDone=true
+proj.pluginVersion=0.9.32
+and.BundleId=com.pcdreams.superjellytroopers
+proj.classDir=Assets
+proj.ConstantsClassName=GPSIDS
+and.ResourceData=%3c%3fxml+version%3d%221.0%22+encoding%3d%22utf-8%22%3f%3e%0a%3c%21--%0aGoogle+Play+game+services+IDs.%0aSave+this+file+as+res%2fvalues%2fgames-ids.xml+in+your+project.%0a--%3e%0a%3cresources%3e%0a++%3cstring+name%3d%22app_id%22%3e927810362220%3c%2fstring%3e%0a++%3cstring+name%3d%22package_name%22%3ecom.pcdreams.superjellytroopers%3c%2fstring%3e%0a++%3cstring+name%3d%22achievement_rescued_all_jelly_troopers%22%3eCgkI7La6roAbEAIQAQ%3c%2fstring%3e%0a++%3cstring+name%3d%22achievement_rescued_150_jelly_troopers%22%3eCgkI7La6roAbEAIQAg%3c%2fstring%3e%0a++%3cstring+name%3d%22achievement_rescued_200_jelly_troopers%22%3eCgkI7La6roAbEAIQAw%3c%2fstring%3e%0a++%3cstring+name%3d%22achievement_rescued_110_jelly_troopers%22%3eCgkI7La6roAbEAIQBA%3c%2fstring%3e%0a++%3cstring+name%3d%22achievement_rookie_rescued_50_troopers%22%3eCgkI7La6roAbEAIQBQ%3c%2fstring%3e%0a++%3cstring+name%3d%22achievement_newbie_rescued_25_troopers%22%3eCgkI7La6roAbEAIQCQ%3c%2fstring%3e%0a++%3cstring+name%3d%22leaderboard_jelly_troopers_main_leaderboard%22%3eCgkI7La6roAbEAIQBg%3c%2fstring%3e%0a++%3cstring+name%3d%22leaderboard_jelly_troopers_best_time_leaderboard%22%3eCgkI7La6roAbEAIQBw%3c%2fstring%3e%0a++%3cstring+name%3d%22leaderboard_jelly_troopers_less_deaths_leaderboard%22%3eCgkI7La6roAbEAIQCA%3c%2fstring%3e%0a++%3cstring+name%3d%22leaderboard_super_jelly_troopers_more_saved_soldiers%22%3eCgkI7La6roAbEAIQCg%3c%2fstring%3e%0a%3c%2fresources%3e%0a
+and.ClientId=
+proj.requireGPlus=false

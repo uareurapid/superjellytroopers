@@ -51,7 +51,19 @@ MonoBehaviour:
       y: 0
       width: 0
       height: 0
+    innerLeftCap:
+      serializedVersion: 2
+      x: 0
+      y: 0
+      width: 0
+      height: 0
     rightCap:
+      serializedVersion: 2
+      x: 0
+      y: 0
+      width: 0
+      height: 0
+    innerRightCap:
       serializedVersion: 2
       x: 0
       y: 0
@@ -59,15 +71,15 @@ MonoBehaviour:
       height: 0
     body:
     - serializedVersion: 2
-      x: 166
-      y: 321
-      width: 158
-      height: 18
+      x: .162109375
+      y: .313476562
+      width: .154296875
+      height: .017578125
     - serializedVersion: 2
-      x: 550
-      y: 138
-      width: 93
-      height: 18
+      x: .537109375
+      y: .134765625
+      width: .0908203125
+      height: .017578125
     capOffset: 0
   - applyTo: 0
     zOffset: 0
@@ -78,7 +90,19 @@ MonoBehaviour:
       y: 0
       width: 0
       height: 0
+    innerLeftCap:
+      serializedVersion: 2
+      x: 0
+      y: 0
+      width: 0
+      height: 0
     rightCap:
+      serializedVersion: 2
+      x: 0
+      y: 0
+      width: 0
+      height: 0
+    innerRightCap:
       serializedVersion: 2
       x: 0
       y: 0
@@ -88,8 +112,8 @@ MonoBehaviour:
     - serializedVersion: 2
       x: 0
       y: 0
-      width: 50
-      height: 50
+      width: .048828125
+      height: .048828125
     capOffset: 0
   - applyTo: 0
     zOffset: 0
@@ -100,7 +124,19 @@ MonoBehaviour:
       y: 0
       width: 0
       height: 0
+    innerLeftCap:
+      serializedVersion: 2
+      x: 0
+      y: 0
+      width: 0
+      height: 0
     rightCap:
+      serializedVersion: 2
+      x: 0
+      y: 0
+      width: 0
+      height: 0
+    innerRightCap:
       serializedVersion: 2
       x: 0
       y: 0
@@ -110,8 +146,8 @@ MonoBehaviour:
     - serializedVersion: 2
       x: 0
       y: 0
-      width: 50
-      height: 50
+      width: .048828125
+      height: .048828125
     capOffset: 0
   - applyTo: 3
     zOffset: 0
@@ -122,7 +158,19 @@ MonoBehaviour:
       y: 0
       width: 0
       height: 0
+    innerLeftCap:
+      serializedVersion: 2
+      x: 0
+      y: 0
+      width: 0
+      height: 0
     rightCap:
+      serializedVersion: 2
+      x: 0
+      y: 0
+      width: 0
+      height: 0
+    innerRightCap:
       serializedVersion: 2
       x: 0
       y: 0
@@ -130,11 +178,12 @@ MonoBehaviour:
       height: 0
     body:
     - serializedVersion: 2
-      x: 177
-      y: 305
-      width: 161
-      height: 22
+      x: .172851562
+      y: .297851562
+      width: .157226562
+      height: .021484375
     capOffset: 0
+  isPixel: 0
 --- !u!1001 &100100000
 Prefab:
   m_ObjectHideFlags: 1
@@ -146,4 +195,3 @@ Prefab:
   m_ParentPrefab: {fileID: 0}
   m_RootGameObject: {fileID: 100000}
   m_IsPrefabParent: 1
-  m_IsExploded: 1

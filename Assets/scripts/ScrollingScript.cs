@@ -63,11 +63,11 @@ public class ScrollingScript : MonoBehaviour
 				}
 			}
 
-			if (backgroundPart.Count == 0) {
+			/*if (backgroundPart.Count == 0) {
 				Debug.LogError ("Nothing to scroll!");
 			} else {
 				Debug.Log ("Background parts are: " + backgroundPart.Count);
-			}
+			}*/
 
 			// Sort by position 
 			// -- Depends on the scrolling direction

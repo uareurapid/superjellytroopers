@@ -49,12 +49,13 @@ public class SocialAPI : MonoBehaviour {
 	     if(scripts!=null) {
 	      GameControllerScript controller = scripts.GetComponent<GameControllerScript>();
 	      if(controller!=null) {
-			gameCenterAvailable = controller.IsIOSPlatform() || controller.IsAndroidPlatform() || controller.IsMacOSXPlatform();
+			gameCenterAvailable = controller.IsIOSPlatform() || controller.IsAndroidPlatform(); /*|| controller.IsMacOSXPlatform()*/
 	      }
 	     }
-		
+
+
 		isAuthenticating = false;
-		isAuthenticated = Social.localUser.authenticated;
+		isAuthenticated = gameCenterAvailable ? Social.localUser.authenticated : false;
 		loadingGame = false;
 		skin = Resources.Load("GUISkin") as GUISkin;
 		

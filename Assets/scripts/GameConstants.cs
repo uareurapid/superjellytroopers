@@ -36,6 +36,8 @@ namespace RescueJelly
 				public const string CURRENT_WORLD_KEY = "CurrentWorld";
 				public const string CURRENT_LEVEL_KEY = "CurrentLevel";
 
+				public const string OPENED_PROMO = "opened_promo";
+
 
 				//achievements same ids of GAME CENTER
 				public const string ACHIEVEMENT_NEWBIE_KEY = "grp.rescued_25_jelly_troopers";

@@ -13,7 +13,6 @@ public class MissionsScript : MonoBehaviour {
 	private Texture2D exitTexture;
 	private Rect exitTextureRect;
 
-
 	public bool missionOneCompleted = false;
 	public bool missionTwoCompleted = false;
 	public bool missionThreeCompleted = false;
@@ -96,7 +95,7 @@ public class MissionsScript : MonoBehaviour {
 
 	}
 
-	void CheckMissions() {
+	public void CheckMissions() {
 		bool missionTwoLocked = true;
 		bool missionThreeLocked = true;
 		bool missionFourLocked = true;
@@ -227,7 +226,7 @@ public class MissionsScript : MonoBehaviour {
 		centeredStyleLarger =  new GUIStyle(GUI.skin.label);
 		centeredStyleLarger.alignment = TextAnchor.UpperCenter;
 		centeredStyleLarger.font = scrollFont;
-		centeredStyleLarger.fontSize = scrollFontSize + 5;
+		centeredStyleLarger.fontSize = scrollFontSize + 12;
 	}
 
 	void ChangeTextVisibility() {
@@ -262,7 +261,7 @@ public class MissionsScript : MonoBehaviour {
 			if(isShowingText) {
 				//reset color back to white
 				centeredStyleLarger.normal.textColor =  Color.white;
-				GUI.Label(new Rect(0, 120, Screen.width, 50),
+				GUI.Label(new Rect(0, 100, Screen.width, 50),
 				GetTranslationKey(GameConstants.MSG_CLICK_UNLOCKED_MISSION),centeredStyleLarger);
 				  
 			}	
