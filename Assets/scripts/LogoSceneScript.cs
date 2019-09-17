@@ -270,7 +270,7 @@ public class LogoSceneScript : MonoBehaviour {
 
 				//
 		if(passToNextScene && disabledStory) {
-		   if(Event.current.type == EventType.repaint) {
+		   if(Event.current.type == EventType.Repaint) {
 				
 			  style.normal.textColor = Color.grey;
 			  GUI.Label(new Rect(width/2 - 100, height/2 - 100,300,70),"Loading...",style);

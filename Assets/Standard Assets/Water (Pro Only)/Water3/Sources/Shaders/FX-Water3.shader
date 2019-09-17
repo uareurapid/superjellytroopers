@@ -1,3 +1,6 @@
+// Upgrade NOTE: replaced '_Object2World' with 'unity_ObjectToWorld'
+// Upgrade NOTE: replaced 'mul(UNITY_MATRIX_MVP,*)' with 'UnityObjectToClipPos(*)'
+
 #warning Upgrade NOTE: unity_Scale shader variable was removed; replaced 'unity_Scale.w' with '1.0'
 
 Shader "FX/Water3" { 
@@ -120,7 +123,7 @@ v2f vert(appdata_full v)
 	v2f o;
 	
 	#if defined(WATER_DISPLACEMENT_ON)
-		float2 worldPos = half2(_Object2World[0][3],_Object2World[2][3]) * 1.0;
+		float2 worldPos = half2(unity_ObjectToWorld[0][3],unity_ObjectToWorld[2][3]) * 1.0;
 	#else
 		float2 worldPos = half2(0.0,0.0);
 	#endif
@@ -145,7 +148,7 @@ v2f vert(appdata_full v)
 	#endif		
 	
 	// project diplaced vertex
-	o.pos = mul(UNITY_MATRIX_MVP, v.vertex);	
+	o.pos = UnityObjectToClipPos(v.vertex);	
 	
 	// scrolling uv`s
 	float4 temp = (v.vertex.xzxz+worldPos.xyxy) * _WaveScale4 / 1.0; // / unity_Scale.w + _WaveOffset;
@@ -159,7 +162,7 @@ v2f vert(appdata_full v)
 	o.ref = ComputeScreenPos(o.pos); 	
 	
 	// normal in world space	
-	o.vtxNormalWorld.rgb =  mul((float3x3)_Object2World, v.normal.xyz * 1.0);
+	o.vtxNormalWorld.rgb =  mul((float3x3)unity_ObjectToWorld, v.normal.xyz * 1.0);
 	
 	o.special.xyz = o.viewDirS.xyz;
 	o.special.w = length(o.viewDirS.xyz);//mul(UNITY_MATRIX_MV, v.vertex).z;
