@@ -79,6 +79,9 @@ public class MissionSelectionScript : MonoBehaviour {
 				// Load a skin for the buttons
 	 skin = Resources.Load("GUISkin") as GUISkin;
 	 isMobilePlatform = (platform == RuntimePlatform.IPhonePlayer || platform == RuntimePlatform.Android || platform == RuntimePlatform.BlackBerryPlayer);
+	 if(!isMobilePlatform) {
+		noticeText.enabled = false;
+	 }
 	 exitTexture = Resources.Load("menu") as Texture2D;
 
 	 Invoke("EnableInteraction",1.2f);
@@ -113,15 +116,18 @@ public class MissionSelectionScript : MonoBehaviour {
 		 break;
 	   }
 	   //do not unlock mission 4 with ads
-	   canShowAds = world < 4;
+	   canShowAds = (world < 4) && isMobilePlatform;
 
-	   noticeText.text = canShowAds ? "Unlock blocked missions by watching a small video!" : "The last mission is only for braves, no cheat allowed!";
+	   if(isMobilePlatform) {
+			noticeText.text = canShowAds ? "Unlock blocked missions by watching a small video!" : "The last mission is only for braves, no cheat allowed!";
+	   }	
+	   
 
-	   twoUnlocked = PlayerPrefs.HasKey(worldKey + GameConstants.MISSION_SELECT_LEVEL_TWO_KEY);
-	   threeUnlocked =  PlayerPrefs.HasKey(worldKey + GameConstants.MISSION_SELECT_LEVEL_THREE_KEY);
-	   fourUnlocked =  PlayerPrefs.HasKey(worldKey + GameConstants.MISSION_SELECT_LEVEL_FOUR_KEY);
-	   fiveUnlocked =  PlayerPrefs.HasKey(worldKey + GameConstants.MISSION_SELECT_LEVEL_FIVE_KEY);
-	   sixUnlocked =  PlayerPrefs.HasKey(worldKey + GameConstants.MISSION_SELECT_LEVEL_SIX_KEY);
+	   twoUnlocked = PlayerPrefs.HasKey(worldKey + GameConstants.MISSION_SELECT_LEVEL_TWO_KEY) || Debug.isDebugBuild;
+	   threeUnlocked =  PlayerPrefs.HasKey(worldKey + GameConstants.MISSION_SELECT_LEVEL_THREE_KEY) || Debug.isDebugBuild;
+	   fourUnlocked =  PlayerPrefs.HasKey(worldKey + GameConstants.MISSION_SELECT_LEVEL_FOUR_KEY) || Debug.isDebugBuild;
+	   fiveUnlocked =  PlayerPrefs.HasKey(worldKey + GameConstants.MISSION_SELECT_LEVEL_FIVE_KEY) || Debug.isDebugBuild;
+	   sixUnlocked =  PlayerPrefs.HasKey(worldKey + GameConstants.MISSION_SELECT_LEVEL_SIX_KEY) || Debug.isDebugBuild;
 
 	}
 
@@ -209,7 +215,7 @@ public class MissionSelectionScript : MonoBehaviour {
 			
 			Vector2 mousePosition = Event.current.mousePosition;
 
-			if(showRewards && !isShowingAds){
+			if(showRewards && !isShowingAds && canShowAds){
 				if(acceptBonusRect.Contains(mousePosition) ) {
 			       AcceptShowAds();
 			    }
@@ -222,7 +228,7 @@ public class MissionSelectionScript : MonoBehaviour {
 				if(oneUnlocked) {
 					LoadNextLevel(1);
 				}
-				else {
+				else if(canShowAds && isMobilePlatform){
 				  //TODO show ad question
 				  ShowRewardController(worldKey + GameConstants.MISSION_SELECT_LEVEL_ONE_KEY);
 				}
@@ -233,7 +239,7 @@ public class MissionSelectionScript : MonoBehaviour {
 				if(twoUnlocked) {
 					LoadNextLevel(2);
 				}
-				else {
+				else if(canShowAds && isMobilePlatform) {
 				 //TODO show ad question
 					ShowRewardController(worldKey + GameConstants.MISSION_SELECT_LEVEL_TWO_KEY);
 				}
@@ -245,7 +251,7 @@ public class MissionSelectionScript : MonoBehaviour {
 				if(threeUnlocked) {
 					LoadNextLevel(3);
 				}
-				else {
+				else if(canShowAds && isMobilePlatform) {
 				 //TODO show ad question
 					ShowRewardController(worldKey + GameConstants.MISSION_SELECT_LEVEL_THREE_KEY);
 				}
@@ -255,7 +261,7 @@ public class MissionSelectionScript : MonoBehaviour {
 				if(fourUnlocked) {
 					LoadNextLevel(4);
 				}
-				else {
+				else if(canShowAds && isMobilePlatform) {
 				 //TODO show ad question
 					ShowRewardController(worldKey + GameConstants.MISSION_SELECT_LEVEL_FOUR_KEY);
 				}
@@ -266,7 +272,7 @@ public class MissionSelectionScript : MonoBehaviour {
 				if(fiveUnlocked) {
 					LoadNextLevel(5);
 				}
-				else {
+				else if(canShowAds && isMobilePlatform) {
 				 //TODO show ad question
 					ShowRewardController(worldKey + GameConstants.MISSION_SELECT_LEVEL_FIVE_KEY);
 				}
@@ -276,7 +282,7 @@ public class MissionSelectionScript : MonoBehaviour {
 				if(sixUnlocked) {
 				  LoadNextLevel(6);
 				}
-				else {
+				else if(canShowAds && isMobilePlatform){
 				 //TODO show ad question
 					ShowRewardController(worldKey + GameConstants.MISSION_SELECT_LEVEL_SIX_KEY);
 				}
