@@ -76,7 +76,7 @@ public class RenderTextureScript : MonoBehaviour {
 
 		if(Event.current.type==EventType.Repaint && !controller.IsGameOver()) {
 
-			GUI.Label(new Rect(730,height-60,100,40),msg);
+			GUI.Label(new Rect(700,height-60,100,40),msg);
 
 			Rect booster = new Rect(790,height-60,48,48);
 			Rect time = new Rect(842,height-60,48,48);

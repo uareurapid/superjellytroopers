@@ -115,7 +115,7 @@ public class TextScrollScript : MonoBehaviour {
 			centeredStyleLarger.normal.textColor =  Color.white;
 
 			centeredStyleLarger.fontSize = 25;
-			GUI.Label(new Rect(width/3,height-100,500,40),"Copyright ©2015",centeredStyleLarger);		
+			GUI.Label(new Rect(width/3,height-100,500,40),"Copyright ©2015-2019",centeredStyleLarger);		
 			GUI.Label(new Rect(width/3,height-70,500,40),"http://www.pcdreams-software.com",centeredStyleLarger);
 		}
 
