@@ -1,0 +1,625 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+	<Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+	<Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+	<ProductVersion>10.0.20506</ProductVersion>
+	<SchemaVersion>2.0</SchemaVersion>
+	<ProjectGuid>{5BA9C4B8-5F70-9E5B-2CD2-79929517CCFF}</ProjectGuid>
+	<OutputType>Library</OutputType>
+	<AppDesignerFolder>Properties</AppDesignerFolder>
+	<RootNamespace></RootNamespace>
+	<AssemblyName>Assembly-CSharp</AssemblyName>
+	<TargetFrameworkVersion>v3.5</TargetFrameworkVersion>
+	<FileAlignment>512</FileAlignment>
+	<BaseDirectory>Assets</BaseDirectory>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+	<DebugSymbols>true</DebugSymbols>
+	<DebugType>full</DebugType>
+	<Optimize>false</Optimize>
+	<OutputPath>Temp\bin\Debug\</OutputPath>
+	<DefineConstants>DEBUG;TRACE;UNITY_5_1_2;UNITY_5_1;UNITY_5;ENABLE_NEW_BUGREPORTER;ENABLE_2D_PHYSICS;ENABLE_4_6_FEATURES;ENABLE_AUDIO;ENABLE_CACHING;ENABLE_CLOTH;ENABLE_FRAME_DEBUGGER;ENABLE_GENERICS;ENABLE_HOME_SCREEN;ENABLE_IMAGEEFFECTS;ENABLE_LIGHT_PROBES_LEGACY;ENABLE_MICROPHONE;ENABLE_MULTIPLE_DISPLAYS;ENABLE_PHYSICS;ENABLE_PHYSICS_PHYSX3;ENABLE_PLUGIN_INSPECTOR;ENABLE_SHADOWS;ENABLE_SINGLE_INSTANCE_BUILD_SETTING;ENABLE_SPRITES;ENABLE_TERRAIN;ENABLE_UNET;ENABLE_UNITYEVENTS;ENABLE_VR;ENABLE_WEBCAM;ENABLE_WWW;ENABLE_CLOUD_SERVICES;ENABLE_CLOUD_SERVICES_ANALYTICS;ENABLE_CLOUD_SERVICES_UNET;ENABLE_CLOUD_LICENSE;ENABLE_AUDIOMIXER_SUSPEND;ENABLE_EDITOR_METRICS;INCLUDE_DYNAMIC_GI;INCLUDE_GI;INCLUDE_IL2CPP;INCLUDE_DIRECTX12;PLATFORM_SUPPORTS_MONO;ENABLE_LOCALIZATION;UNITY_IPHONE;ENABLE_RUNTIME_GI;ENABLE_SUBSTANCE;ENABLE_GAMECENTER;ENABLE_NETWORK;UNITY_IPHONE_API;UNITY_IOS;ENABLE_TEXTUREID_MAP;PLAYERCONNECTION_LISTENS_FIXED_PORT;DEBUGGER_LISTENS_FIXED_PORT;ENABLE_IL2CPP;ENABLE_PROFILER;DEBUG;TRACE;UNITY_ASSERTIONS;UNITY_EDITOR;UNITY_EDITOR_64;UNITY_EDITOR_OSX;CROSS_PLATFORM_INPUT;MOBILE_INPUT;NO_GPGS;DEBUG_BUILD</DefineConstants>
+	<ErrorReport>prompt</ErrorReport>
+	<WarningLevel>4</WarningLevel>
+	<NoWarn>0169</NoWarn>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+	<DebugType>pdbonly</DebugType>
+	<Optimize>true</Optimize>
+	<OutputPath>Temp\bin\Release\</OutputPath>
+	<DefineConstants>TRACE</DefineConstants>
+	<ErrorReport>prompt</ErrorReport>
+	<WarningLevel>4</WarningLevel>
+	<NoWarn>0169</NoWarn>
+  </PropertyGroup>
+  <ItemGroup>
+	<Reference Include="System" />
+    <Reference Include="System.XML" />
+	<Reference Include="System.Core" />
+	<Reference Include="System.Xml.Linq" />
+	<Reference Include="UnityEngine">
+	  <HintPath>/Applications/Unity/Unity.app/Contents/Frameworks/Managed/UnityEngine.dll</HintPath>
+	</Reference>
+	<Reference Include="UnityEditor">
+	  <HintPath>/Applications/Unity/Unity.app/Contents/Frameworks/Managed/UnityEditor.dll</HintPath>
+	</Reference>
+  </ItemGroup>
+  <ItemGroup>
+     <Compile Include="Assets\2DWater\Scripts\C#\SpringScript.cs" />
+     <Compile Include="Assets\2DWater\Scripts\C#\Water.cs" />
+     <Compile Include="Assets\2DWater\Scripts\C#\WaveSimulator.cs" />
+     <Compile Include="Assets\BlackBerry\IAP\BlackBerryIAP.cs" />
+     <Compile Include="Assets\BlackBerry\IAP\BlackBerryIAPTest.cs" />
+     <Compile Include="Assets\Chartboost\Examples\ChartboostExample\ChartboostExample.cs" />
+     <Compile Include="Assets\Chartboost\Scripts\CBExternal.cs" />
+     <Compile Include="Assets\Chartboost\Scripts\CBInPlay.cs" />
+     <Compile Include="Assets\Chartboost\Scripts\CBJSON.cs" />
+     <Compile Include="Assets\Chartboost\Scripts\CBSettings.cs" />
+     <Compile Include="Assets\Chartboost\Scripts\Chartboost.cs" />
+     <Compile Include="Assets\Elementals\Scripts\OrbitCamera.cs" />
+     <Compile Include="Assets\Elementals\Scripts\TestParticles.cs" />
+     <Compile Include="Assets\Example Games\2D Scrolling Shooter\Scripts\Background.cs" />
+     <Compile Include="Assets\Example Games\2D Scrolling Shooter\Scripts\Bullet.cs" />
+     <Compile Include="Assets\Example Games\2D Scrolling Shooter\Scripts\DestroyArea.cs" />
+     <Compile Include="Assets\Example Games\2D Scrolling Shooter\Scripts\Emitter.cs" />
+     <Compile Include="Assets\Example Games\2D Scrolling Shooter\Scripts\Enemy.cs" />
+     <Compile Include="Assets\Example Games\2D Scrolling Shooter\Scripts\Explosion.cs" />
+     <Compile Include="Assets\Example Games\2D Scrolling Shooter\Scripts\Manager.cs" />
+     <Compile Include="Assets\Example Games\2D Scrolling Shooter\Scripts\ObjectPool.cs" />
+     <Compile Include="Assets\Example Games\2D Scrolling Shooter\Scripts\PlayerScr1.cs" />
+     <Compile Include="Assets\Example Games\2D Scrolling Shooter\Scripts\ShipResetScript.cs" />
+     <Compile Include="Assets\Example Games\2D Scrolling Shooter\Scripts\Spaceship.cs" />
+     <Compile Include="Assets\Example Games\2D Scrolling Shooter\Scripts\WaveScript.cs" />
+     <Compile Include="Assets\Example Games\Angry Birds Style\Scripts\ProjectileDragging.cs" />
+     <Compile Include="Assets\Example Games\Angry Birds Style\Scripts\ProjectileFollow.cs" />
+     <Compile Include="Assets\Example Games\Angry Birds Style\Scripts\Resetter.cs" />
+     <Compile Include="Assets\Example Games\Angry Birds Style\Scripts\TargetDamage.cs" />
+     <Compile Include="Assets\Example Games\Flappy Bird Style\Scripts\BirdScript.cs" />
+     <Compile Include="Assets\Example Games\Flappy Bird Style\Scripts\CameraFollow.cs" />
+     <Compile Include="Assets\Example Games\Flappy Bird Style\Scripts\ColumnScript.cs" />
+     <Compile Include="Assets\Example Games\Flappy Bird Style\Scripts\ColumnSpawnScript.cs" />
+     <Compile Include="Assets\Example Games\Flappy Bird Style\Scripts\GameControlScript.cs" />
+     <Compile Include="Assets\Example Games\Flappy Bird Style\Scripts\ScrollScript.cs" />
+     <Compile Include="Assets\Example Games\Hat Trick - The Catch Game\Scripts\HT_DestroyOnContact.cs" />
+     <Compile Include="Assets\Example Games\Hat Trick - The Catch Game\Scripts\HT_Explode.cs" />
+     <Compile Include="Assets\Example Games\Hat Trick - The Catch Game\Scripts\HT_GameController.cs" />
+     <Compile Include="Assets\Example Games\Hat Trick - The Catch Game\Scripts\HT_HatController.cs" />
+     <Compile Include="Assets\Example Games\Hat Trick - The Catch Game\Scripts\HT_Restart.cs" />
+     <Compile Include="Assets\Example Games\Hat Trick - The Catch Game\Scripts\HT_Score.cs" />
+     <Compile Include="Assets\Example Games\Hat Trick - The Catch Game\Scripts\HT_SetParticleSortingLayer.cs" />
+     <Compile Include="Assets\Example Games\Hat Trick - The Catch Game\Scripts\HT_StartGame.cs" />
+     <Compile Include="Assets\Ferr\2D\Scripts\Ferr2D_Animator.cs" />
+     <Compile Include="Assets\Ferr\2D\Scripts\Ferr2D_DynamicMesh.cs" />
+     <Compile Include="Assets\Ferr\2D\Scripts\Ferr2D_IPath.cs" />
+     <Compile Include="Assets\Ferr\2D\Scripts\Ferr2D_Path.cs" />
+     <Compile Include="Assets\Ferr\2D\Scripts\Ferr2D_Sprite.cs" />
+     <Compile Include="Assets\Ferr\2D\Scripts\Ferr2D_Triangulator.cs" />
+     <Compile Include="Assets\Ferr\2D\Scripts\poly2tri.cs\P2T.cs" />
+     <Compile Include="Assets\Ferr\2D\Scripts\poly2tri.cs\Triangulation\Delaunay\DelaunayTriangle.cs" />
+     <Compile Include="Assets\Ferr\2D\Scripts\poly2tri.cs\Triangulation\Delaunay\Sweep\AdvancingFront.cs" />
+     <Compile Include="Assets\Ferr\2D\Scripts\poly2tri.cs\Triangulation\Delaunay\Sweep\AdvancingFrontNode.cs" />
+     <Compile Include="Assets\Ferr\2D\Scripts\poly2tri.cs\Triangulation\Delaunay\Sweep\DTSweep.cs" />
+     <Compile Include="Assets\Ferr\2D\Scripts\poly2tri.cs\Triangulation\Delaunay\Sweep\DTSweepBasin.cs" />
+     <Compile Include="Assets\Ferr\2D\Scripts\poly2tri.cs\Triangulation\Delaunay\Sweep\DTSweepConstraint.cs" />
+     <Compile Include="Assets\Ferr\2D\Scripts\poly2tri.cs\Triangulation\Delaunay\Sweep\DTSweepContext.cs" />
+     <Compile Include="Assets\Ferr\2D\Scripts\poly2tri.cs\Triangulation\Delaunay\Sweep\DTSweepDebugContext.cs" />
+     <Compile Include="Assets\Ferr\2D\Scripts\poly2tri.cs\Triangulation\Delaunay\Sweep\DTSweepEdgeEvent.cs" />
+     <Compile Include="Assets\Ferr\2D\Scripts\poly2tri.cs\Triangulation\Delaunay\Sweep\DTSweepPointComparator.cs" />
+     <Compile Include="Assets\Ferr\2D\Scripts\poly2tri.cs\Triangulation\Delaunay\Sweep\PointOnEdgeException.cs" />
+     <Compile Include="Assets\Ferr\2D\Scripts\poly2tri.cs\Triangulation\ITriangulatable.cs" />
+     <Compile Include="Assets\Ferr\2D\Scripts\poly2tri.cs\Triangulation\Orientation.cs" />
+     <Compile Include="Assets\Ferr\2D\Scripts\poly2tri.cs\Triangulation\Polygon\Contour.cs" />
+     <Compile Include="Assets\Ferr\2D\Scripts\poly2tri.cs\Triangulation\Polygon\Polygon.cs" />
+     <Compile Include="Assets\Ferr\2D\Scripts\poly2tri.cs\Triangulation\Polygon\PolygonPoint.cs" />
+     <Compile Include="Assets\Ferr\2D\Scripts\poly2tri.cs\Triangulation\Polygon\PolygonSet.cs" />
+     <Compile Include="Assets\Ferr\2D\Scripts\poly2tri.cs\Triangulation\Polygon\PolygonUtil.cs" />
+     <Compile Include="Assets\Ferr\2D\Scripts\poly2tri.cs\Triangulation\Sets\ConstrainedPointSet.cs" />
+     <Compile Include="Assets\Ferr\2D\Scripts\poly2tri.cs\Triangulation\Sets\PointSet.cs" />
+     <Compile Include="Assets\Ferr\2D\Scripts\poly2tri.cs\Triangulation\TriangulationAlgorithm.cs" />
+     <Compile Include="Assets\Ferr\2D\Scripts\poly2tri.cs\Triangulation\TriangulationConstraint.cs" />
+     <Compile Include="Assets\Ferr\2D\Scripts\poly2tri.cs\Triangulation\TriangulationContext.cs" />
+     <Compile Include="Assets\Ferr\2D\Scripts\poly2tri.cs\Triangulation\TriangulationDebugContext.cs" />
+     <Compile Include="Assets\Ferr\2D\Scripts\poly2tri.cs\Triangulation\TriangulationMode.cs" />
+     <Compile Include="Assets\Ferr\2D\Scripts\poly2tri.cs\Triangulation\TriangulationPoint.cs" />
+     <Compile Include="Assets\Ferr\2D\Scripts\poly2tri.cs\Triangulation\Util\PointGenerator.cs" />
+     <Compile Include="Assets\Ferr\2D\Scripts\poly2tri.cs\Triangulation\Util\PolygonGenerator.cs" />
+     <Compile Include="Assets\Ferr\2D\Scripts\poly2tri.cs\Triangulation\Util\TriangulationUtil.cs" />
+     <Compile Include="Assets\Ferr\2D\Scripts\poly2tri.cs\Utility\FixedArray3.cs" />
+     <Compile Include="Assets\Ferr\2D\Scripts\poly2tri.cs\Utility\FixedBitArray3.cs" />
+     <Compile Include="Assets\Ferr\2D\Scripts\poly2tri.cs\Utility\MathUtil.cs" />
+     <Compile Include="Assets\Ferr\2D\Scripts\poly2tri.cs\Utility\Point2D.cs" />
+     <Compile Include="Assets\Ferr\2D\Scripts\poly2tri.cs\Utility\Point2DList.cs" />
+     <Compile Include="Assets\Ferr\2D\Scripts\poly2tri.cs\Utility\Rect2D.cs" />
+     <Compile Include="Assets\Ferr\2DTerrain\Examples\Assets\AutoBoxCollider.cs" />
+     <Compile Include="Assets\Ferr\2DTerrain\Examples\Assets\BlobShadow.cs" />
+     <Compile Include="Assets\Ferr\2DTerrain\Examples\Assets\CameraMove.cs" />
+     <Compile Include="Assets\Ferr\2DTerrain\Examples\Assets\InfiniteTerrain.cs" />
+     <Compile Include="Assets\Ferr\2DTerrain\Examples\Assets\InfiniteTerrainCamera.cs" />
+     <Compile Include="Assets\Ferr\2DTerrain\Examples\Assets\ProceduralInsert.cs" />
+     <Compile Include="Assets\Ferr\2DTerrain\Examples\Assets\Toss.cs" />
+     <Compile Include="Assets\Ferr\2DTerrain\Examples\Assets\TumbleweedMotion.cs" />
+     <Compile Include="Assets\Ferr\2DTerrain\Examples\Assets\TumbleweedSpawner.cs" />
+     <Compile Include="Assets\Ferr\2DTerrain\Scripts\Ferr2DT_DynamicMesh.cs" />
+     <Compile Include="Assets\Ferr\2DTerrain\Scripts\Ferr2DT_PathTerrain.cs" />
+     <Compile Include="Assets\Ferr\2DTerrain\Scripts\Ferr2DT_TerrainMaterial.cs" />
+     <Compile Include="Assets\Ferr\2DTerrain\Scripts\Ferr2DT_Triangulator.cs" />
+     <Compile Include="Assets\Ferr\2DTerrain\Scripts\LibTessDotNet\Dict.cs" />
+     <Compile Include="Assets\Ferr\2DTerrain\Scripts\LibTessDotNet\Geom.cs" />
+     <Compile Include="Assets\Ferr\2DTerrain\Scripts\LibTessDotNet\Mesh.cs" />
+     <Compile Include="Assets\Ferr\2DTerrain\Scripts\LibTessDotNet\MeshUtils.cs" />
+     <Compile Include="Assets\Ferr\2DTerrain\Scripts\LibTessDotNet\PriorityHeap.cs" />
+     <Compile Include="Assets\Ferr\2DTerrain\Scripts\LibTessDotNet\PriorityQueue.cs" />
+     <Compile Include="Assets\Ferr\2DTerrain\Scripts\LibTessDotNet\Sweep.cs" />
+     <Compile Include="Assets\Ferr\2DTerrain\Scripts\LibTessDotNet\Tess.cs" />
+     <Compile Include="Assets\Ferr\Common\Ferr_Color.cs" />
+     <Compile Include="Assets\Ferr\Common\Ferr_JSON.cs" />
+     <Compile Include="Assets\Ferr\Common\Interfaces\IBlendPaintType.cs" />
+     <Compile Include="Assets\Ferr\Common\Interfaces\IBlendPaintable.cs" />
+     <Compile Include="Assets\Ferr\Common\Interfaces\IProceduralMesh.cs" />
+     <Compile Include="Assets\Ferr\Common\Scripts\ColorUtil.cs" />
+     <Compile Include="Assets\Ferr\Common\Scripts\LambdaComparer.cs" />
+     <Compile Include="Assets\Ferr\Common\Scripts\LayerUtil.cs" />
+     <Compile Include="Assets\Ferr\Common\Scripts\LayoutAdvancer.cs" />
+     <Compile Include="Assets\Ferr\Common\Scripts\LogoLock.cs" />
+     <Compile Include="Assets\Ferr\Common\Scripts\RenderUtility.cs" />
+     <Compile Include="Assets\Ferr\Common\Scripts\SOUtil.cs" />
+     <Compile Include="Assets\First Ground\Arctic\Scripts\FGArcticController.cs" />
+     <Compile Include="Assets\First Ground\Arctic\Scripts\FGArcticOrbit.cs" />
+     <Compile Include="Assets\First Ground\Arctic\Scripts\FGArcticPlayer.cs" />
+     <Compile Include="Assets\GooglePlayGames\BasicApi\Achievement.cs" />
+     <Compile Include="Assets\GooglePlayGames\BasicApi\CommonTypes.cs" />
+     <Compile Include="Assets\GooglePlayGames\BasicApi\DummyClient.cs" />
+     <Compile Include="Assets\GooglePlayGames\BasicApi\Events\IEvent.cs" />
+     <Compile Include="Assets\GooglePlayGames\BasicApi\Events\IEventsClient.cs" />
+     <Compile Include="Assets\GooglePlayGames\BasicApi\IPlayGamesClient.cs" />
+     <Compile Include="Assets\GooglePlayGames\BasicApi\Multiplayer\IRealTimeMultiplayerClient.cs" />
+     <Compile Include="Assets\GooglePlayGames\BasicApi\Multiplayer\ITurnBasedMultiplayerClient.cs" />
+     <Compile Include="Assets\GooglePlayGames\BasicApi\Multiplayer\Invitation.cs" />
+     <Compile Include="Assets\GooglePlayGames\BasicApi\Multiplayer\MatchOutcome.cs" />
+     <Compile Include="Assets\GooglePlayGames\BasicApi\Multiplayer\Participant.cs" />
+     <Compile Include="Assets\GooglePlayGames\BasicApi\Multiplayer\Player.cs" />
+     <Compile Include="Assets\GooglePlayGames\BasicApi\Multiplayer\RealTimeMultiplayerListener.cs" />
+     <Compile Include="Assets\GooglePlayGames\BasicApi\Multiplayer\TurnBasedMatch.cs" />
+     <Compile Include="Assets\GooglePlayGames\BasicApi\Nearby\AdvertisingResult.cs" />
+     <Compile Include="Assets\GooglePlayGames\BasicApi\Nearby\ConnectionRequest.cs" />
+     <Compile Include="Assets\GooglePlayGames\BasicApi\Nearby\ConnectionResponse.cs" />
+     <Compile Include="Assets\GooglePlayGames\BasicApi\Nearby\DummyNearbyConnectionClient.cs" />
+     <Compile Include="Assets\GooglePlayGames\BasicApi\Nearby\EndpointDetails.cs" />
+     <Compile Include="Assets\GooglePlayGames\BasicApi\Nearby\INearbyConnectionClient.cs" />
+     <Compile Include="Assets\GooglePlayGames\BasicApi\Nearby\NearbyConnectionConfiguration.cs" />
+     <Compile Include="Assets\GooglePlayGames\BasicApi\OnStateLoadedListener.cs" />
+     <Compile Include="Assets\GooglePlayGames\BasicApi\PlayGamesClientConfiguration.cs" />
+     <Compile Include="Assets\GooglePlayGames\BasicApi\Quests\IQuest.cs" />
+     <Compile Include="Assets\GooglePlayGames\BasicApi\Quests\IQuestMilestone.cs" />
+     <Compile Include="Assets\GooglePlayGames\BasicApi\Quests\IQuestsClient.cs" />
+     <Compile Include="Assets\GooglePlayGames\BasicApi\SavedGame\ISavedGameClient.cs" />
+     <Compile Include="Assets\GooglePlayGames\BasicApi\SavedGame\ISavedGameMetadata.cs" />
+     <Compile Include="Assets\GooglePlayGames\BasicApi\SavedGame\SavedGameMetadataUpdate.cs" />
+     <Compile Include="Assets\GooglePlayGames\GameInfo.cs" />
+     <Compile Include="Assets\GooglePlayGames\ISocialPlatform\PlayGamesAchievement.cs" />
+     <Compile Include="Assets\GooglePlayGames\ISocialPlatform\PlayGamesLocalUser.cs" />
+     <Compile Include="Assets\GooglePlayGames\ISocialPlatform\PlayGamesPlatform.cs" />
+     <Compile Include="Assets\GooglePlayGames\ISocialPlatform\PlayGamesScore.cs" />
+     <Compile Include="Assets\GooglePlayGames\ISocialPlatform\PlayGamesUserProfile.cs" />
+     <Compile Include="Assets\GooglePlayGames\OurUtils\Logger.cs" />
+     <Compile Include="Assets\GooglePlayGames\OurUtils\Misc.cs" />
+     <Compile Include="Assets\GooglePlayGames\OurUtils\PlayGamesHelperObject.cs" />
+     <Compile Include="Assets\GooglePlayGames\Platforms\Native\AndroidAppStateClient.cs" />
+     <Compile Include="Assets\GooglePlayGames\Platforms\Native\AppStateClient.cs" />
+     <Compile Include="Assets\GooglePlayGames\Platforms\Native\CallbackUtils.cs" />
+     <Compile Include="Assets\GooglePlayGames\Platforms\Native\ConversionUtils.cs" />
+     <Compile Include="Assets\GooglePlayGames\Platforms\Native\Cwrapper\Achievement.cs" />
+     <Compile Include="Assets\GooglePlayGames\Platforms\Native\Cwrapper\AchievementManager.cs" />
+     <Compile Include="Assets\GooglePlayGames\Platforms\Native\Cwrapper\AndroidPlatformConfiguration.cs" />
+     <Compile Include="Assets\GooglePlayGames\Platforms\Native\Cwrapper\Builder.cs" />
+     <Compile Include="Assets\GooglePlayGames\Platforms\Native\Cwrapper\CommonErrorStatus.cs" />
+     <Compile Include="Assets\GooglePlayGames\Platforms\Native\Cwrapper\EndpointDiscoveryListenerHelper.cs" />
+     <Compile Include="Assets\GooglePlayGames\Platforms\Native\Cwrapper\Event.cs" />
+     <Compile Include="Assets\GooglePlayGames\Platforms\Native\Cwrapper\EventManager.cs" />
+     <Compile Include="Assets\GooglePlayGames\Platforms\Native\Cwrapper\GameServices.cs" />
+     <Compile Include="Assets\GooglePlayGames\Platforms\Native\Cwrapper\InternalHooks.cs" />
+     <Compile Include="Assets\GooglePlayGames\Platforms\Native\Cwrapper\IosPlatformConfiguration.cs" />
+     <Compile Include="Assets\GooglePlayGames\Platforms\Native\Cwrapper\Leaderboard.cs" />
+     <Compile Include="Assets\GooglePlayGames\Platforms\Native\Cwrapper\LeaderboardManager.cs" />
+     <Compile Include="Assets\GooglePlayGames\Platforms\Native\Cwrapper\MessageListenerHelper.cs" />
+     <Compile Include="Assets\GooglePlayGames\Platforms\Native\Cwrapper\MultiplayerInvitation.cs" />
+     <Compile Include="Assets\GooglePlayGames\Platforms\Native\Cwrapper\MultiplayerParticipant.cs" />
+     <Compile Include="Assets\GooglePlayGames\Platforms\Native\Cwrapper\NearbyConnectionTypes.cs" />
+     <Compile Include="Assets\GooglePlayGames\Platforms\Native\Cwrapper\NearbyConnections.cs" />
+     <Compile Include="Assets\GooglePlayGames\Platforms\Native\Cwrapper\NearbyConnectionsBuilder.cs" />
+     <Compile Include="Assets\GooglePlayGames\Platforms\Native\Cwrapper\NearbyConnectionsStatus.cs" />
+     <Compile Include="Assets\GooglePlayGames\Platforms\Native\Cwrapper\ParticipantResults.cs" />
+     <Compile Include="Assets\GooglePlayGames\Platforms\Native\Cwrapper\Player.cs" />
+     <Compile Include="Assets\GooglePlayGames\Platforms\Native\Cwrapper\PlayerManager.cs" />
+     <Compile Include="Assets\GooglePlayGames\Platforms\Native\Cwrapper\Quest.cs" />
+     <Compile Include="Assets\GooglePlayGames\Platforms\Native\Cwrapper\QuestManager.cs" />
+     <Compile Include="Assets\GooglePlayGames\Platforms\Native\Cwrapper\QuestMilestone.cs" />
+     <Compile Include="Assets\GooglePlayGames\Platforms\Native\Cwrapper\RealTimeEventListenerHelper.cs" />
+     <Compile Include="Assets\GooglePlayGames\Platforms\Native\Cwrapper\RealTimeMultiplayerManager.cs" />
+     <Compile Include="Assets\GooglePlayGames\Platforms\Native\Cwrapper\RealTimeRoom.cs" />
+     <Compile Include="Assets\GooglePlayGames\Platforms\Native\Cwrapper\RealTimeRoomConfig.cs" />
+     <Compile Include="Assets\GooglePlayGames\Platforms\Native\Cwrapper\RealTimeRoomConfigBuilder.cs" />
+     <Compile Include="Assets\GooglePlayGames\Platforms\Native\Cwrapper\Score.cs" />
+     <Compile Include="Assets\GooglePlayGames\Platforms\Native\Cwrapper\ScorePage.cs" />
+     <Compile Include="Assets\GooglePlayGames\Platforms\Native\Cwrapper\ScoreSummary.cs" />
+     <Compile Include="Assets\GooglePlayGames\Platforms\Native\Cwrapper\Sentinels.cs" />
+     <Compile Include="Assets\GooglePlayGames\Platforms\Native\Cwrapper\SnapshotManager.cs" />
+     <Compile Include="Assets\GooglePlayGames\Platforms\Native\Cwrapper\SnapshotMetadata.cs" />
+     <Compile Include="Assets\GooglePlayGames\Platforms\Native\Cwrapper\SnapshotMetadataChange.cs" />
+     <Compile Include="Assets\GooglePlayGames\Platforms\Native\Cwrapper\SnapshotMetadataChangeBuilder.cs" />
+     <Compile Include="Assets\GooglePlayGames\Platforms\Native\Cwrapper\Status.cs" />
+     <Compile Include="Assets\GooglePlayGames\Platforms\Native\Cwrapper\SymbolLocation.cs" />
+     <Compile Include="Assets\GooglePlayGames\Platforms\Native\Cwrapper\TurnBasedMatch.cs" />
+     <Compile Include="Assets\GooglePlayGames\Platforms\Native\Cwrapper\TurnBasedMatchConfig.cs" />
+     <Compile Include="Assets\GooglePlayGames\Platforms\Native\Cwrapper\TurnBasedMatchConfigBuilder.cs" />
+     <Compile Include="Assets\GooglePlayGames\Platforms\Native\Cwrapper\TurnBasedMultiplayerManager.cs" />
+     <Compile Include="Assets\GooglePlayGames\Platforms\Native\Cwrapper\Types.cs" />
+     <Compile Include="Assets\GooglePlayGames\Platforms\Native\JavaUtils.cs" />
+     <Compile Include="Assets\GooglePlayGames\Platforms\Native\NativeClient.cs" />
+     <Compile Include="Assets\GooglePlayGames\Platforms\Native\NativeEventClient.cs" />
+     <Compile Include="Assets\GooglePlayGames\Platforms\Native\NativeNearbyConnectionClientFactory.cs" />
+     <Compile Include="Assets\GooglePlayGames\Platforms\Native\NativeNearbyConnectionsClient.cs" />
+     <Compile Include="Assets\GooglePlayGames\Platforms\Native\NativeQuestClient.cs" />
+     <Compile Include="Assets\GooglePlayGames\Platforms\Native\NativeRealtimeMultiplayerClient.cs" />
+     <Compile Include="Assets\GooglePlayGames\Platforms\Native\NativeSavedGameClient.cs" />
+     <Compile Include="Assets\GooglePlayGames\Platforms\Native\NativeTurnBasedMultiplayerClient.cs" />
+     <Compile Include="Assets\GooglePlayGames\Platforms\Native\PInvoke\AchievementManager.cs" />
+     <Compile Include="Assets\GooglePlayGames\Platforms\Native\PInvoke\AndroidPlatformConfiguration.cs" />
+     <Compile Include="Assets\GooglePlayGames\Platforms\Native\PInvoke\BaseReferenceHolder.cs" />
+     <Compile Include="Assets\GooglePlayGames\Platforms\Native\PInvoke\Callbacks.cs" />
+     <Compile Include="Assets\GooglePlayGames\Platforms\Native\PInvoke\EventManager.cs" />
+     <Compile Include="Assets\GooglePlayGames\Platforms\Native\PInvoke\GameServices.cs" />
+     <Compile Include="Assets\GooglePlayGames\Platforms\Native\PInvoke\GameServicesBuilder.cs" />
+     <Compile Include="Assets\GooglePlayGames\Platforms\Native\PInvoke\IosPlatformConfiguration.cs" />
+     <Compile Include="Assets\GooglePlayGames\Platforms\Native\PInvoke\LeaderboardManager.cs" />
+     <Compile Include="Assets\GooglePlayGames\Platforms\Native\PInvoke\MultiplayerInvitation.cs" />
+     <Compile Include="Assets\GooglePlayGames\Platforms\Native\PInvoke\MultiplayerParticipant.cs" />
+     <Compile Include="Assets\GooglePlayGames\Platforms\Native\PInvoke\NativeAchievement.cs" />
+     <Compile Include="Assets\GooglePlayGames\Platforms\Native\PInvoke\NativeAppIdentifier.cs" />
+     <Compile Include="Assets\GooglePlayGames\Platforms\Native\PInvoke\NativeConnectionRequest.cs" />
+     <Compile Include="Assets\GooglePlayGames\Platforms\Native\PInvoke\NativeConnectionResponse.cs" />
+     <Compile Include="Assets\GooglePlayGames\Platforms\Native\PInvoke\NativeEndpointDetails.cs" />
+     <Compile Include="Assets\GooglePlayGames\Platforms\Native\PInvoke\NativeEndpointDiscoveryListenerHelper.cs" />
+     <Compile Include="Assets\GooglePlayGames\Platforms\Native\PInvoke\NativeEvent.cs" />
+     <Compile Include="Assets\GooglePlayGames\Platforms\Native\PInvoke\NativeMessageListenerHelper.cs" />
+     <Compile Include="Assets\GooglePlayGames\Platforms\Native\PInvoke\NativePlayer.cs" />
+     <Compile Include="Assets\GooglePlayGames\Platforms\Native\PInvoke\NativeQuest.cs" />
+     <Compile Include="Assets\GooglePlayGames\Platforms\Native\PInvoke\NativeQuestMilestone.cs" />
+     <Compile Include="Assets\GooglePlayGames\Platforms\Native\PInvoke\NativeRealTimeRoom.cs" />
+     <Compile Include="Assets\GooglePlayGames\Platforms\Native\PInvoke\NativeSnapshotMetadata.cs" />
+     <Compile Include="Assets\GooglePlayGames\Platforms\Native\PInvoke\NativeSnapshotMetadataChange.cs" />
+     <Compile Include="Assets\GooglePlayGames\Platforms\Native\PInvoke\NativeStartAdvertisingResult.cs" />
+     <Compile Include="Assets\GooglePlayGames\Platforms\Native\PInvoke\NativeTurnBasedMatch.cs" />
+     <Compile Include="Assets\GooglePlayGames\Platforms\Native\PInvoke\NearbyConnectionsManager.cs" />
+     <Compile Include="Assets\GooglePlayGames\Platforms\Native\PInvoke\NearbyConnectionsManagerBuilder.cs" />
+     <Compile Include="Assets\GooglePlayGames\Platforms\Native\PInvoke\PInvokeUtilities.cs" />
+     <Compile Include="Assets\GooglePlayGames\Platforms\Native\PInvoke\ParticipantResults.cs" />
+     <Compile Include="Assets\GooglePlayGames\Platforms\Native\PInvoke\PlatformConfiguration.cs" />
+     <Compile Include="Assets\GooglePlayGames\Platforms\Native\PInvoke\PlayerManager.cs" />
+     <Compile Include="Assets\GooglePlayGames\Platforms\Native\PInvoke\PlayerSelectUIResponse.cs" />
+     <Compile Include="Assets\GooglePlayGames\Platforms\Native\PInvoke\QuestManager.cs" />
+     <Compile Include="Assets\GooglePlayGames\Platforms\Native\PInvoke\RealTimeEventListenerHelper.cs" />
+     <Compile Include="Assets\GooglePlayGames\Platforms\Native\PInvoke\RealtimeManager.cs" />
+     <Compile Include="Assets\GooglePlayGames\Platforms\Native\PInvoke\RealtimeRoomConfig.cs" />
+     <Compile Include="Assets\GooglePlayGames\Platforms\Native\PInvoke\RealtimeRoomConfigBuilder.cs" />
+     <Compile Include="Assets\GooglePlayGames\Platforms\Native\PInvoke\SnapshotManager.cs" />
+     <Compile Include="Assets\GooglePlayGames\Platforms\Native\PInvoke\TurnBasedManager.cs" />
+     <Compile Include="Assets\GooglePlayGames\Platforms\Native\PInvoke\TurnBasedMatchConfig.cs" />
+     <Compile Include="Assets\GooglePlayGames\Platforms\Native\PInvoke\TurnBasedMatchConfigBuilder.cs" />
+     <Compile Include="Assets\GooglePlayGames\Platforms\Native\UnsupportedAppStateClient.cs" />
+     <Compile Include="Assets\GooglePlayGames\Platforms\Native\UnsupportedSavedGamesClient.cs" />
+     <Compile Include="Assets\GooglePlayGames\Platforms\NearbyConnectionClientFactory.cs" />
+     <Compile Include="Assets\GooglePlayGames\Platforms\PlayGamesClientFactory.cs" />
+     <Compile Include="Assets\GooglePlayGames\PluginVersion.cs" />
+     <Compile Include="Assets\JMO Assets\Cartoon FX\Demo\Assets\CFX_Demo.cs" />
+     <Compile Include="Assets\JMO Assets\Cartoon FX\Demo\Assets\CFX_Demo_RandomDir.cs" />
+     <Compile Include="Assets\JMO Assets\Cartoon FX\Demo\Assets\CFX_Demo_RandomDirectionTranslate.cs" />
+     <Compile Include="Assets\JMO Assets\Cartoon FX\Demo\Assets\CFX_Demo_RotateCamera.cs" />
+     <Compile Include="Assets\JMO Assets\Cartoon FX\Scripts\CFX_AutoDestructShuriken.cs" />
+     <Compile Include="Assets\JMO Assets\Cartoon FX\Scripts\CFX_AutoRotate.cs" />
+     <Compile Include="Assets\JMO Assets\Cartoon FX\Scripts\CFX_AutodestructWhenNoChildren.cs" />
+     <Compile Include="Assets\JMO Assets\Cartoon FX\Scripts\CFX_InspectorHelp.cs" />
+     <Compile Include="Assets\JMO Assets\Cartoon FX\Scripts\CFX_LightIntensityFade.cs" />
+     <Compile Include="Assets\JMO Assets\Cartoon FX\Scripts\CFX_ShurikenThreadFix.cs" />
+     <Compile Include="Assets\JMO Assets\Cartoon FX\Spawn System\CFX_SpawnSystem.cs" />
+     <Compile Include="Assets\Laser Basic\Scripts\LaserRotate.cs" />
+     <Compile Include="Assets\SandstoneDesertRocksFree\Sample Assets\Characters\First Person Character\Scripts\FirstPersonCharacter.cs" />
+     <Compile Include="Assets\SandstoneDesertRocksFree\Sample Assets\Characters\First Person Character\Scripts\FirstPersonHeadBob.cs" />
+     <Compile Include="Assets\SandstoneDesertRocksFree\Sample Assets\Cross Platform Input\Scripts\AbstractButton.cs" />
+     <Compile Include="Assets\SandstoneDesertRocksFree\Sample Assets\Cross Platform Input\Scripts\AxisTouchButton.cs" />
+     <Compile Include="Assets\SandstoneDesertRocksFree\Sample Assets\Cross Platform Input\Scripts\Button.cs" />
+     <Compile Include="Assets\SandstoneDesertRocksFree\Sample Assets\Cross Platform Input\Scripts\ButtonDownTextureChange.cs" />
+     <Compile Include="Assets\SandstoneDesertRocksFree\Sample Assets\Cross Platform Input\Scripts\ButtonFactory.cs" />
+     <Compile Include="Assets\SandstoneDesertRocksFree\Sample Assets\Cross Platform Input\Scripts\CrossPlatformInput.cs" />
+     <Compile Include="Assets\SandstoneDesertRocksFree\Sample Assets\Cross Platform Input\Scripts\Joystick.cs" />
+     <Compile Include="Assets\SandstoneDesertRocksFree\Sample Assets\Cross Platform Input\Scripts\JoystickAbstract.cs" />
+     <Compile Include="Assets\SandstoneDesertRocksFree\Sample Assets\Cross Platform Input\Scripts\MobileControlRig.cs" />
+     <Compile Include="Assets\SandstoneDesertRocksFree\Sample Assets\Cross Platform Input\Scripts\PlatformSpecific\MobileInput.cs" />
+     <Compile Include="Assets\SandstoneDesertRocksFree\Sample Assets\Cross Platform Input\Scripts\PlatformSpecific\StandaloneInput.cs" />
+     <Compile Include="Assets\SandstoneDesertRocksFree\Sample Assets\Cross Platform Input\Scripts\TiltInput.cs" />
+     <Compile Include="Assets\SandstoneDesertRocksFree\Sample Assets\Cross Platform Input\Scripts\TouchJoystick.cs" />
+     <Compile Include="Assets\SandstoneDesertRocksFree\Sample Assets\Cross Platform Input\Scripts\TouchPad.cs" />
+     <Compile Include="Assets\SandstoneDesertRocksFree\Sample Assets\Cross Platform Input\Scripts\TouchPadPositional.cs" />
+     <Compile Include="Assets\SandstoneDesertRocksFree\Sample Assets\Cross Platform Input\Scripts\TouchPadRelativePositional.cs" />
+     <Compile Include="Assets\SandstoneDesertRocksFree\Sample Assets\Cross Platform Input\Scripts\TouchPadSwipe.cs" />
+     <Compile Include="Assets\SandstoneDesertRocksFree\Sample Assets\Cross Platform Input\Scripts\VirtualInput.cs" />
+     <Compile Include="Assets\SandstoneDesertRocksFree\Sample Assets\Utility\SimpleMouseRotator.cs" />
+     <Compile Include="Assets\SandstoneDesertRocksFree\Standard Assets\Scripts\General Scripts\ActivateTrigger.cs" />
+     <Compile Include="Assets\Wind_turbine\Scripts\Windturbine.cs" />
+     <Compile Include="Assets\scripts\AchievementsScript.cs" />
+     <Compile Include="Assets\scripts\AnimateMaterialScript.cs" />
+     <Compile Include="Assets\scripts\AnimateTextureScript.cs" />
+     <Compile Include="Assets\scripts\AnimateTiledTexture.cs" />
+     <Compile Include="Assets\scripts\AudioOffset.cs" />
+     <Compile Include="Assets\scripts\AudioPlayerScript.cs" />
+     <Compile Include="Assets\scripts\AutoSpawnerScript.cs" />
+     <Compile Include="Assets\scripts\BackgroundParallax.cs" />
+     <Compile Include="Assets\scripts\BombScript.cs" />
+     <Compile Include="Assets\scripts\CameraZoomInOutScript.cs" />
+     <Compile Include="Assets\scripts\CaptureNormals.cs" />
+     <Compile Include="Assets\scripts\ChalkboardLevelScript.cs" />
+     <Compile Include="Assets\scripts\ClosingWallScript.cs" />
+     <Compile Include="Assets\scripts\DoubleSpriteScript.cs" />
+     <Compile Include="Assets\scripts\EnemyScript.cs" />
+     <Compile Include="Assets\scripts\EnlargeShrinkScript.cs" />
+     <Compile Include="Assets\scripts\FlipScript.cs" />
+     <Compile Include="Assets\scripts\GUIResolutionHelper.cs" />
+     <Compile Include="Assets\scripts\GameConstants.cs" />
+     <Compile Include="Assets\scripts\GameControllerScript.cs" />
+     <Compile Include="Assets\scripts\GameOverScript.cs" />
+     <Compile Include="Assets\scripts\HealthScript.cs" />
+     <Compile Include="Assets\scripts\JellyScript.cs" />
+     <Compile Include="Assets\scripts\JumpingObjectScript.cs" />
+     <Compile Include="Assets\scripts\LandingPlatform.cs" />
+     <Compile Include="Assets\scripts\LaserScript.cs" />
+     <Compile Include="Assets\scripts\Lightning.cs" />
+     <Compile Include="Assets\scripts\LogoSceneScript.cs" />
+     <Compile Include="Assets\scripts\MainPlatformScript.cs" />
+     <Compile Include="Assets\scripts\MenuScript.cs" />
+     <Compile Include="Assets\scripts\MissionSelectionScript.cs" />
+     <Compile Include="Assets\scripts\MissionsScript.cs" />
+     <Compile Include="Assets\scripts\MoveInibitorScript.cs" />
+     <Compile Include="Assets\scripts\MoveScript.cs" />
+     <Compile Include="Assets\scripts\Movement.cs" />
+     <Compile Include="Assets\scripts\MyBasicLaser.cs" />
+     <Compile Include="Assets\scripts\MyStoreImplementationScript.cs" />
+     <Compile Include="Assets\scripts\ParachuteScript.cs" />
+     <Compile Include="Assets\scripts\ParticlePlayerScript.cs" />
+     <Compile Include="Assets\scripts\PickupCounterScript.cs" />
+     <Compile Include="Assets\scripts\PickupScript.cs" />
+     <Compile Include="Assets\scripts\PickupSpawner.cs" />
+     <Compile Include="Assets\scripts\PlatformScript.cs" />
+     <Compile Include="Assets\scripts\PlayerScript.cs" />
+     <Compile Include="Assets\scripts\ProjectileResetter.cs" />
+     <Compile Include="Assets\scripts\ProjectileScript.cs" />
+     <Compile Include="Assets\scripts\Punch.cs" />
+     <Compile Include="Assets\scripts\PunchScript.cs" />
+     <Compile Include="Assets\scripts\PushableScript.cs" />
+     <Compile Include="Assets\scripts\RandomFloorBotMovement.cs" />
+     <Compile Include="Assets\scripts\RenderTextureScript.cs" />
+     <Compile Include="Assets\scripts\RendererExtensions.cs" />
+     <Compile Include="Assets\scripts\RotateBackAndForthScript.cs" />
+     <Compile Include="Assets\scripts\Rotator.cs" />
+     <Compile Include="Assets\scripts\ScoreScript.cs" />
+     <Compile Include="Assets\scripts\ScreenShotScript.cs" />
+     <Compile Include="Assets\scripts\ScrollingScript.cs" />
+     <Compile Include="Assets\scripts\ScrollingUVs.cs" />
+     <Compile Include="Assets\scripts\ShootSpawner.cs" />
+     <Compile Include="Assets\scripts\SmoothFollow2D.cs" />
+     <Compile Include="Assets\scripts\SocialAPI.cs" />
+     <Compile Include="Assets\scripts\SoundEffectsHelper.cs" />
+     <Compile Include="Assets\scripts\SpawnerScript.cs" />
+     <Compile Include="Assets\scripts\SpecialEffectsHelper.cs" />
+     <Compile Include="Assets\scripts\SpeechBubbleScript.cs" />
+     <Compile Include="Assets\scripts\StoreScript.cs" />
+     <Compile Include="Assets\scripts\StorySceneScript.cs" />
+     <Compile Include="Assets\scripts\SwapSpriteScript.cs" />
+     <Compile Include="Assets\scripts\SwingScript.cs" />
+     <Compile Include="Assets\scripts\TextLocalizationManager.cs" />
+     <Compile Include="Assets\scripts\TextScrollScript.cs" />
+     <Compile Include="Assets\scripts\TextureHolderSingleton.cs" />
+     <Compile Include="Assets\scripts\TrapScript.cs" />
+     <Compile Include="Assets\scripts\WaterLineScript.cs" />
+     <Compile Include="Assets\scripts\WheelsRotation.cs" />
+     <None Include="Assets\Ferr\2DTerrain\Shaders\UnlitColoredTint.shader" />
+     <None Include="Assets\Plugins\Android\google-play-services_lib\res\values-ro\common_strings.xml" />
+     <None Include="Assets\Plugins\Android\google-play-services_lib\res\values-kn-rIN\common_strings.xml" />
+     <None Include="Assets\Plugins\Android\google-play-services_lib\res\color\common_signin_btn_text_dark.xml" />
+     <None Include="Assets\Plugins\Android\google-play-services_lib\res\values-hy-rAM\common_strings.xml" />
+     <None Include="Assets\Resources\Language_es.txt" />
+     <None Include="Assets\Plugins\Android\google-play-services_lib\res\color\common_signin_btn_text_light.xml" />
+     <None Include="Assets\Animated Trap\SpriteSheets\Trap.txt" />
+     <None Include="Assets\Plugins\Android\google-play-services_lib\res\values-et-rEE\common_strings.xml" />
+     <None Include="Assets\Standard Assets\Image Effects (Pro Only)\_Sources\Shaders\GlowConeTap.shader" />
+     <None Include="Assets\Ferr\Common\Data\cache.txt" />
+     <None Include="Assets\New Folder\environmental assets\Lava\Sources\Shaders\Lava.shader" />
+     <None Include="Assets\Plugins\Android\google-play-services_lib\res\values-fa\common_strings.xml" />
+     <None Include="Assets\Ferr\2DTerrain\Examples\Assets\Materials\UnitColoredTransparent.shader" />
+     <None Include="Assets\Plugins\Android\ChartboostSDK\AndroidManifest.xml" />
+     <None Include="Assets\JMO Assets\Cartoon FX\Shaders (Mobile)\CFXM_MobileParticleAdd_Alpha8.shader" />
+     <None Include="Assets\Ferr\Common\Shaders\UnlitVertexColorTransparent.shader" />
+     <None Include="Assets\Dark Future\ReadMe.txt" />
+     <None Include="Assets\Ferr\Docs\Ferr2DTerrainTool - Readme.txt" />
+     <None Include="Assets\Plugins\Android\google-play-services_lib\res\values-vi\common_strings.xml" />
+     <None Include="Assets\Plugins\Android\google-play-services_lib\res\color\wallet_primary_text_holo_light.xml" />
+     <None Include="Assets\Plugins\Android\google-play-services_lib\res\values-nl\common_strings.xml" />
+     <None Include="Assets\Plugins\Android\google-play-services_lib\res\values-af\common_strings.xml" />
+     <None Include="Assets\Resources\Language_jp.txt" />
+     <None Include="Assets\Example Games\Flappy Bird Style\_ReadMe.txt" />
+     <None Include="Assets\Plugins\Android\google-play-services_lib\res\values-en-rGB\common_strings.xml" />
+     <None Include="Assets\Ferr\2DTerrain\Shaders\LitWavyTransparent.shader" />
+     <None Include="Assets\Standard Assets\Water (Pro Only)\Water3\Sources\Shaders\FX-Water3.shader" />
+     <None Include="Assets\Ferr\Common\Shaders\UnlitSolidColor.shader" />
+     <None Include="Assets\Plugins\Android\google-play-services_lib\res\values-iw\common_strings.xml" />
+     <None Include="Assets\Plugins\Android\google-play-services_lib\res\values-bn-rBD\common_strings.xml" />
+     <None Include="Assets\Shaders\ReflectiveDiffuseSpecTransp.shader" />
+     <None Include="Assets\Plugins\Android\google-play-services_lib\res\values-sl\common_strings.xml" />
+     <None Include="Assets\Ferr\2DTerrain\Shaders\LitColored.shader" />
+     <None Include="Assets\Plugins\Android\google-play-services_lib\AndroidManifest.xml" />
+     <None Include="Assets\Plugins\Android\google-play-services_lib\res\values-es-rUS\common_strings.xml" />
+     <None Include="Assets\Plugins\Android\google-play-services_lib\res\values-zu\common_strings.xml" />
+     <None Include="Assets\Plugins\Android\google-play-services_lib\res\values-te-rIN\common_strings.xml" />
+     <None Include="Assets\SandstoneDesertRocksFree\_info.txt" />
+     <None Include="Assets\Standard Assets\Image Effects (Pro Only)\_Sources\Shaders\GlowCompose.shader" />
+     <None Include="Assets\Plugins\Android\google-play-services_lib\res\color\wallet_secondary_text_holo_dark.xml" />
+     <None Include="Assets\Shaders\DiffuseReflectiveShader.shader" />
+     <None Include="Assets\Plugins\Android\google-play-services_lib\res\values-kk-rKZ\common_strings.xml" />
+     <None Include="Assets\Plugins\Android\google-play-services_lib\res\values-ru\common_strings.xml" />
+     <None Include="Assets\Plugins\Android\google-play-services_lib\res\values\wallet_styles.xml" />
+     <None Include="Assets\Plugins\Android\google-play-services_lib\res\values-ky-rKG\common_strings.xml" />
+     <None Include="Assets\Plugins\Android\google-play-services_lib\res\values-ml-rIN\common_strings.xml" />
+     <None Include="Assets\Ferr\2DTerrain\Shaders\LitColoredTint.shader" />
+     <None Include="Assets\Plugins\Android\google-play-services_lib\res\values\common_colors.xml" />
+     <None Include="Assets\Ferr\2DTerrain\Examples\Assets\Materials\UnlitColored.shader" />
+     <None Include="Assets\Plugins\Android\google-play-services_lib\res\values-de\common_strings.xml" />
+     <None Include="Assets\Plugins\Android\google-play-services_lib\res\values\admob_strings.xml" />
+     <None Include="Assets\Ferr\2DTerrain\Shaders\Ferr2DTCommon.cginc" />
+     <None Include="Assets\Plugins\Android\google-play-services_lib\res\values-mr-rIN\common_strings.xml" />
+     <None Include="Assets\Plugins\Android\google-play-services_lib\res\values-fr\common_strings.xml" />
+     <None Include="Assets\Ferr\Common\Shaders\GizmoShader3D.shader" />
+     <None Include="Assets\Plugins\Android\google-play-services_lib\res\values-mn-rMN\common_strings.xml" />
+     <None Include="Assets\Shaders\ReflectiveDiffuseSpec.shader" />
+     <None Include="Assets\Plugins\Android\google-play-services_lib\res\values-zh-rCN\common_strings.xml" />
+     <None Include="Assets\Ferr\Common\Shaders\LitVertexColor.shader" />
+     <None Include="Assets\Plugins\Android\google-play-services_lib\res\values\admob_ads_attrs.xml" />
+     <None Include="Assets\Plugins\Android\google-play-services_lib\res\values-km-rKH\common_strings.xml" />
+     <None Include="Assets\Resources\Language_pt.txt" />
+     <None Include="Assets\Plugins\Android\google-play-services_lib\res\values-am\common_strings.xml" />
+     <None Include="Assets\Plugins\Android\google-play-services_lib\res\values-in\common_strings.xml" />
+     <None Include="Assets\Plugins\Android\google-play-services_lib\res\values-fr-rCA\common_strings.xml" />
+     <None Include="Assets\Plugins\Android\google-play-services_lib\res\values-is-rIS\common_strings.xml" />
+     <None Include="Assets\Resources\Language_fr.txt" />
+     <None Include="Assets\Laser Basic\Shader\LaserAdditive.shader" />
+     <None Include="Assets\Plugins\Android\google-play-services_lib\res\values\common_strings.xml" />
+     <None Include="Assets\Plugins\Android\google-play-services_lib\res\values-sr\common_strings.xml" />
+     <None Include="Assets\First Ground\Arctic\Readme.txt" />
+     <None Include="Assets\Plugins\Android\google-play-services_lib\res\values-sk\common_strings.xml" />
+     <None Include="Assets\Plugins\Android\google-play-services_lib\res\values-ca\common_strings.xml" />
+     <None Include="Assets\JMO Assets\Cartoon FX Easy Editor\CartoonFX Easy Editor Readme.txt" />
+     <None Include="Assets\Plugins\Android\google-play-services_lib\res\values-hu\common_strings.xml" />
+     <None Include="Assets\Plugins\Android\google-play-services_lib\res\values-lv\common_strings.xml" />
+     <None Include="Assets\Plugins\Android\MainLibProj\AndroidManifest.xml" />
+     <None Include="Assets\Plugins\Android\google-play-services_lib\res\values-ne-rNP\common_strings.xml" />
+     <None Include="Assets\Plugins\Android\google-play-services_lib\res\values\maps_attrs.xml" />
+     <None Include="Assets\Plugins\Android\google-play-services_lib\res\values-th\common_strings.xml" />
+     <None Include="Assets\Plugins\Android\google-play-services_lib\res\values\wallet_colors.xml" />
+     <None Include="Assets\Standard Assets\Image Effects (Pro Only)\_Sources\Shaders\GlowEffectDownsample.shader" />
+     <None Include="Assets\Plugins\Android\google-play-services_lib\res\values-ur-rPK\common_strings.xml" />
+     <None Include="Assets\Plugins\Android\google-play-services_lib\res\values-ko\common_strings.xml" />
+     <None Include="Assets\Plugins\Android\google-play-services_lib\res\values-ja\common_strings.xml" />
+     <None Include="Assets\Plugins\Android\google-play-services_lib\res\values-es\wallet_strings.xml" />
+     <None Include="Assets\JMO Assets\!JMO Assets Readme.txt" />
+     <None Include="Assets\Plugins\Android\google-play-services_lib\res\values-pl\common_strings.xml" />
+     <None Include="Assets\Ferr\2DTerrain\Shaders\LitColoredTintTransparent.shader" />
+     <None Include="Assets\Ferr\2DTerrain\Shaders\UnlitColoredTintTransparent.shader" />
+     <None Include="Assets\SandstoneDesertRocksFree\Sample Assets\Cross Platform Input\Cross Platform Input Guidelines.txt" />
+     <None Include="Assets\Fonts\LuckiestGuy\LICENSE.txt" />
+     <None Include="Assets\Plugins\Android\google-play-services_lib\res\values-hr\common_strings.xml" />
+     <None Include="Assets\Elementals\!Readme.txt" />
+     <None Include="Assets\Example Games\Angry Birds Style\_ReadMe.txt" />
+     <None Include="Assets\Plugins\Android\google-play-services_lib\res\values-eu-rES\common_strings.xml" />
+     <None Include="Assets\Ferr\2DTerrain\Shaders\LightmapColoredTransparent.shader" />
+     <None Include="Assets\Plugins\Android\google-play-services_lib\res\values-pt-rPT\common_strings.xml" />
+     <None Include="Assets\Resources\Language_ru.txt" />
+     <None Include="Assets\Plugins\Android\google-play-services_lib\res\values-lo-rLA\common_strings.xml" />
+     <None Include="Assets\Laser Basic\Read Me\Read Me.txt" />
+     <None Include="Assets\Plugins\Android\google-play-services_lib\res\values-en-rIN\common_strings.xml" />
+     <None Include="Assets\Ferr\Common\Shaders\UnlitVertexColor.shader" />
+     <None Include="Assets\Plugins\Android\google-play-services_lib\res\values-my-rMM\common_strings.xml" />
+     <None Include="Assets\Plugins\Android\google-play-services_lib\res\values-lt\common_strings.xml" />
+     <None Include="Assets\Plugins\Android\google-play-services_lib\res\values\ids.xml" />
+     <None Include="Assets\JMO Assets\Cartoon FX\Demo\Assets\CFX_Demo_WaterWiggle.shader" />
+     <None Include="Assets\Plugins\Android\google-play-services_lib\res\values-ar\common_strings.xml" />
+     <None Include="Assets\Plugins\Android\google-play-services_lib\res\values\common_attrs.xml" />
+     <None Include="Assets\Ferr\Common\Shaders\GizmoShader2D.shader" />
+     <None Include="Assets\Plugins\Android\google-play-services_lib\res\values\version.xml" />
+     <None Include="Assets\Standard Assets\LavaPackage\Sources\Lava.shader" />
+     <None Include="Assets\Plugins\Android\google-play-services_lib\res\values-hi\common_strings.xml" />
+     <None Include="Assets\Plugins\Android\google-play-services_lib\res\values-gl-rES\common_strings.xml" />
+     <None Include="Assets\Ferr\2D\Scripts\poly2tri.cs\LICENSE.txt" />
+     <None Include="Assets\Ferr\Common\Shaders\UnlitVertexColorTex.shader" />
+     <None Include="Assets\Plugins\Android\google-play-services_lib\res\values-nb\common_strings.xml" />
+     <None Include="Assets\Example Games\2D Scrolling Shooter\Fonts\PressStart2P-Regular\OFL.txt" />
+     <None Include="Assets\Example Games\Hat Trick - The Catch Game\_ReadMe.txt" />
+     <None Include="Assets\Ferr\2DTerrain\Shaders\UnlitWavyTransparent.shader" />
+     <None Include="Assets\Example Games\Hat Trick - The Catch Game\Fonts\LuckiestGuy\LICENSE.txt" />
+     <None Include="Assets\Plugins\Android\google-play-services_lib\res\values\wallet_strings.xml" />
+     <None Include="Assets\Plugins\Android\google-play-services_lib\res\values-pt-rBR\common_strings.xml" />
+     <None Include="Assets\license.txt" />
+     <None Include="Assets\Plugins\Android\google-play-services_lib\res\values-bg\common_strings.xml" />
+     <None Include="Assets\Plugins\Android\google-play-services_lib\res\values-zh-rHK\common_strings.xml" />
+     <None Include="Assets\Plugins\Android\google-play-services_lib\res\drawable\common_signin_btn_icon_dark.xml" />
+     <None Include="Assets\Plugins\Android\google-play-services_lib\res\drawable\common_signin_btn_icon_light.xml" />
+     <None Include="Assets\Plugins\Android\google-play-services_lib\res\drawable\common_signin_btn_text_dark.xml" />
+     <None Include="Assets\Ferr\2D\Scripts\poly2tri.cs\AUTHORS.txt" />
+     <None Include="Assets\Plugins\Android\google-play-services_lib\res\values-da\common_strings.xml" />
+     <None Include="Assets\Plugins\Android\google-play-services_lib\res\values-fi\common_strings.xml" />
+     <None Include="Assets\Plugins\Android\google-play-services_lib\res\values-cs\common_strings.xml" />
+     <None Include="Assets\Plugins\Android\AndroidManifest.xml" />
+     <None Include="Assets\Plugins\Android\google-play-services_lib\res\values-uz-rUZ\common_strings.xml" />
+     <None Include="Assets\Plugins\Android\google-play-services_lib\res\values\admob_iap_style.xml" />
+     <None Include="Assets\Plugins\Android\google-play-services_lib\res\values-ka-rGE\common_strings.xml" />
+     <None Include="Assets\GooglePlayGames\Editor\template-AndroidManifest.txt" />
+     <None Include="Assets\Example Games\2D Scrolling Shooter\_ReadMe.txt" />
+     <None Include="Assets\Ferr\Common\Shaders\UnlitVertexColorTexTransparent.shader" />
+     <None Include="Assets\Plugins\Android\google-play-services_lib\res\values\wallet_attrs.xml" />
+     <None Include="Assets\Ferr\2DTerrain\Shaders\UnitColoredTransparent.shader" />
+     <None Include="Assets\Ferr\Common\Shaders\ShadowOnly.shader" />
+     <None Include="Assets\SandstoneDesertRocksFree\Sample Assets\Characters\First Person Character\First Person Character Guidelines.txt" />
+     <None Include="Assets\Plugins\Android\google-play-services_lib\res\values-sw\common_strings.xml" />
+     <None Include="Assets\Resources\Language_en.txt" />
+     <None Include="Assets\Plugins\Android\google-play-services_lib\README.txt" />
+     <None Include="Assets\Wind_turbine\readme.txt" />
+     <None Include="Assets\Plugins\Android\google-play-services_lib\res\values-zh-rTW\common_strings.xml" />
+     <None Include="Assets\Plugins\Android\google-play-services_lib\res\values-es\common_strings.xml" />
+     <None Include="Assets\Ferr\2DTerrain\Scripts\LibTessDotNet\LibTessDotNet-LICENSE.txt" />
+     <None Include="Assets\Plugins\Android\google-play-services_lib\res\values-tr\common_strings.xml" />
+     <None Include="Assets\Plugins\Android\google-play-services_lib\res\values-sv\common_strings.xml" />
+     <None Include="Assets\Plugins\Android\google-play-services_lib\res\values-el\common_strings.xml" />
+     <None Include="Assets\Ferr\2DTerrain\Shaders\LightmapColored.shader" />
+     <None Include="Assets\Plugins\Android\google-play-services_lib\res\values-pt\common_strings.xml" />
+     <None Include="Assets\Plugins\Android\google-play-services_lib\res\values-uk\common_strings.xml" />
+     <None Include="Assets\Plugins\Android\google-play-services_lib\res\values-it\common_strings.xml" />
+     <None Include="Assets\Plugins\Android\google-play-services_lib\proguard.txt" />
+     <None Include="Assets\Plugins\Android\google-play-services_lib\res\values-ms-rMY\common_strings.xml" />
+     <None Include="Assets\Plugins\Android\google-play-services_lib\res\values-tl\common_strings.xml" />
+     <None Include="Assets\Fonts\PressStart2P-Regular\OFL.txt" />
+     <None Include="Assets\Plugins\Android\google-play-services_lib\res\values-mk-rMK\common_strings.xml" />
+     <None Include="Assets\Resources\Language_zh.txt" />
+     <None Include="Assets\Ferr\2DTerrain\Shaders\LitColoredTransparent.shader" />
+     <None Include="Assets\JMO Assets\Cartoon FX\CartoonFX Readme.txt" />
+     <None Include="Assets\Plugins\Android\google-play-services_lib\res\values-ta-rIN\common_strings.xml" />
+     <None Include="Assets\Plugins\Android\google-play-services_lib\res\drawable\common_signin_btn_text_light.xml" />
+     <None Include="Assets\Plugins\Android\google-play-services_lib\res\values-si-rLK\common_strings.xml" />
+     <None Include="Assets\Ferr\2DTerrain\Shaders\UnlitColored.shader" />
+ <Reference Include="Assembly-UnityScript-firstpass">
+ <HintPath>/Users/paulocristo/workspace/super-jelly-troopers/Library/ScriptAssemblies/Assembly-UnityScript-firstpass.dll</HintPath>
+ </Reference>
+ <Reference Include="UnityEngine.UI">
+ <HintPath>/Applications/Unity/Unity.app/Contents/UnityExtensions/Unity/GUISystem/UnityEngine.UI.dll</HintPath>
+ </Reference>
+ <Reference Include="UnityEngine.Networking">
+ <HintPath>/Applications/Unity/Unity.app/Contents/UnityExtensions/Unity/Networking/UnityEngine.Networking.dll</HintPath>
+ </Reference>
+ <Reference Include="UnityEngine.Analytics">
+ <HintPath>/Applications/Unity/Unity.app/Contents/UnityExtensions/Unity/UnityAnalytics/UnityEngine.Analytics.dll</HintPath>
+ </Reference>
+ <Reference Include="UnityEditor.iOS.Extensions.Xcode">
+ <HintPath>/Applications/Unity/Unity.app/Contents/PlaybackEngines/iOSSupport/UnityEditor.iOS.Extensions.Xcode.dll</HintPath>
+ </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="Assembly-CSharp-firstpass-vs.csproj">
+      <Project>{CB1E3D41-4195-1B8D-702D-4AF411C2A455}</Project>      <Name>Assembly-CSharp-firstpass-vs</Name>    </ProjectReference>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+	   Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+  
+</Project>
