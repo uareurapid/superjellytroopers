@@ -265,7 +265,7 @@ public class ChalkboardLevelScript : MonoBehaviour {
 
 				
 					GUI.DrawTexture(lifesTextureRect,lifesIconTexture);
-					GUI.Label (new Rect(width/2-150,height/3+40 , 120, 40), " X " + lifes ,style);
+					GUI.Label (new Rect(width/2-150,height/3+40 , 120, 40), " X " + lifes + "/" + GameConstants.NUM_LIFES_PER_LEVEL ,style);
 					if(lifesScore>0) {//all lifes?
 					  style.normal.textColor = Color.green;
 					  GUI.Label (new Rect(width/2+150,height/3+40 , 140, 40), "+ " + lifesScore ,style);

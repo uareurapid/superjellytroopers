@@ -173,29 +173,34 @@ public class LogoSceneScript : MonoBehaviour {
 	}
 	// Update is called once per frame
 	void Update() {
-	//is the story still scrolling?
+		//is the story still scrolling?
 
-		if(isMobilePlatform) {
-				if (!disabledStory || !passToNextScene && Input.touches.Length ==1) {
-	
+		// TODO IndexOutOfRangeException: Index was outside the bounds of the array.
+		if (isMobilePlatform)
+		{
+			if (!disabledStory || !passToNextScene && Input.touches.Length == 1)
+			{
+
 				Touch touch = Input.touches[0];
-				if(touch.phase != TouchPhase.Ended && touch.phase != TouchPhase.Canceled)  {
-				
-					
-				Vector2 fingerPos = new Vector2(0,0);
-				fingerPos = touch.position;
-					
-				fingerPos.y =  resolutionHelper.screenHeight - (touch.position.y / Screen.height) * resolutionHelper.screenHeight;
-				fingerPos.x = (touch.position.x / Screen.width) * resolutionHelper.screenWidth;
+				if (touch.phase != TouchPhase.Ended && touch.phase != TouchPhase.Canceled)
+				{
 
-				if(resolutionHelper.isWidescreen) {
-						
-					fingerPos.x = fingerPos.x + (resolutionHelper.scaleX - resolutionHelper.scaleVector.y) / 2 * resolutionHelper.screenWidth;
-				}
-					
 
-					if(exitTextureRect.Contains(fingerPos) )
-					{				
+					Vector2 fingerPos = new Vector2(0, 0);
+					fingerPos = touch.position;
+
+					fingerPos.y = resolutionHelper.screenHeight - (touch.position.y / Screen.height) * resolutionHelper.screenHeight;
+					fingerPos.x = (touch.position.x / Screen.width) * resolutionHelper.screenWidth;
+
+					if (resolutionHelper.isWidescreen)
+					{
+
+						fingerPos.x = fingerPos.x + (resolutionHelper.scaleX - resolutionHelper.scaleVector.y) / 2 * resolutionHelper.screenWidth;
+					}
+
+
+					if (exitTextureRect.Contains(fingerPos))
+					{
 						DisableStoryRendering();
 						CancelInvoke("CheckTyping");
 						passToNextScene = true;
@@ -203,7 +208,7 @@ public class LogoSceneScript : MonoBehaviour {
 					}
 				}
 			}
-		 }
+		}
 
 	}
 
