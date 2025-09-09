@@ -7,67 +7,101 @@ EditorBuildSettings:
   m_Scenes:
   - enabled: 1
     path: Assets/scenes/IntroScene.unity
+    guid: 3fbe6ac6eb1fc4115b03fbb4d1e7d93b
   - enabled: 1
     path: Assets/scenes/StoryScene.unity
+    guid: e656c699960914b61a9f0923bbb07516
   - enabled: 1
     path: Assets/scenes/NextLevelScene.unity
+    guid: ab8b606dbee2d40b7b9320edaf3e8800
   - enabled: 1
     path: Assets/scenes/World1Scene1.unity
+    guid: 5d8e92e63b75a457ba4439a24554c15d
   - enabled: 1
     path: Assets/scenes/World1Scene2.unity
+    guid: 853094f5c3073424cbc7d89d8d4dc870
   - enabled: 1
     path: Assets/scenes/World1Scene3.unity
+    guid: b2896645905d34f7ab5fd380cfa38b94
   - enabled: 1
     path: Assets/scenes/World1Scene4.unity
+    guid: dee8f3b29cab84f32b62fcf9ee84c2e4
   - enabled: 1
     path: Assets/scenes/World1Scene5.unity
+    guid: 0602b15bd89aa47eb9748425ea05625a
   - enabled: 1
     path: Assets/scenes/World1Scene6.unity
+    guid: 838a620046dbb465e8c3260ab91f7ee7
   - enabled: 1
     path: Assets/scenes/World2Scene1.unity
+    guid: 3d91253a8fd4c4004b1d1abf3cdf6737
   - enabled: 1
     path: Assets/scenes/World2Scene2.unity
+    guid: 41158f29e838343e18a626de591deeb1
   - enabled: 1
     path: Assets/scenes/World2Scene3.unity
+    guid: b697ad5750e7c42e1860a45be00a9fb9
   - enabled: 1
     path: Assets/scenes/World2Scene4.unity
+    guid: c8dcb2fe2fe7a4b72a4a2adb90f6edbd
   - enabled: 1
     path: Assets/scenes/World2Scene5.unity
+    guid: 13258b914e7184d08be44c6bdab247e1
   - enabled: 1
     path: Assets/scenes/World2Scene6.unity
+    guid: 1b3baecb73f794bc0825abbe8637cf41
   - enabled: 1
     path: Assets/scenes/World3Scene1.unity
+    guid: 3fd8eb49ea7ce4dfbab26d01cd4e6e7f
   - enabled: 1
     path: Assets/scenes/World3Scene2.unity
+    guid: 17d73bd2a4c1149b59c300d10c3fd940
   - enabled: 1
     path: Assets/scenes/World3Scene3.unity
+    guid: 6fffe9db49a0a4c9387caf7a1af6a2f5
   - enabled: 1
     path: Assets/scenes/World3Scene4.unity
+    guid: 7cee6bcdb4fe240a9acf870a2c3b7073
   - enabled: 1
     path: Assets/scenes/World3Scene5.unity
+    guid: 5db63d14ee1f540f9808aa0aaa78e61c
   - enabled: 1
     path: Assets/scenes/World3Scene6.unity
+    guid: e5659042752d74b11a4627f2275f82c3
   - enabled: 1
     path: Assets/scenes/World4Scene1.unity
+    guid: 276ebcaa0088f44019eef59243c0e30c
   - enabled: 1
     path: Assets/scenes/World4Scene2.unity
+    guid: 2f6a210a784ce4a9ba3475b001b438a2
   - enabled: 1
     path: Assets/scenes/World4Scene3.unity
+    guid: 94d62279f5a9a48bf832dc3dcdcd649a
   - enabled: 1
     path: Assets/scenes/World4Scene4.unity
+    guid: ac79eb9f4a5584e82a2fe4e83ff0ee7e
   - enabled: 1
     path: Assets/scenes/World4Scene5.unity
+    guid: df3ed86b707784215b2696098efa8cc6
   - enabled: 1
     path: Assets/scenes/World4Scene6.unity
+    guid: c886fa1bfed0641f2afead42dd27ffa9
   - enabled: 1
     path: Assets/scenes/AchievementsScene.unity
+    guid: 16a61cffce491466f93355fb34f1b1b4
   - enabled: 1
     path: Assets/scenes/CreditsScene.unity
+    guid: d265a3054ce2b478d9fb21bde39888d9
   - enabled: 1
     path: Assets/scenes/MissionsScene.unity
+    guid: c156b83ddb2f34b908253920e8416c5f
   - enabled: 1
     path: Assets/scenes/SettingsScene.unity
-  - enabled: 1
+    guid: 913b0935e5a5b448faa42b7c49500662
+  - enabled: 0
     path: Assets/scenes/StoreScene.unity
+    guid: f5185872b64884b4eb9c99e9f0708253
   - enabled: 1
     path: Assets/scenes/MissionSelection.unity
+    guid: f5e5083c2fbbb44b4b772dd6ff24f47d
+  m_configObjects: {}

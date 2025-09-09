@@ -14,8 +14,8 @@ public class ScreenShotScript : MonoBehaviour
 	GUISkin skin;
 	private bool textureEnabled = true;
 	//native definition
-	[DllImport ("__Internal")]
-	private static extern void _TakeScreenshot(string path);
+	//[DllImport ("__Internal")]
+	//private static extern void _TakeScreenshot(string path);
 	GUIResolutionHelper resolutionHelper;
 
 	GameControllerScript controller;
@@ -43,12 +43,13 @@ public class ScreenShotScript : MonoBehaviour
 	     textureEnabled = false;
 	  #endif
 	}
-	
+
 	public static void TakeScreenshot(string path)
 	{
 		// Call plugin only when running on real device
-		if (Application.platform != RuntimePlatform.OSXEditor)
-			_TakeScreenshot(path);
+		//if (Application.platform != RuntimePlatform.OSXEditor)
+		//	bool test = false;
+			//_TakeScreenshot(path);
 	}
 	
 	void Update()

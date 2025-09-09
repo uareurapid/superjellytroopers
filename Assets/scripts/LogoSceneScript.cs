@@ -1,10 +1,10 @@
 ﻿using UnityEngine;
 using System.Collections;
-#if !UNITY_BLACKBERRY
-using Soomla.Store;
-#endif
+// #if !UNITY_BLACKBERRY
+// using Soomla.Store;
+// #endif
 using System.Text;
-using Soomla.MyStore;
+//using Soomla.MyStore;
 using RescueJelly;
 #if UNITY_ANDROID && !UNITY_EDITOR
 using GooglePlayGames;
@@ -50,9 +50,9 @@ public class LogoSceneScript : MonoBehaviour {
 		Time.timeScale = 1.0f;
 		skin = Resources.Load("GUISkin") as GUISkin;
 		//init soomla store
-		#if !UNITY_BLACKBERRY
-		SoomlaStore.Initialize(new JellyTrooperAssets());
-		#endif
+		// #if !UNITY_BLACKBERRY
+		// SoomlaStore.Initialize(new JellyTrooperAssets());
+		// #endif
 
 		superTxt = GameObject.FindGameObjectWithTag("SuperTxt");
 		jellyTxt = GameObject.FindGameObjectWithTag("JellyTxt");
