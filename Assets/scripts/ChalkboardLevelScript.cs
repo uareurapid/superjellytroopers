@@ -312,11 +312,12 @@ public class ChalkboardLevelScript : MonoBehaviour {
 					//}
 
 				  //Any In-App still available for purchase????
-				  if( (!buyedExtraTime || !buyedExtraLifes || !buyedExtraSpeed || !buyedInfiniteLifes) && IsMobilePlatform()) {
+				  // TODO STORE
+				//   if( (!buyedExtraTime || !buyedExtraLifes || !buyedExtraSpeed || !buyedInfiniteLifes) && IsMobilePlatform()) {
 
-					storeTextureRect = new Rect(width-110,30,96,96);
-					GUI.DrawTexture(storeTextureRect,storeTexture);
-				  }
+				// 	storeTextureRect = new Rect(width-110,30,96,96);
+				// 	GUI.DrawTexture(storeTextureRect,storeTexture);
+				//   }
 				
 				  
 				  //play next without issues, 682 == width/3*2 = 1024/3*2 = 682 = 1024-682 = 342

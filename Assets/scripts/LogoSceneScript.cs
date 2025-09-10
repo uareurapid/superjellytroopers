@@ -181,6 +181,7 @@ public class LogoSceneScript : MonoBehaviour {
 			if (!disabledStory || !passToNextScene && Input.touches.Length == 1)
 			{
 
+				Debug.Log("touches size " + Input.touches.Length);
 				Touch touch = Input.touches[0];
 				if (touch.phase != TouchPhase.Ended && touch.phase != TouchPhase.Canceled)
 				{
