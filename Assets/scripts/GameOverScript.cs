@@ -81,22 +81,6 @@ public class GameOverScript : MonoBehaviour
 	
 		isMobilePlatform = (platform == RuntimePlatform.IPhonePlayer || platform == RuntimePlatform.Android || platform == RuntimePlatform.BlackBerryPlayer);
 
-
-		GameObject scripts = GameObject.FindGameObjectWithTag("Scripts");
-		if(scripts!=null) {
-			resolutionHelper = scripts.GetComponent<GUIResolutionHelper>();
-			translationManager = scripts.GetComponent<TextLocalizationManager>();
-		}
-		else {
-			resolutionHelper = GUIResolutionHelper.Instance;
-			translationManager = TextLocalizationManager.Instance;
-			
-		}
-
-		translationManager.LoadSystemLanguage(Application.systemLanguage);
-		resolutionHelper.CheckScreenResolution();
-
-
 		SetupAllStuff();
 		//means is really game over
 		if(!settingsScene) {
@@ -136,7 +120,8 @@ public class GameOverScript : MonoBehaviour
 
 		//check if we show the store button or not
 		if(isMobilePlatform) {
-			CheckInAppPurchases();
+			showStore = showAds = drawMoreLifesButton = false;
+			//TODO V2 CheckInAppPurchases();
 		}
 		else {
 		  showStore = false;
@@ -177,7 +162,19 @@ public class GameOverScript : MonoBehaviour
 
 	void Awake() {
 
+		GameObject scripts = GameObject.FindGameObjectWithTag("Scripts");
+		if(scripts!=null) {
+			resolutionHelper = scripts.GetComponent<GUIResolutionHelper>();
+			translationManager = scripts.GetComponent<TextLocalizationManager>();
+		}
+		else {
+			resolutionHelper = GUIResolutionHelper.Instance;
+			translationManager = TextLocalizationManager.Instance;
+			
+		}
 
+		translationManager.LoadSystemLanguage(Application.systemLanguage);
+		resolutionHelper.CheckScreenResolution();
 	}
 
 	void ClearPlayerPrefs() {
@@ -306,21 +303,17 @@ public class GameOverScript : MonoBehaviour
 		
 		bool isWideScreen = resolutionHelper.isWidescreen;
 		
-		if(isWideScreen) {
-			GUI.matrix = Matrix4x4.TRS(new Vector3( (resolutionHelper.scaleX - scaleVector.y) / 2 * width, 0, 0), Quaternion.identity, scaleVector);
-		}
-		else {
-			GUI.matrix = Matrix4x4.TRS(Vector3.zero,Quaternion.identity,scaleVector);
-			
-		}
+		Matrix4x4 normalMatrix = Matrix4x4.TRS(Vector3.zero, Quaternion.identity, scaleVector);
+		Matrix4x4 wideMatrix = Matrix4x4.TRS(new Vector3((resolutionHelper.scaleX - scaleVector.y) / 2 * width, 0, 0), Quaternion.identity, scaleVector);
 
-
+		GUI.matrix = normalMatrix;
+		
 		   // bool showNextLevel = false;
 
-		   // if(!settingsScene) {
+		// if(!settingsScene) {
 
-			//	showNextLevel = controller.IsShowUnlockNextLevel() && currentLevel < controller.GetNumberOfLevels();
-			GameObject playerPlaying = GameObject.FindGameObjectWithTag ("Player");
+		//	showNextLevel = controller.IsShowUnlockNextLevel() && currentLevel < controller.GetNumberOfLevels();
+		GameObject playerPlaying = GameObject.FindGameObjectWithTag ("Player");
 			//means player is dead
 			bool playerAlive = false;
 			if(playerPlaying!=null) {
@@ -334,35 +327,46 @@ public class GameOverScript : MonoBehaviour
 			
 			if(Event.current.type==EventType.Repaint) {
 
+				if(isWideScreen) {
+					GUI.matrix = wideMatrix;
+				}
+				else {
+					GUI.matrix = normalMatrix;
+					
+				}
 
-			 if(!settingsScene) { 
+				if (!settingsScene)
+				{
 
-					if(isShowingMessage /*&& !showNextLevel*/) {
-						
+					if (isShowingMessage /*&& !showNextLevel*/)
+					{
+
 
 						//It means we have finished the GAME, and we are official a SJT GAME GURU
-						if(playerAlive && PlayerPrefs.HasKey(GameConstants.ACHIEVEMENT_GURU_KEY)) {
-						   GUI.Label (new Rect(width/2-190, height/2-300, 500, 50), 
-									GetTranslationKey(GameConstants.MSG_CONGRATULATIONS) + " SJT GURU!!",style);
-									//automatically show credits after 5 seconds!!!!
+						if (playerAlive && PlayerPrefs.HasKey(GameConstants.ACHIEVEMENT_GURU_KEY))
+						{
+							GUI.Label(new Rect(width / 2 - 190, height / 2 - 300, 500, 50),
+									GetTranslationKey(GameConstants.MSG_CONGRATULATIONS) + " SJT GURU!!", style);
+							//automatically show credits after 5 seconds!!!!
 
-							
+
 							StartCoroutine(ShowCredits());
-							
-			
+
+
 						}
 						//if is game over and nothing else to show, print Game Over message only
-						else {
-						   
-							 GUI.Label (new Rect(width/2-90, height/2-300, 200, 50), "Game Over!!!",style);
-						   
-							
+						else
+						{
+
+							GUI.Label(new Rect(width / 2 - 90, height / 2 - 300, 200, 50), "Game Over!!!", style);
+
+
 						}
 
 
 					}
-		
-			  }
+
+				}
 				
 
 
@@ -403,124 +407,136 @@ public class GameOverScript : MonoBehaviour
 						}
 					}
 
-
-
-
-					    
-
 			}//end repaint
 			
+		//---------------------------------------------------------
+		//*************** CHEK TEXTURE CLICKS *********************
+		//---------------------------------------------------------
+		//before checking the clicks we put the correct matrix
+
+		if(isWideScreen){
+			GUI.matrix = wideMatrix;
+		}
+		else{
+			GUI.matrix = normalMatrix;
+		}
+		//---------------------------------------------
 			
 		//********************* CLICK / TOUCH CHECKS *******************
-				//desktop checks
-		if(Event.current.type == EventType.MouseUp && !isMobilePlatform) {
+		//desktop checks
+		if (Event.current.type == EventType.MouseUp && !isMobilePlatform)
+		{
 
 			Vector2 mousePosition = Event.current.mousePosition;
 
-			    if(startTextureRect.Contains(mousePosition) )
-				{
-					LoadNextLevel(1,1);
-				}
-				else if(resumeTextureRect.Contains(mousePosition) )
-				{
+			if (startTextureRect.Contains(mousePosition))
+			{
+				LoadNextLevel(1, 1);
+			}
+			else if (resumeTextureRect.Contains(mousePosition))
+			{
 
-				  if(settingsScene && PlayerPrefs.HasKey(GameConstants.PLAYING_LEVEL)) {
-					LoadNextLevel(currentWorld,currentLevel);
-				  }
-				  else {
-				    LoadNextLevel(currentWorld,1);
-
-				  }
-					
-				  
-				}
-				else if(storeTextureRect.Contains(mousePosition) )
+				if (settingsScene && PlayerPrefs.HasKey(GameConstants.PLAYING_LEVEL))
 				{
-					Application.LoadLevel("StoreScene");
+					LoadNextLevel(currentWorld, currentLevel);
 				}
-				else if(drawMoreLifesButton && moreLifesTextureRect!=null && moreLifesTextureRect.Contains(mousePosition) )
+				else
 				{
-					Application.LoadLevel("StoreScene");
-				}
-				else if(missionsTextureRect.Contains(mousePosition) )
-				{
-					Application.LoadLevel("MissionsScene");
-
-				}
-				else if(achievementsRect.Contains(mousePosition) )
-				{
-
-					Application.LoadLevel("AchievementsScene");
-				}
-				else if(creditsTextureRect.Contains(mousePosition) )
-				{
-					Application.LoadLevel("CreditsScene");
-
-
-				}
-				else if(closeButtonTextureRect.Contains(mousePosition) )
-				{
-					Application.Quit();
+					LoadNextLevel(currentWorld, 1);
 
 				}
 
-				//if(!isMobilePlatform && Input.GetKeyDown(KeyCode.Escape)) {
-		  		//	Application.Quit();
-				//}
+
+			}
+			else if (storeTextureRect.Contains(mousePosition))
+			{
+				Application.LoadLevel("StoreScene");
+			}
+			else if (drawMoreLifesButton && moreLifesTextureRect != null && moreLifesTextureRect.Contains(mousePosition))
+			{
+				Application.LoadLevel("StoreScene");
+			}
+			else if (missionsTextureRect.Contains(mousePosition))
+			{
+				Application.LoadLevel("MissionsScene");
+
+			}
+			else if (achievementsRect.Contains(mousePosition))
+			{
+
+				Application.LoadLevel("AchievementsScene");
+			}
+			else if (creditsTextureRect.Contains(mousePosition))
+			{
+				Application.LoadLevel("CreditsScene");
+
+
+			}
+			else if (closeButtonTextureRect.Contains(mousePosition))
+			{
+				Application.Quit();
+
+			}
+
+			//if(!isMobilePlatform && Input.GetKeyDown(KeyCode.Escape)) {
+			//	Application.Quit();
+			//}
 		}
 		//mobile checks
-		else if(isMobilePlatform && Input.touchCount == 1 )
+		else if (isMobilePlatform && Input.touchCount == 1)
 		{
 
 			Touch touch = Input.touches[0];
-			if(touch.phase == TouchPhase.Began) {
+			if (touch.phase == TouchPhase.Began)
+			{
 
-				Vector2 fingerPos = new Vector2(0,0);
+				Vector2 fingerPos = new Vector2(0, 0);
 				fingerPos = touch.position;
-				
-				fingerPos.y =  height - (touch.position.y / Screen.height) * height;
+
+				fingerPos.y = height - (touch.position.y / Screen.height) * height;
+				//fingerPos.x = touch.position.x - width;// (touch.position.x / Screen.width) * width;
 				fingerPos.x = (touch.position.x / Screen.width) * width;
 
-
-				if(resolutionHelper.isWidescreen) {
-				//do extra computation
-					fingerPos.x = fingerPos.x + (resolutionHelper.scaleX - resolutionHelper.scaleVector.y) / 2 * width;
-				}
-
-				if(startTextureRect.Contains(fingerPos) )
+				// if(resolutionHelper.isWidescreen) {
+				// //do extra computation
+				// 	fingerPos.x = fingerPos.x + (resolutionHelper.scaleX - resolutionHelper.scaleVector.y) / 2 * width;
+				// }
+				if (startTextureRect.Contains(fingerPos))
 				{
-					LoadNextLevel(1,1);
+					LoadNextLevel(1, 1);
 				}
-				else if(resumeTextureRect.Contains(fingerPos) )
+				else if (resumeTextureRect.Contains(fingerPos))
 				{
-				   //if settings and previously was not game over, than i can resume normally (means i come from store scene)
-				   if(settingsScene && PlayerPrefs.HasKey(GameConstants.PLAYING_LEVEL)) {
-					 LoadNextLevel(currentWorld,currentLevel);
-				   }
-				   else {
-					 LoadNextLevel(currentWorld,1);
-				   }
+					//if settings and previously was not game over, than i can resume normally (means i come from store scene)
+					if (settingsScene && PlayerPrefs.HasKey(GameConstants.PLAYING_LEVEL))
+					{
+						LoadNextLevel(currentWorld, currentLevel);
+					}
+					else
+					{
+						LoadNextLevel(currentWorld, 1);
+					}
 				}
-				else if(missionsTextureRect.Contains(fingerPos) )
+				else if (missionsTextureRect.Contains(fingerPos))
 				{
 					//StartActivityMonitor();
 					Application.LoadLevel("MissionsScene");
 				}
-				else if(achievementsRect.Contains(fingerPos) )
+				else if (achievementsRect.Contains(fingerPos))
 				{
 					Application.LoadLevel("AchievementsScene");
 				}
-				else if(creditsTextureRect.Contains(fingerPos) )
+				else if (creditsTextureRect.Contains(fingerPos))
 				{
 					//StartActivityMonitor();
 					Application.LoadLevel("CreditsScene");
 				}
-				else if(storeTextureRect.Contains(fingerPos) )
+				else if (storeTextureRect.Contains(fingerPos))
 				{
 					//StartActivityMonitor();
 					Application.LoadLevel("StoreScene");
 				}
-				else if(drawMoreLifesButton && moreLifesTextureRect!=null && moreLifesTextureRect.Contains(fingerPos) )
+				else if (drawMoreLifesButton && moreLifesTextureRect != null && moreLifesTextureRect.Contains(fingerPos))
 				{
 					Application.LoadLevel("StoreScene");
 				}
@@ -530,9 +546,6 @@ public class GameOverScript : MonoBehaviour
 			
 		//restore the matrix	
 		GUI.matrix = svMat;	
-				   
-	  
-		
 
 	}
 

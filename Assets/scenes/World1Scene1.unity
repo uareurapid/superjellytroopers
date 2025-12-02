@@ -1734,7 +1734,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1110025712}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 04c051b4f2e164f52940897c6a9dea48, type: 3}
   m_Name: 
@@ -1763,7 +1763,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: f502427dc41fb43049143f972777e486, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 3.317269
+      value: 3.13
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: f502427dc41fb43049143f972777e486, type: 3}
       propertyPath: m_LocalPosition.z
@@ -2020,7 +2020,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1184664655}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 8.079046, y: 3.3172693, z: -54.70001}
+  m_LocalPosition: {x: 8.079046, y: 4.7, z: -54.70001}
   m_LocalScale: {x: 0.5, y: 0.5, z: 0.5}
   m_Children:
   - {fileID: 1983992174}
@@ -2343,11 +2343,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 4955ce7e4bfa94389b1c95263ce722aa, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 14.1485901
+      value: 14.14859
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 4955ce7e4bfa94389b1c95263ce722aa, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 2.69436502
+      value: 2.694365
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 4955ce7e4bfa94389b1c95263ce722aa, type: 3}
       propertyPath: m_LocalPosition.z
@@ -2375,11 +2375,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 4955ce7e4bfa94389b1c95263ce722aa, type: 3}
       propertyPath: m_LocalScale.x
-      value: .200000003
+      value: 0.2
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 4955ce7e4bfa94389b1c95263ce722aa, type: 3}
       propertyPath: m_LocalScale.y
-      value: .200000003
+      value: 0.2
       objectReference: {fileID: 0}
     - target: {fileID: 5000000, guid: 4955ce7e4bfa94389b1c95263ce722aa, type: 3}
       propertyPath: m_IsKinematic

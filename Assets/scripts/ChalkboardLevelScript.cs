@@ -120,50 +120,50 @@ public class ChalkboardLevelScript : MonoBehaviour {
 
 
 
-		if (Input.touches.Length ==1) {
+		// if (Input.touches.Length ==1) {
 
-				//
-				int screenHeight = resolutionHelper.screenHeight;
-				int screenWidth = resolutionHelper.screenWidth;
+		// 		//
+		// 		int screenHeight = resolutionHelper.screenHeight;
+		// 		int screenWidth = resolutionHelper.screenWidth;
 
-			    bool touchedPause = false;
-				Touch touch = Input.touches[0];
-				if(touch.phase != TouchPhase.Ended && touch.phase != TouchPhase.Canceled)  {
+		// 	    bool touchedPause = false;
+		// 		Touch touch = Input.touches[0];
+		// 		if(touch.phase != TouchPhase.Ended && touch.phase != TouchPhase.Canceled)  {
 				
 					
-					Vector2 fingerPos = new Vector2(0,0);
-					fingerPos = touch.position;
+		// 			Vector2 fingerPos = new Vector2(0,0);
+		// 			fingerPos = touch.position;
 					
-					fingerPos.y =  screenHeight - (touch.position.y / Screen.height) * screenHeight;
-					fingerPos.x = (touch.position.x / Screen.width) * screenWidth;
+		// 			fingerPos.y =  screenHeight - (touch.position.y / Screen.height) * screenHeight;
+		// 			fingerPos.x = (touch.position.x / Screen.width) * screenWidth;
 
-					if(resolutionHelper.isWidescreen) {
+		// 			if(resolutionHelper.isWidescreen) {
 						
-					 float wideScreenOrigin = (resolutionHelper.scaleX - resolutionHelper.scaleVector.y) / 2 * screenWidth;
-					 fingerPos.x = fingerPos.x + wideScreenOrigin - GameConstants.WIDESCREEN_CORRECTION_VALUE;
+		// 			 float wideScreenOrigin = (resolutionHelper.scaleX - resolutionHelper.scaleVector.y) / 2 * screenWidth;
+		// 			 fingerPos.x = fingerPos.x + wideScreenOrigin - GameConstants.WIDESCREEN_CORRECTION_VALUE;
 
-					}
+		// 			}
 
-					if(playTextureRect.Contains(fingerPos) )
-					{	//load next level			
-						LoadNextLevel(world,level);
-					}
-					else if(reloadTextureRect.Contains(fingerPos) )
-					{	
-					 //replay last world/level again
-					  LoadNextLevel(lastWorld, (level-1 <=0) ? 1 : level-1);
+		// 			if(playTextureRect.Contains(fingerPos) )
+		// 			{	//load next level			
+		// 				LoadNextLevel(world,level);
+		// 			}
+		// 			else if(reloadTextureRect.Contains(fingerPos) )
+		// 			{	
+		// 			 //replay last world/level again
+		// 			  LoadNextLevel(lastWorld, (level-1 <=0) ? 1 : level-1);
 		
 
-					}
-					else if(storeTextureRect.Contains(fingerPos) )
-					{	
-					  clickedStore=true;
-					  Application.LoadLevel("StoreScene");
-					}
+		// 			}
+		// 			else if(storeTextureRect.Contains(fingerPos) )
+		// 			{	
+		// 			  clickedStore=true;
+		// 			  Application.LoadLevel("StoreScene");
+		// 			}
 
 
-				}
-			}
+		// 		}
+		// 	}
 	}
 
 	/*
@@ -220,21 +220,25 @@ public class ChalkboardLevelScript : MonoBehaviour {
 
 				}
 
-				//check clicks, when playing on desktop env
-				  if (Event.current.type == EventType.MouseUp && !IsMobilePlatform()) {
-					  if(playTextureRect.Contains(Event.current.mousePosition)) {
-					    LoadNextLevel(world,level);
-					  } 
-					  else if(reloadTextureRect.Contains(Event.current.mousePosition) ) {	
-					    //start from last level again
-						LoadNextLevel(lastWorld,(level - 1 <=0) ? 1 : level-1);
-					 }
-					else if(storeTextureRect.Contains(Event.current.mousePosition) ) {	
-						clickedStore=true;
-						Application.LoadLevel("StoreScene");
-					 }
-		 
-		          }
+		//check clicks, when playing on desktop env
+		if (Event.current.type == EventType.MouseUp && !IsMobilePlatform())
+		{
+			if (playTextureRect.Contains(Event.current.mousePosition))
+			{
+				LoadNextLevel(world, level);
+			}
+			else if (reloadTextureRect.Contains(Event.current.mousePosition))
+			{
+				//start from last level again
+				LoadNextLevel(lastWorld, (level - 1 <= 0) ? 1 : level - 1);
+			}
+					 //TODO v2
+					// else if(storeTextureRect.Contains(Event.current.mousePosition) ) {	
+			// 	clickedStore=true;
+			// 	Application.LoadLevel("StoreScene");
+			//  }
+
+		}
 
 
 				if(Event.current.type==EventType.Repaint) {
@@ -312,7 +316,7 @@ public class ChalkboardLevelScript : MonoBehaviour {
 					//}
 
 				  //Any In-App still available for purchase????
-				  // TODO STORE
+				  // TODO V2 STORE
 				//   if( (!buyedExtraTime || !buyedExtraLifes || !buyedExtraSpeed || !buyedInfiniteLifes) && IsMobilePlatform()) {
 
 				// 	storeTextureRect = new Rect(width-110,30,96,96);
@@ -336,8 +340,56 @@ public class ChalkboardLevelScript : MonoBehaviour {
 
 
 
-		    //restore the matrix
-			GUI.matrix = svMat;
+		if (Input.touches.Length ==1) {
+
+				//
+				int screenHeight = resolutionHelper.screenHeight;
+				int screenWidth = resolutionHelper.screenWidth;
+
+			    bool touchedPause = false;
+				Touch touch = Input.touches[0];
+			if (touch.phase != TouchPhase.Ended && touch.phase != TouchPhase.Canceled)
+			{
+
+
+				Vector2 fingerPos = new Vector2(0, 0);
+				fingerPos = touch.position;
+
+				fingerPos.y = screenHeight - (touch.position.y / Screen.height) * screenHeight;
+				fingerPos.x = (touch.position.x / Screen.width) * screenWidth;
+
+				if (resolutionHelper.isWidescreen)
+				{
+
+					float wideScreenOrigin = (resolutionHelper.scaleX - resolutionHelper.scaleVector.y) / 2 * screenWidth;
+					fingerPos.x = fingerPos.x + wideScreenOrigin - GameConstants.WIDESCREEN_CORRECTION_VALUE;
+
+				}
+
+				if (playTextureRect.Contains(fingerPos))
+				{   //load next level			
+					LoadNextLevel(world, level);
+				}
+				else if (reloadTextureRect.Contains(fingerPos))
+				{
+					//replay last world/level again
+					LoadNextLevel(lastWorld, (level - 1 <= 0) ? 1 : level - 1);
+
+
+				}
+					// TODO V2
+					// else if(storeTextureRect.Contains(fingerPos) )
+				// {	
+				//   clickedStore=true;
+				//   Application.LoadLevel("StoreScene");
+				// }
+
+
+			}
+			}
+
+		//restore the matrix
+		GUI.matrix = svMat;
 			    
 		
 		}

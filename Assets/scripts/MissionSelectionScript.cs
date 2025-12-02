@@ -112,10 +112,11 @@ public class MissionSelectionScript : MonoBehaviour {
 			oneUnlocked = PlayerPrefs.GetInt(GameConstants.MISSION_4_KEY,0)>0 || PlayerPrefs.GetInt(GameConstants.MISSION_3_KEY,0)>0;
 		 break;
 	   }
-	   //do not unlock mission 4 with ads
-	   canShowAds = world < 4;
+		//do not unlock mission 4 with ads
+		canShowAds = false;//TODO V2 world < 4;
 
-	   noticeText.text = canShowAds ? "Unlock blocked missions by watching a small video!" : "The last mission is only for braves, no cheat allowed!";
+		//TODO V2
+		//noticeText.text = canShowAds ? "Unlock blocked missions by watching a small video!" : "The last mission is only for braves, no cheat allowed!";
 
 	   twoUnlocked = PlayerPrefs.HasKey(worldKey + GameConstants.MISSION_SELECT_LEVEL_TWO_KEY);
 	   threeUnlocked =  PlayerPrefs.HasKey(worldKey + GameConstants.MISSION_SELECT_LEVEL_THREE_KEY);
@@ -156,7 +157,6 @@ public class MissionSelectionScript : MonoBehaviour {
 		
 		if(isWideScreen) {
 			GUI.matrix = Matrix4x4.TRS(new Vector3( (resolutionHelper.scaleX - scaleVector.y) / 2 * resolutionHelper.screenWidth, 0, 0), Quaternion.identity, scaleVector);
-			
 		}
 		else {
 			GUI.matrix = Matrix4x4.TRS(Vector3.zero,Quaternion.identity,scaleVector);
@@ -297,11 +297,19 @@ public class MissionSelectionScript : MonoBehaviour {
 				fingerPos = touch.position;
 				
 				fingerPos.y =  height - (touch.position.y / Screen.height) * height;
-				fingerPos.x = (touch.position.x / Screen.width) * width;
+				fingerPos.x = touch.position.x - width;// (touch.position.x / Screen.width) * width;
 				
-				if(isWideScreen) {
-					//do extra computation
-					fingerPos.x = fingerPos.x + (resolutionHelper.scaleX - resolutionHelper.scaleVector.y) / 2 * width;
+				// use a second one as workaround
+				Vector2 fingerPos2 = new Vector2(0,0);
+				fingerPos2 = touch.position;
+				fingerPos2.y =  height - (touch.position.y / Screen.height) * height;
+				fingerPos2.x = (touch.position.x / Screen.width) * width;
+
+
+				if (isWideScreen)
+				 {
+				 	// 	//do extra computation
+				 	fingerPos2.x = fingerPos2.x + (resolutionHelper.scaleX - resolutionHelper.scaleVector.y) / 2 * width;
 				}
 
 				if(showRewards && !isShowingAds){
@@ -312,7 +320,7 @@ public class MissionSelectionScript : MonoBehaviour {
 				       DenyShowAds();
 				    }
 				}
-				else if(oneLockRect.Contains(fingerPos) )
+				else if(oneLockRect.Contains(fingerPos) || oneLockRect.Contains(fingerPos2) )
 				{
 					if(oneUnlocked) {
 						LoadNextLevel(1);
@@ -322,7 +330,7 @@ public class MissionSelectionScript : MonoBehaviour {
 						ShowRewardController(worldKey + GameConstants.MISSION_SELECT_LEVEL_ONE_KEY);
 					}
 				}
-				else if(twoLockRect.Contains(fingerPos) )
+				else if(twoLockRect.Contains(fingerPos) || twoLockRect.Contains(fingerPos2))
 				{
 					if(twoUnlocked) {
 						LoadNextLevel(2);
@@ -333,7 +341,7 @@ public class MissionSelectionScript : MonoBehaviour {
 					}
 					
 				}
-				else if(threeLockRect.Contains(fingerPos) )
+				else if(threeLockRect.Contains(fingerPos) || threeLockRect.Contains(fingerPos2))
 				{
 					if(threeUnlocked) {
 						LoadNextLevel(3);
@@ -343,7 +351,7 @@ public class MissionSelectionScript : MonoBehaviour {
 						ShowRewardController(worldKey + GameConstants.MISSION_SELECT_LEVEL_THREE_KEY);
 					}
 				}
-				else if(fourLockRect.Contains(fingerPos) )
+				else if(fourLockRect.Contains(fingerPos) || fourLockRect.Contains(fingerPos2))
 				{
 					if(fourUnlocked) {
 						LoadNextLevel(4);
@@ -354,7 +362,7 @@ public class MissionSelectionScript : MonoBehaviour {
 					}
 					
 				}
-				else if(fiveLockRect.Contains(fingerPos) )
+				else if(fiveLockRect.Contains(fingerPos) || fiveLockRect.Contains(fingerPos2))
 				{
 					if(fiveUnlocked) {
 						LoadNextLevel(5);
@@ -364,7 +372,7 @@ public class MissionSelectionScript : MonoBehaviour {
 						ShowRewardController(worldKey + GameConstants.MISSION_SELECT_LEVEL_FIVE_KEY);
 					}
 				}
-				else if(sixLockRect.Contains(fingerPos) )
+				else if(sixLockRect.Contains(fingerPos) || sixLockRect.Contains(fingerPos2))
 				{
 					if(sixUnlocked) {
 						LoadNextLevel(6);

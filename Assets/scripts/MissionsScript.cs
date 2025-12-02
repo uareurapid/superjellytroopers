@@ -4,7 +4,7 @@ using RescueJelly;
 
 public class MissionsScript : MonoBehaviour {
 
-	public int scrollFontSize = 22;
+	public int scrollFontSize = 26;
 	public Font scrollFont;
 	public int lineHeight = 1;
 
@@ -65,6 +65,18 @@ public class MissionsScript : MonoBehaviour {
 		missionThreeLock = GameObject.FindGameObjectWithTag("lockworld3").GetComponent<SpriteRenderer>();
 		missionFourLock = GameObject.FindGameObjectWithTag("lockworld4").GetComponent<SpriteRenderer>();
 
+		isMobilePlatform = (platform == RuntimePlatform.IPhonePlayer || platform == RuntimePlatform.Android);
+
+		CheckMissions();
+
+		//the interval is hardcoded
+		InvokeRepeating("ChangeTextVisibility",1.0f,1.0f);
+
+		
+	}
+	//called before start
+	void Awake() {
+
 		GameObject scripts = GameObject.FindGameObjectWithTag("Scripts");
 		if(scripts!=null) {
 			resolutionHelper = scripts.GetComponent<GUIResolutionHelper>();
@@ -80,19 +92,6 @@ public class MissionsScript : MonoBehaviour {
 		resolutionHelper.CheckScreenResolution();
 		//translations
 		translationManager.LoadSystemLanguage(Application.systemLanguage);
-		isMobilePlatform = (platform == RuntimePlatform.IPhonePlayer || platform == RuntimePlatform.Android);
-
-		CheckMissions();
-
-		//the interval is hardcoded
-		InvokeRepeating("ChangeTextVisibility",1.0f,1.0f);
-
-		
-	}
-	//called before start
-	void Awake() {
-
-
 	}
 
 	public void CheckMissions() {
@@ -261,7 +260,7 @@ public class MissionsScript : MonoBehaviour {
 			if(isShowingText) {
 				//reset color back to white
 				centeredStyleLarger.normal.textColor =  Color.white;
-				GUI.Label(new Rect(0, 100, Screen.width, 50),
+				GUI.Label(new Rect(0, 130, Screen.width, 50),
 				GetTranslationKey(GameConstants.MSG_CLICK_UNLOCKED_MISSION),centeredStyleLarger);
 				  
 			}	
@@ -286,7 +285,7 @@ public class MissionsScript : MonoBehaviour {
 		
 		if(Event.current.type==EventType.Repaint) {
 
-			exitTextureRect = new Rect(width-110,30,96,96);
+			exitTextureRect = new Rect(width-100,30,96,96);
 			GUI.DrawTexture(exitTextureRect,exitTexture);
 
 		}
@@ -300,12 +299,12 @@ public class MissionsScript : MonoBehaviour {
 			fingerPos = touch.position;
 			
 			fingerPos.y =  height - (touch.position.y / Screen.height) * height;
-			fingerPos.x = (touch.position.x / Screen.width) * width;
+			fingerPos.x = touch.position.x - width;// (touch.position.x / Screen.width) * width;
 			
-			if(isWideScreen) {
-				//do extra computation
-				fingerPos.x = fingerPos.x + (GUIResolutionHelper.Instance.scaleX - GUIResolutionHelper.Instance.scaleVector.y) / 2 * width;
-			}
+			// if(isWideScreen) {
+			// 	//do extra computation
+			// 	fingerPos.x = fingerPos.x + (GUIResolutionHelper.Instance.scaleX - GUIResolutionHelper.Instance.scaleVector.y) / 2 * width;
+			// }
 			
 			if(touch.phase == TouchPhase.Began)
 				

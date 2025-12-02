@@ -100,10 +100,10 @@ public class SpeechBubbleScript : MonoBehaviour
 		GUI.BeginGroup(new Rect(goScreenPos.x-centerOffsetX-offsetX,Screen.height-goScreenPos.y-centerOffsetY-offsetY,bubbleWidth,bubbleHeight));
 		
 		//Render the round part of the bubble
-		GUI.Label(new Rect(0,0,200,100),"",guiSkin.customStyles[0]);
+		GUI.Label(new Rect(0,0,230,130),"",guiSkin.customStyles[0]);
 		
 		//Render the text
-		GUI.Label(new Rect(10,25,190,50),message,guiSkin.label);
+		GUI.Label(new Rect(14,45,190,50),message,guiSkin.label);
 		
 		//If the button is pressed, go back to 41 Post
 		/**if(GUI.Button(new Rect(50,60,100,30),"Back to post..."))

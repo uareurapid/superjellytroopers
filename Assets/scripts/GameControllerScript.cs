@@ -1304,35 +1304,31 @@ public class GameControllerScript : MonoBehaviour {
 			//assign normal matrix by default
 			GUI.matrix = normalMatrix;
 						
-
-
-			
-			
 		    if(Event.current.type==EventType.Repaint && !isGameOver) {
 
 			 DrawText(GetTranslationKey(GameConstants.MSG_WORLD) + " " + currentWorld 
 						+  " / " + GetTranslationKey(GameConstants.MSG_LEVEL) 
-						+ " " + currentLevel, messagesFontSizeSmaller +12, 15, 5,220,60);
+						+ " " + currentLevel, messagesFontSizeSmaller +12, 20, 5,220,60);
 	
 			
 			if (elapsedMissionMinutes>=1) {
 			    if(elapsedMissionSeconds>=10) {
-					DrawText(GetTranslationKey(GameConstants.MSG_TIME)+ " 0" + elapsedMissionMinutes +":" + elapsedMissionSeconds , messagesFontSizeSmaller +12, 300, 10,200,50);
+					DrawText(GetTranslationKey(GameConstants.MSG_TIME)+ " 0" + elapsedMissionMinutes +":" + elapsedMissionSeconds , messagesFontSizeSmaller +12, 305, 10,200,50);
 				}
 			    else {
-					DrawText(GetTranslationKey(GameConstants.MSG_TIME)+ " 0" + elapsedMissionMinutes +":0" + elapsedMissionSeconds , messagesFontSizeSmaller +12, 300, 10,200,50);
+					DrawText(GetTranslationKey(GameConstants.MSG_TIME)+ " 0" + elapsedMissionMinutes +":0" + elapsedMissionSeconds , messagesFontSizeSmaller +12, 305, 10,200,50);
 				}
 				
 			}
 			else {
 			   if(elapsedMissionSeconds>=10) {
-					DrawText(GetTranslationKey(GameConstants.MSG_TIME)+ " 0:" + elapsedMissionSeconds , messagesFontSizeSmaller +12,300, 10,200,50);
+					DrawText(GetTranslationKey(GameConstants.MSG_TIME)+ " 0:" + elapsedMissionSeconds , messagesFontSizeSmaller +12,305, 10,200,50);
 				}
 			   else {
 			   
 			        //red color
 					skin.label.normal.textColor = Color.red;
-					DrawText(GetTranslationKey(GameConstants.MSG_TIME)+ " 0:0" + elapsedMissionSeconds , messagesFontSizeSmaller +12, 300, 10,200,50);
+					DrawText(GetTranslationKey(GameConstants.MSG_TIME)+ " 0:0" + elapsedMissionSeconds , messagesFontSizeSmaller +12, 305, 10,200,50);
 					//reset to white again
 					skin.label.normal.textColor = Color.white;
 				}
@@ -1374,11 +1370,11 @@ public class GameControllerScript : MonoBehaviour {
 		 	if(bossHealth!=null && bossHealth.hitPoints>0) {
 
 			 int initialHealth = bossHealth.GetInitialHealth();
-			 DrawText("Boss: " + (initialHealth - bossHealth.hitPoints) + " / "  + initialHealth, messagesFontSizeSmaller +10,520, 10,200,50);
+			 DrawText("Boss: " + (initialHealth - bossHealth.hitPoints) + " / "  + initialHealth, messagesFontSizeSmaller +10,525, 10,200,50);
 		    }
 		 }
 		 else {
-			DrawText(GetTranslationKey(GameConstants.MSG_RESCUED) + " " + numberOfSavedJellies + " / "  + numberOfJelliesToRescue, messagesFontSizeSmaller +10,520, 10,200,50);
+			DrawText(GetTranslationKey(GameConstants.MSG_RESCUED) + " " + numberOfSavedJellies + " / "  + numberOfJelliesToRescue, messagesFontSizeSmaller +10,525, 10,200,50);
 		 }
 		  
 			
@@ -1394,7 +1390,7 @@ public class GameControllerScript : MonoBehaviour {
 								//instantiate the first time we reference it
 		
 					if(clock!=null) {
-						Rect clockRect = new Rect(248,8,48,48);
+						Rect clockRect = new Rect(253,8,48,48);
 						GUI.DrawTexture(clockRect, clock);
 					}
 			  
@@ -1408,7 +1404,7 @@ public class GameControllerScript : MonoBehaviour {
 					}
 
 					//pausePlayRect = new Rect(width-60 ,15,64,64);
-					pausePlayRect = new Rect(width-70 ,15,64,64);
+					pausePlayRect = new Rect(width-60 ,15,64,64);
 
 
 					if(isGamePaused) {
@@ -1472,7 +1468,7 @@ public class GameControllerScript : MonoBehaviour {
 					}
 
 					//TODO check dictionary, if mobile tap, othewise click
-						skin.label.normal.textColor = Color.grey;
+						skin.label.normal.textColor = Color.black;
 
 						if(isShowingHowTo) {
 							Rect helpMeTextureRect = new Rect(70,screenHeight/2-320,70,70);
@@ -1570,16 +1566,19 @@ public class GameControllerScript : MonoBehaviour {
 			    }
 				else {
 
-				//Did i paused the game???
-				  if(pausePlayRect.Contains(Event.current.mousePosition)) {
-					isGamePaused = !isGamePaused;
-					if(isGamePaused) {
-						PauseGame();
+					//Did i paused the game???
+					if (pausePlayRect.Contains(Event.current.mousePosition))
+					{
+						isGamePaused = !isGamePaused;
+						if (isGamePaused)
+						{
+							PauseGame();
+						}
+						else
+						{
+							ResumeGame();
+						}
 					}
-					else {
-						ResumeGame();
-					}
-			      } 
 
 			    }
 			      
@@ -1601,10 +1600,11 @@ public class GameControllerScript : MonoBehaviour {
 
 					Vector2 fingerPos = GetFingerPosition(touch,isWideScreen);
 
-					if(isGameOver) {
+					if (isGameOver)
+					{
 
-			
-						#if UNITY_IOS || UNITY_STANDALONE_OSX || UNITY_ANDROID && !UNITY_EDITOR
+
+#if UNITY_IOS || UNITY_STANDALONE_OSX || UNITY_ANDROID && !UNITY_EDITOR
 			
 					 if(leaderboardsRect.Contains(fingerPos) && player!=null) {
 						  touchedLeaderBoard = true;
@@ -1617,35 +1617,39 @@ public class GameControllerScript : MonoBehaviour {
 						  }
 					 }
 				
-					#endif
+#endif
 
 						//is game over, maybe not started yet?
-						if(exitTextureRect.Contains(fingerPos) ) {
+						if (exitTextureRect.Contains(fingerPos))
+						{
 							StartGame();
 							StartJellyFall();
 						}
 
-					    
-					    #if UNITY_ANDROID && !UNITY_EDITOR
+
+#if UNITY_ANDROID && !UNITY_EDITOR
 					    if(rateRect.Contains(fingerPos) && player!=null) {
 							Application.OpenURL("market://details?id=com.pcdreams.superjellytroopers");
 					    }
-					    #endif
-						
-				   }
-				   else if(pausePlayRect.Contains(fingerPos) ) {	
+#endif
+
+					}
+					else if (pausePlayRect.Contains(fingerPos))
+					{
 						//already started
 						//Did i paused the game???			
 
 						isGamePaused = !isGamePaused;
-						if(isGamePaused) {
+						if (isGamePaused)
+						{
 							PauseGame();
 						}
-						else {
+						else
+						{
 							ResumeGame();
 						}
 
-				  }
+					}
 
 				 }
 					

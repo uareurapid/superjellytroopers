@@ -71,12 +71,12 @@ public class StorySceneScript : MonoBehaviour {
 				fingerPos = touch.position;
 					
 				fingerPos.y =  screenHeight - (touch.position.y / Screen.height) * screenHeight;
-				fingerPos.x = (touch.position.x / Screen.width) * screenWidth;
+					fingerPos.x = touch.position.x - screenWidth;  //(touch.position.x / Screen.width) * screenWidth;
 
-				if(resolutionHelper.isWidescreen) {
+				// if(resolutionHelper.isWidescreen) {
 						
-					fingerPos.x = fingerPos.x + (resolutionHelper.scaleX - resolutionHelper.scaleVector.y) / 2 * screenWidth;
-				}
+				// 	fingerPos.x = fingerPos.x + (resolutionHelper.scaleX - resolutionHelper.scaleVector.y) / 2 * screenWidth;
+				// }
 					
 
 					if(exitTextureRect.Contains(fingerPos) )

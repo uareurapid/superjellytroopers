@@ -149,6 +149,8 @@ public class SpawnerScript : MonoBehaviour
 
 	        //already have a next thumbnail
 					nextJelly = (GameObject)Instantiate(enemies[nextThumbnail], newPosition, transform.rotation);
+
+					//SoundEffectsHelper.Instance.PlayPowerupSound();
 					
 					//we can still have the other falling, with the same tag
 					nextJelly.tag = "Jelly";

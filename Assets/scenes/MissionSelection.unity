@@ -246,7 +246,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Unlock blocked missions by watching a small video!
+  m_Text: 
 --- !u!222 &162563423
 CanvasRenderer:
   m_ObjectHideFlags: 0

@@ -115,8 +115,8 @@ public class TextScrollScript : MonoBehaviour {
 			centeredStyleLarger.normal.textColor =  Color.white;
 
 			centeredStyleLarger.fontSize = 25;
-			GUI.Label(new Rect(width/3,height-100,500,40),"Copyright ©2015",centeredStyleLarger);		
-			GUI.Label(new Rect(width/3,height-70,500,40),"http://www.pcdreams-software.com",centeredStyleLarger);
+			GUI.Label(new Rect(width/3,height-100,500,40),"Copyright ©2016-2025",centeredStyleLarger);		
+			GUI.Label(new Rect(width/3,height-70,500,40),"https://uareurapid.github.io/website/",centeredStyleLarger);
 		}
 
 
@@ -167,7 +167,7 @@ public class TextScrollScript : MonoBehaviour {
 				//  exitTextureRect = new Rect(Screen.width - 100 * (resolutionHelper.scaleX - scaleVector.y) / 2,20,96,96);
 				//}
 				//else {
-				  exitTextureRect = new Rect(width-110,30,96,96);
+				  exitTextureRect = new Rect(width-100,30,96,96);
 				//}
 
 
@@ -184,12 +184,12 @@ public class TextScrollScript : MonoBehaviour {
 			fingerPos = touch.position;
 			
 			fingerPos.y =  height - (touch.position.y / Screen.height) * height;
-			fingerPos.x = (touch.position.x / Screen.width) * width;
+			fingerPos.x = touch.position.x - width; //(touch.position.x / Screen.width) * width;
 			
-			if(isWideScreen) {
-				//do extra computation
-				fingerPos.x = fingerPos.x + (resolutionHelper.scaleX - resolutionHelper.scaleVector.y) / 2 * width;
-			}
+			// if(isWideScreen) {
+			// 	//do extra computation
+			// 	fingerPos.x = fingerPos.x + (resolutionHelper.scaleX - resolutionHelper.scaleVector.y) / 2 * width;
+			// }
 			
 			if(touch.phase == TouchPhase.Began)
 				
